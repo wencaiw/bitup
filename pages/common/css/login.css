@@ -1,0 +1,213 @@
+html{
+    -webkit-font-smoothing:antialiased;
+}
+body,p,h1,h2,h3,h4,h5,h6,input{margin:0;padding: 0;}
+*{
+    font-family: "PingFang SC", Helvetica, "Microsoft Yahei", Arial, sans-serif;
+}
+body.login_body{
+    padding-bottom: 80px;
+}
+a{
+    text-decoration: none;
+}
+::-webkit-input-placeholder{
+    color:#ccc;
+}
+.banner{
+    background: url(../images/banner.jpg) center center no-repeat;
+    background-size: cover;
+    height: 400px;
+}
+.login_wrap{
+    width: 510px;
+    margin:-105px auto 0;
+    background-color: rgba(240,240,240,.5);
+    padding:15px;
+    box-sizing:border-box;
+}
+.login_main{
+    background-color: #fff;
+    padding:32px 70px 41px;
+}
+.login_main .error_box{
+    text-align: center;
+    color: #FF6B25;
+    font-size: 12px;
+    margin-bottom: 12px;
+}
+.login_main .error_box .icon{
+    content:"";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    background: url("/common/images/icon-warning16x16@2x.png") center center no-repeat;
+    background-size:100% auto;
+}
+.login_main .error_box .error_tips{
+    vertical-align: middle;
+}
+.login_main .error_box.success{
+    color: #39B49D;
+}
+.login_main .error_box.success .icon{
+    opacity:0;
+}
+.login_main .form_box{
+    position: relative;
+    margin-bottom: 20px;
+}
+.login_main .input_text{
+    width: 340px;
+    background: #F8F8F8;
+    border: 1px solid #E7E7E7;
+    border-radius: 2px;
+    font-size: 14px;
+    line-height: 20px;
+    color:#555;
+    padding:15px 10px 15px 94px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    outline:none;
+}
+.login_main .input_text:focus{
+    border-color: #32B59D;
+    box-shadow: 0px 0px 4px 0px #39B49D;
+}
+.login_main .form_box .icon{
+    position: absolute;
+    width: 24px;
+    left: 24px;
+    top: 50%;
+    margin-top: -12px;
+}
+.login_main .form_box:before{
+    content:"";
+    position: absolute;
+    left:72px;
+    top:50%;
+    margin-top: -13px;
+    height: 26px;
+    width: 0;
+    border-left: 1px solid #E3E3E3;
+}
+.login_main .forget{
+    text-align: right;
+    margin-top: -5px;
+}
+.login_main .forget a{
+    font-size: 12px;
+    color:#c1c1c1;
+    text-decoration: underline;
+}
+.login_main .login_btn{
+    display: block;
+    width: 100%;
+    border: none;
+    outline: none;
+    height: 50px;
+    font-size: 20px;
+    line-height:50px;
+    color:#fff;
+    background: #39B49D;
+    border-radius: 2px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.bank_main{
+    min-width: 1200px;
+    max-width: 1200px;
+    margin:130px auto 0;
+}
+.bank_main h3{
+    text-align: center;
+    font-size: 30px;
+    line-height:42px;
+    color: #555555;
+    letter-spacing: 0.83px;
+    position: relative;
+    border-bottom: 1px solid #E3E3E3;
+    margin-bottom: 70px;
+}
+.bank_main h3 .title_box{
+    position: absolute;
+    background-color: #fff;
+    top:-24px;
+    left:50%;
+    margin-left: -70px;
+}
+.bank_main h3 .sub_title{
+    display: inline-block;
+    font-size: 14px;
+    color: #CCCCCC;
+    letter-spacing: 1px;
+    line-height:20px;
+}
+.bank_main h3:before,.bank_main h3:after{
+    content:"";
+    position: absolute;
+    top:24px;
+}
+.bank_list{
+    text-align: center;
+}
+.bank_list img{
+    margin:0 56px;
+}
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 170px white inset !important;
+}
+
+.banner.retrieve{
+    background-image: url(../images/retrieve-banner.jpg);
+    height: 200px;
+}
+.retrieve_wrap{
+    margin:160px auto;
+}
+.retrieve_main{
+    width: 340px;
+    margin:0 auto;
+    padding:0;
+}
+.retrieve_main .input_text{
+    background-color: #fff;
+    padding:15px 12px;
+    display: block;
+    margin-bottom: 20px;
+}
+.retrieve_main .title{
+    font-size: 18px;
+    color: #1BB396;
+    line-height: 18px;
+    overflow: hidden;
+    margin-bottom: 19px;
+}
+.retrieve_main .title a{
+    font-size: 14px;
+    color: #979797;
+    line-height: 14px;
+    float: right;
+}
+.retrieve_main .title a img{
+    width: 16px;
+    vertical-align: middle;
+    margin-left: 16px;
+}
+.retrieve_main .login_btn{
+    margin-top: 32px;
+}
+.login_btn:disabled{
+    opacity:.6;
+}
+.retrieve_wrap .tips{
+    font-size: 14px;
+    color: #4A4A4A;
+    text-align: center;
+    margin-top: 30px;
+}
+.retrieve_wrap .tips.error{
+    color: #FF6B25;
+}

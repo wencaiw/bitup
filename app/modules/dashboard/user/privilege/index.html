@@ -1,0 +1,102 @@
+
+<div class="content-panel">
+    <h3 class="title">会员权限</h3>
+    <p ng-if="info.currentLevel==0">您当前的认证等级是：<span class="color-base">0级</span>，您需要完成身份认证才可以在平台购买数字资产组合（DAC）</p>
+    <p ng-if="info.currentLevel==1">您当前的认证等级是：<span class="color-base">1级</span>，您可以充值和提现的额度上限是 <span class="color-base">1000.00美元</span>。请升级到 2级 以解除这一限制。</p>
+    <p ng-if="info.currentLevel==2">您当前的会员等级是：<span class="color-base">2级</span>，您可以充值和提现的额度上限是 <span class="color-base">无限制</span>，提现的额度上限是 <span class="color-base">$ 50,000.00／天， $ 200,000.00／月。</span></p>
+    <p style="margin:8px 0;min-height: 1px;"><a ui-sref="dashboard.user.auth" ng-if="info.currentLevel < 2" class="color-blue" style="text-decoration: underline;">提高认证等级</a></p>
+    <p>您当前的会员权限：</p>
+    <table class="common-table pvg-table" style="width: auto;">
+        <tr>
+            <th style="width: 140px;">认证等级</th>
+            <th style="width: 140px;">等级权限</th>
+            <th style="width: 140px;">限额</th>
+            <th style="width: 140px;">已用</th>
+        </tr>
+        <tbody ng-if="info.currentLevel==0">
+            <tr>
+                <td rowspan="2">0级</td>
+                <td>充值</td>
+                <td>$0.00</td>
+                <td>$0.00</td>
+            </tr>
+            <tr>
+                <td>提现</td>
+                <td>$0.00</td>
+                <td>$0.00</td>
+            </tr>
+        </tbody>
+        <tbody ng-if="info.currentLevel==1">
+            <tr>
+                <td rowspan="2">1级</td>
+                <td>充值（永久）</td>
+                <td>$1,000.00</td>
+                <td>$0.00</td>
+            </tr>
+            <tr>
+                <td>提现（永久）</td>
+                <td>$1,000.00</td>
+                <td>$0.00</td>
+            </tr>
+        </tbody>
+        <tbody ng-if="info.currentLevel==2">
+            <tr>
+                <td rowspan="3">2级</td>
+                <td>充值（永久）</td>
+                <td>$1,000.00</td>
+                <td>$0.00</td>
+            </tr>
+            <tr>
+                <td>提现（每天）</td>
+                <td>$50,000.00</td>
+                <td>$0.00</td>
+            </tr>
+            <tr>
+                <td>提现（每月）</td>
+                <td>$200,000.00</td>
+                <td>$0.00</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>认证等级和权限：</p>
+    <table class="common-table pvg-table" style="width: auto;">
+        <tr>
+            <th style="width: 140px;">认证等级</th>
+            <th style="width: 140px;">等级权限</th>
+            <th style="width: 140px;">限额</th>
+        </tr>
+        <tbody>
+        <tr>
+            <td rowspan="2">0级</td>
+            <td>充值</td>
+            <td>$0.00</td>
+        </tr>
+        <tr>
+            <td>提现</td>
+            <td>$0.00</td>
+        </tr>
+        <tr>
+            <td rowspan="2">1级</td>
+            <td>充值（永久）</td>
+            <td>$1,000.00</td>
+        </tr>
+        <tr>
+            <td>提现（永久）</td>
+            <td>$1,000.00</td>
+        </tr>
+        <tr>
+            <td rowspan="3">2级</td>
+            <td>充值（永久）</td>
+            <td>无限制</td>
+        </tr>
+        <tr>
+            <td>提现（每天）</td>
+            <td>$50,000.00</td>
+        </tr>
+        <tr>
+            <td>提现（每月）</td>
+            <td>$200,000.00</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,95 @@
+<div class="content-panel">
+    <h3 class="title">{{'100171' | translate}}<span class="color-gray" ng-if="info.untie"> / {{'120374' | translate}}</span></h3>
+    <!--未激活2FA-->
+    <div ng-if="!info.showSuccess">
+        <p>{{'100202' | translate}}</p>
+        <p class="fz-16" style="margin:24px 0;color:#000;">{{'100203' | translate}}</p>
+        <p class="center" style="width: 180px;">
+            {{'100204' | translate}}<br />
+            <!--<img src="/common/images/rc-code.png" width="100%" style="margin: 16px 0;" alt=""><br />-->
+            <qrcode data="{{info.url}}" size="180" rel="external nofollow" ></qrcode>
+        </p>
+        <p>{{'100205' | translate}}key: {{info.secret}} <a href="javascript:;" class="color-blue" ng-copyable copy-text="info.secret" g="g">{{'100206' | translate}}</a></p>
+        <p class="color-orange" style="margin:8px 0 30px;">{{'100207' | translate}}</p>
+        <p class="fz-16">{{'100208' | translate}}</p>
+        <div class="form-group">
+            <div class="form-box">
+                <label><span>{{'100209' | translate}}：</span></label>
+                <div class="form-control">
+                    <input type="text" class="input-text" placeholder="{{'100210' | translate}}" ng-model="info.code">
+                </div>
+            </div>
+            <div class="form-box btn-box">
+                <label></label>
+                <div class="form-control">
+                    <button type="button" class="common-btn ok" ng-click="info.goActivate()"><span ng-hide="info.loading">{{'100205' | translate}}</span><i class="common-icon icon-loading middle" ng-show="info.loading"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--已激活2FA-->
+    <div ng-if="info.showSuccess && !info.untie">
+        <div class="rz-status">
+            <i class="icon-smile green"></i><span class="color-green">{{'100211' | translate}}</span>
+        </div>
+        <p style="color:#333;">{{'100212' | translate}}</p>
+        <button class="btn-not-active" ng-click="info.untie=true">{{120374 | translate}}</button>
+    </div>
+    <!--解绑2FA-->
+    <div ng-if="info.showSuccess && info.untie">
+        <p style="color:#213B52; margin-bottom: 10px;">{{'120375' | translate}}</p>
+        <p style="color:#213B52;">{{'120376' | translate}}<span class="color-base">support@bitup.com</span></p>
+
+        <!--手机验证码-->
+        <div class="form-block">
+            <div class="tit">
+                <span class="color-red fz-16">* </span>
+                <label>{{100182 | translate}} <span class="color-base">{{info.user.mobile}}</span></label>
+            </div>
+            <div class="box">
+                <input type="number" class="input-text" ng-model="info.phoneCode" ng-class="{'error':info.phoneCodeError}" placeholder="{{100185 | translate}}">
+                <div class="send" ng-click="info.sendPhoneCode()" ng-bind="info.phone_v_code || ('100186' | translate)"></div>
+                <p class="error-text" ng-show="info.phoneCodeError">
+                    <i class="warning-icon"></i>
+                    <span>{{120378 | translate}}</span>
+                </p>
+            </div>
+        </div>
+
+        <!--邮箱验证码-->
+        <div class="form-block">
+            <div class="tit">
+                <span class="color-red fz-16">* </span>
+                <label>{{100153 | translate}} <span class="color-base">{{info.user.account}}</span></label>
+            </div>
+            <div class="box">
+                <input class="input-text" ng-model="info.emailCode" ng-class="{'error':info.emailCodeError}" placeholder="{{120377 | translate}}">
+                <div class="send" ng-click="info.sendEmailCode()" ng-bind="info.email_v_code || ('100186' | translate)"></div>
+                <p class="error-text" ng-show="info.emailCodeError">
+                    <i class="warning-icon"></i>
+                    <span>{{120378 | translate}}</span>
+                </p>
+            </div>
+        </div>
+
+        <!--2fa验证码-->
+        <div class="form-block">
+            <div class="tit">
+                <span class="color-red fz-16">* </span>
+                <label>{{100244 | translate}}</label>
+            </div>
+            <div class="box">
+                <input type="number" class="input-text" ng-model="info.twoFACode" ng-class="{'error':info.twoFaCodeError}" placeholder="{{100245 | translate}}">
+                <p class="error-text" ng-show="info.twoFaCodeError">
+                    <i class="warning-icon"></i>
+                    <span>{{120095 | translate}}</span>
+                </p>
+            </div>
+        </div>
+
+
+        <div style="height: 25px;"></div>
+        <button class="common-btn ok" ng-click="info.unActive()">{{120379 | translate}}</button>
+        <button class="common-btn" ng-click="info.untie=false" style="margin-left: 40px;">{{100231 | translate}}</button>
+    </div>
+</div>

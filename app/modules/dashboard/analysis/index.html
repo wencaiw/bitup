@@ -1,0 +1,53 @@
+
+<div class="white-section page-title fz-16">{{'100012' | translate}}</div>
+<div class="clearfix">
+    <div class="white-section chart-half fl">
+        <h3 class="chart-title">{{'100128' | translate}}</h3>
+        <div class="chart-panel">
+            <highchart style="height: 210px;display: block;" config="info.column.chartConfig"></highchart>
+        </div>
+    </div>
+    <div class="white-section chart-half fr">
+        <h3 class="chart-title">{{'100129' | translate}}</h3>
+        <div class="chart-panel">
+            <highchart style="height: 210px;display: block;" config="info.pie.chartConfig"></highchart>
+        </div>
+    </div>
+</div>
+
+<!--demo-->
+<!--<div class="white-section chart-panel">-->
+    <!--<h3 class="chart-title">{{'100130' | translate}}</h3>-->
+    <!--<div>-->
+        <!--<highchart style="height: 200px;display: block;" config="info.column3.chartConfig"></highchart>-->
+    <!--</div>-->
+<!--</div>-->
+
+<div class="white-section chart-panel">
+    <h3 class="chart-title">{{'100130' | translate}}</h3>
+    <div class="por">
+        <ul class="tab-list clearfix">
+            <li ng-class="{'on' : info.currProfitTab==7}" ng-click="info.switchProfitTab(7)">{{'100131' | translate}}</li>
+            <li ng-class="{'on' : info.currProfitTab==30}" ng-click="info.switchProfitTab(30)">{{'100132' | translate}}</li>
+            <li ng-class="{'on' : info.currProfitTab==90}" ng-click="info.switchProfitTab(90)">{{'100133' | translate}}</li>
+        </ul>
+        <p class="chart-tips"><span class="color-gray">{{'100134' | translate}}：</span>{{info.profitStartDate}} — {{info.profitEndDate}}</p>
+    </div>
+    <div>
+        <highchart style="height: 200px;display: block;" config="info.column2.chartConfig"></highchart>
+    </div>
+</div>
+<div class="white-section chart-panel">
+    <h3 class="chart-title">{{'100135' | translate}}</h3>
+    <div class="por">
+        <ul class="tab-list clearfix">
+            <li ng-class="{'on' : info.currValuationTab==7}" ng-click="info.switchValuationTab(7)">{{'100136' | translate}}</li>
+            <li ng-class="{'on' : info.currValuationTab==30}" ng-click="info.switchValuationTab(30)">{{'100137' | translate}}</li>
+            <li ng-class="{'on' : info.currValuationTab==90}" ng-click="info.switchValuationTab(90)">{{'100138' | translate}}</li>
+        </ul>
+        <p class="chart-tips"><span class="color-gray">{{'100134' | translate}}：</span>{{info.valuationStartDate}} — {{info.valuationEndDate}}</p>
+    </div>
+    <div>
+        <highchart style="height: 200px;display: block;" config="info.line.chartConfig"></highchart>
+    </div>
+</div>

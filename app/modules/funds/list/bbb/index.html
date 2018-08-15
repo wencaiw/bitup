@@ -1,0 +1,26 @@
+<!-- 币币宝基金列表 -->
+<ul class="fixfund_list clearfix bor-box">
+    <li ng-repeat="(k,v) in info.dataList">{{countdown_data(k, v)}}
+        <p class="tit">{{v.dac_info_tl[g.currLang=='cn' ? 'zh-cn' : 'en-us'].name}}</p>
+        <funds-circle ng-if="v.type == 1" config="{per: v.dac_sold_amount/v.dac_trade_limit.capacity*100}"></funds-circle>
+        <div ng-if="v.type == 2" style="width: 140px; height: 140px; margin: 20px auto; border: 2px solid #FFAE3A; border-radius: 50%;"></div>
+        <div class="return">
+            <p class="p1">{{(v.fixed_rate * 100).toFixed(2)}}<span class="fz-14">%</span></p>
+            <p class="p2" ng-bind-html="120099 | translate | htmlTag"></p>
+        </div>
+        <p class="desc">{{'130009'|translate}}：<span>{{v.lock_days}}{{'100348' | translate}}</span></p>
+        <p ng-if="v.type == 1" class="desc">{{'130043' | translate}}：<span>{{ (v.dac_trade_limit.capacity - v.dac_sold_amount) | coinNum: v.base_currency}}  {{v.base_currency | uppercase}}</span></p>
+        <p ng-if="v.type == 2" class="desc"><em ng-bind-html="'120113' | translate | htmlTag"></em>：<span>{{(v.fixed_rate / 365 * 10000).toFixed(5)}} {{v.base_currency | uppercase}}</span></p>
+
+        <div class="status {{info.time[k].class_}}" ng-class="{'nothing':!info.time[k].times}" ng-click="info.pageLink('funds.detail',{type: (info.bbbType==1 ? 'fixed' : 'flexible'), dac_id: v.id})">
+            <p ng-if="info.time[k].class_=='being'" ng-class="{'flexible-star':info.bbbType == 2}">{{ (info.bbbType == 2 ? '120138' : '130011') |translate}}</p>
+            <p ng-if="info.bbbType != 2 || (info.bbbType == 2 && info.time[k].class_!='being')" class="fz-12">{{info.time[k].times ? ((info.time[k].times | d_hms) + ((info.time[k].class_=='being' ? '130021' : '130020') | translate)) : (info.time[k].inner | translate)}}</p>
+            <p ng-if="info.time[k].class_=='coming'" class='more'>{{'130013' | translate}}</p>
+        </div>
+        <!--<div ng-if="v.type==2" class="current">{{120102 | translate}}</div>-->
+        <div class="tag" ng-if="v.recommend == 1">
+            <img src="/common/images/img-mark.png" width="100%">
+            <p class="tag-text">{{120111 | translate}}</p>
+        </div>
+    </li>
+</ul>

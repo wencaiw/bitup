@@ -1,0 +1,34 @@
+<div class="breadcrumb-nav" style="border-bottom: none;">
+    <a ui-sref="dashboard.88btc.index">{{'100249' | translate}}</a>
+    <span class="separator">/</span>
+    <span class="cur-nav">{{'100282' | translate}}</span>
+</div>
+<div class="white-section" style="padding: 14px 24px 34px 24px;">
+    <ul class="tab-list green" style="margin-bottom: 30px;">
+        <li class="on">{{'100282' | translate}}</li>
+    </ul>
+    <table class="common-table long">
+        <thead>
+            <tr>
+                <th style="width: 24%;">{{'100098' | translate}}</th>
+                <th style="width: 20%;">{{'100093' | translate}}</th>
+                <th style="width: 28%;">{{'100283' | translate}}</th>
+                <th style="width: 28%;">{{'100284' | translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in info.orderList">
+                <td>{{item.created_at | date:'yyyy.MM.dd hh:mm:ss'}}</td>
+                <td>{{item.direction=='buy' ? ('100285' | translate) : ('100286' | translate)}}</td>
+                <td>{{item.amount | number:6}}</td>
+                <td>{{item.current_total_amount | number:6}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="spinner" ng-if="g.loading">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+        <div class="bounce4"></div>
+    </div>
+</div>

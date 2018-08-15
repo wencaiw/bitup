@@ -1,0 +1,27 @@
+
+<div class="content-panel" style="color: #4F6475;">
+    <h3 class="title">{{'130134' | translate}} - {{130145 | translate}}</h3>
+    <p class="fz-14 p_title">{{130130 | translate}}</p>
+    <div class="hongbao-info">
+        <p class="info-num"><span>{{ info.redInfo.price | coinNum:'USDT'}}</span> 	USDT<span>{{130146 | translate}}</span></p>
+        <span class="go-auth" ng-if="g.info.tier_level < 2">{{130147 | translate}}，<a href="/dashboard/user/auth" class="login_tips_tip">{{130148 | translate}}</a></span>
+    </div>
+    
+    <div class="candy-data-main" ng-if="g.info.mobile_verified">
+        <p class="fz-14 p_title">{{'130135' | translate}}</p>
+        <p class="fz-12" style="margin: 8px 0;" >{{'130136' | translate}}</p>
+        <p class="tips-box" ng-bind-html="130137 | translate | htmlTag"></p>
+        <button class="common-btn ok copy-btn" ng-copyable copy-text="('130137' | translate)" ng-click="info.copySuccess()">{{'100193' | translate}}</button>
+    </div>
+    
+    <p class="fz-14 p_title">{{130121 | translate}}</p>
+    <ul class="login_ul">
+        <li ng-bind-html="130138 | translate | htmlTag"></li>
+        <li ng-bind-html="130139 | translate | htmlTag"></li>
+        <li ng-bind-html="130140 | translate | htmlTag"></li>
+        <li ng-bind-html="130141 | translate | htmlTag"></li>
+        <li ng-bind-html="130142 | translate | htmlTag"></li>
+        <li ng-bind-html="130143 | translate | htmlTag"></li>
+        <li ng-bind-html="130144 | translate | htmlTag"></li>
+    </ul>
+</div>

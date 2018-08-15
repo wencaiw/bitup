@@ -1,0 +1,46 @@
+
+<div class="content-panel">
+    <h3 class="title">{{'100180' | translate}}</h3>
+    <p class="candy_tips">{{'100216' | translate}}</p>
+    <div class="form-group" ng-if="!g.info.mobile_verified">
+        <p class="clearfix">
+            <i class="common-icon icon-telegram fl"></i>
+            <a href="https://t.me/bitupofficial" target="_blank" class="color-blue fl" style="margin-left: 15px;line-height: 20px;margin-top: 2px;">{{'100194' | translate}}</a>
+        </p>
+    </div>
+    <!--邀请朋友-->
+    <div class="candy-data-main" ng-if="g.info.mobile_verified">
+        <div class="data-con clearfix">
+            <div class="fl box">
+                <p>{{'100188' | translate}}</p>
+                <p class="num" ng-bind="info.candyInfo.valid_child_count"></p>
+            </div>
+            <div class="fr box">
+                <p>{{'100189' | translate}}</p>
+                <p class="num clearfix">
+                    <span class="fl" ng-bind="info.candyInfo.reward"></span>
+                    <a class="fr fz-14 color-blue link" ng-click="info.goEthAddress()">{{!info.candyInfo.coin_address ? ('100190' | translate) : ('100200' | translate)}}</a>
+                </p>
+            </div>
+        </div>
+        <p class="clearfix">
+            <i class="common-icon icon-telegram fl"></i>
+            <a href="https://t.me/bitupofficial" target="_blank" class="color-blue fl" style="margin-left: 15px;line-height: 20px;margin-top: 2px;">{{'100194' | translate}}</a>
+        </p>
+    </div>
+</div>
+<div class="bpopup-wrap" ng-show="info.ethAddress">
+    <div class="bpopup-main">
+        <h3 class="title">{{true ? ('100199' | translate) : ('100200' | translate)}}<i class="common-icon icon-close" ng-click="info.closeEthAddress()"></i></h3>
+        <div class="bpopup-content">
+            <p>{{'100195' | translate}}</p>
+            <p>{{'100196' | translate}}</p>
+            <div class="form-group">
+                <p><label>{{'100197' | translate}}</label></p>
+                <input type="text" class="input-text" placeholder="{{'100198' | translate}}" ng-model="info.eth_address" ng-keyup="info.clearError()">
+                <p class="color-red" style="margin-top: 8px;" ng-bind="info.errorText"></p>
+            </div>
+        </div>
+        <buttton class="common-btn ok" ng-if="!info.candyInfo.coin_address" ng-click="info.ethSub()"><span ng-hide="info.loading">{{'100187' | translate}}</span><i class="common-icon icon-loading middle" ng-show="info.loading"></i></buttton>
+    </div>
+</div>

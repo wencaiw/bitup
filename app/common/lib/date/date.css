@@ -1,0 +1,58 @@
+#dateWarp{ width: 240px; min-height: 100px; padding: 15px 10px; box-shadow: 0 0 5px rgba(0,0,0,.3); font-size: 14px; position: absolute; background-color: #fff; z-index: 99; color: #979797;}
+#dateWarp table{
+    margin-top: 0px;
+    font-size: 14px;
+    display: table;
+}
+/*#dateWarp table tr{width: 100%;}*/
+#dateWarp .dateItem{ width: 100%; border: 0; border-collapse: collapse;}
+#dateWarp .dateItem th{ border: 1px solid #E7E7E7; height: 24px; font-weight: normal; color: #337AB7; text-align: center; cursor: pointer; width: 25%;}
+#dateWarp .dateItem th.on{ background-color: #E7E7E7;}
+#dateWarp .dateItem tr.tab{ color: #4A4A4A;}
+#dateWarp .dateItem tr.tab td{ height: 24px; padding: 5px 0; text-align: center;}
+#dateWarp .dateItem tr.tab td:first-child{ text-align: left !important; cursor: pointer;}
+#dateWarp .dateItem tr.tab td:last-child{ text-align: right !important; cursor: pointer;}
+#dateWarp .dateDay{ width: 220px; color: #979797; text-align: center; font-size: 12px; border-collapse: collapse;}
+#dateWarp .dateDay tr.week:hover{background-color: #F8F8F8}
+#dateWarp .dateDay tr.week.on{ background-color: #337AB7; color: #fff;}
+#dateWarp .dateDay tr.week.on:hover{ background-color: #337AB7; color: #fff;}
+#dateWarp .dateDay tr.week td:hover{background-color: #F8F8F8;}
+#dateWarp .dateDay tr th{ height: 30px; font-weight: normal; text-align: center;}
+#dateWarp .dateDay tr td{ height: 30px; cursor: pointer; padding:1px;}
+#dateWarp .dateDay tr td.on{ background-color: #337AB7; color: #fff;}
+#dateWarp .dateDay tr td.no{ color: #ccc;}
+#dateWarp .dateDay tr td:hover{ background-color: #F8F8F8;}
+#dateWarp .dateDay tr td.on:hover{ background-color: #337AB7; color: #fff;}
+#dateWarp .dateDay tr.week.on td:hover{ background-color: #337AB7; color: #fff;}
+
+
+#dateWarp .dayOrHour{position: relative;}
+#dateWarp .dayOrHour .hourWarp{ width: 50px; height: 90%; margin: 4% 0; border: 1px solid #E7E7E7;position: absolute; right: 0; overflow: auto;}
+#dateWarp .dayOrHour .hourWarp::-webkit-scrollbar{ width: 2px; height: 10px;}
+/*#dateWarp .dayOrHour .hourWarp::-webkit-scrollbar-button{background-color:#FF7677;}*/
+/*#dateWarp .dayOrHour .hourWarp::-webkit-scrollbar-track{background-color:#FF66D5;}*/
+#dateWarp .dayOrHour .hourWarp::-webkit-scrollbar-thumb{background:#337AB7; border-radius:2px;}
+/*#dateWarp .dayOrHour .hourWarp::-webkit-scrollbar-corner{background:#82AFFF;}*/
+/*#dateWarp .dayOrHour .hourWarp::-webkit-scrollbar-resizer{background:#FF0BEE;}*/
+#dateWarp .dayOrHour .hourWarp span{ display: block; padding-left: 5px; height: 20px; line-height: 20px; font-size: 12px; color: #979797; cursor: pointer;}
+#dateWarp .dayOrHour .hourWarp span:hover{ background-color: #F8F8F8;}
+#dateWarp .dayOrHour .hourWarp span.on{ background-color: #E7E7E7;}
+
+#dateWarp .pastDayList{ width: 100%; border-bottom: 1px solid #E7E7E7; padding: 5px 0; margin: 0;}
+#dateWarp .pastDayList li{ list-style: none; padding: 0 10px; margin: 0; line-height: 26px; font-size: 14px; cursor: pointer;}
+#dateWarp .pastDayList li:hover{ background-color: #FAFAFA;}
+
+#dateWarp .dateRangeTab{ text-align: center; height: 85px;}
+#dateWarp .dateRangeTab h4{padding: 0; margin: 0; text-align: center; line-height: 40px; font-size: 14px; color: #4A4A4A;}
+#dateWarp .dateRangeTab input{ width: 40%; height: 24px; border: 1px solid #E7E7E7; border-radius: 2px; padding: 0 5px; margin-bottom: 15px; cursor: pointer; text-align: center;}
+#dateWarp .dateRangeTab input.on{ border-color: #337AB7; background-color: #FAFAFA;}
+#dateWarp .dateRangeTab input#startDateInput{ float: left;}
+#dateWarp .dateRangeTab input#endDateInput{ float: right;}
+#dateWarp .dateRangeTab i{ width: 10px; height: 1px; background-color: #E7E7E7;}
+
+#dateWarp .sureBtn{ text-align: right; padding-top: 15px;}
+#dateWarp .sureBtn button{ width: 60px; height: 24px; background-color: #337AB7; border: 0; color: #fff;
+    float: none;
+    line-height: 20px;
+    margin-top: 0px;
+}

@@ -1,0 +1,49 @@
+<div class="breadcrumb-nav">
+    <a ui-sref="dashboard.assets">{{'100217' | translate}}</a>
+    <span class="separator">/</span>
+    <span class="cur-nav">{{100090 | translate}} - {{info.currentBi.coin | uppercase}}</span>
+</div>
+<!--<h3 class="sub-page-title" ng-show="!info.showOperation">选择充值货币</h3>-->
+<h3 class="sub-page-title">{{100090 | translate}} - {{info.currentBi.coin | uppercase}}</h3>
+<div class="white-section" style="min-height: 600px;">
+    <!--<ul class="rc-choose-list" ng-show="!info.showOperation">
+        <li ng-repeat="item in info.biList" ng-click="info.chooseBi(item)">
+            <div class="box box1"><i class="icon" ng-class="item.key"></i></div>
+            <div class="box">
+                <p class="fz-16">{{item.name}}{{item.key}}</p>
+                <p>账户余额&emsp;<span class="color-base">{{item.num}} {{item.key}}</span></p>
+            </div>
+        </li>
+    </ul>-->
+    <div class="rc-main">
+        <p class="p1">{{100233 | translate}}<span>Tier {{info.user.tier_level}}</span></p>
+        <!--<p class="p1">{{100233 | translate}}<span>Tier {{info.user.tier_level==0?0.00:(info.user.tier_level==1?1000.00:"∞")}}</span>{{100234 | translate}}<span>${{info.user.tier_level==0?'0.00':(info.user.tier_level==1?'1000.00':"∞")}}</span>{{100235 | translate}}<span>${{info.user.tier_level==0?'0.00':(info.user.tier_level==1?'1000.00':"∞")}}</span>{{100236 | translate}}.</p>-->
+        <!--<p class="p2">{{100225 | translate}}<span>{{100232 | translate:info.user.tier_level}}</span></p>-->
+        <p class="p3">{{100224 | translate}}</p>
+        <div class="p4">
+            <p>{{info.recharge_address}}</p>
+            <span ng-copyable copy-text="info.recharge_address" g="g">{{100193 | translate}}</span>
+            <div>
+                <span>{{100226 | translate}}</span>
+                <div class="QRcode"><qrcode data="{{info.recharge_address}}" size="80" rel="external nofollow" ></qrcode></div>
+            </div>
+        </div>
+        <p class="p5">{{100227 | translate}}</p>
+        <p class="p5">{{100228 | translate:info}}</p>
+        <p class="p5">{{100229 | translate:info}}</p>
+
+        <p class="p5">{{100230 | translate}}</p>
+        <button class="back" ng-click="info.goBack()">{{100231 | translate}}</button>
+        <!--<div class="rc-copy-title"><span>请复制充值地址</span></div>
+        <p class="pt"><i>您当前的会员等级是：</i>1 级</p>
+        <p class="pt"><i>剩余充值额度是：</i>价值 <span class="color-base">$1,000.00</span> 的{{info.currentBi.key}}</p>
+        <div class="center" style="margin-top: 24px;">
+            <p class="center color-base">以下地址会改变，请每次充值前都检查一遍！</p>
+            <img src="/common/images/rc-code.png" class="rc-code" alt="">
+            <p class="color-gray" style="margin-bottom: 4px;">您的{{info.currentBi.key}}地址如下</p>
+            <p>0xf49A37CC8bD6b1E11468b778c5CD9f4eEc728D9c</p>
+            <button class="common-btn ok" type="button">复制地址</button>
+            <p class="fz-12 color-orange">友情提醒：{{info.currentBi.name}}交易通常需要3分钟左右到账</p>
+        </div>-->
+    </div>
+</div>

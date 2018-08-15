@@ -1,0 +1,209 @@
+<!--现有资产总计-->
+<div class="white-section page-title asset-title fz-16">
+    {{'100080' | translate}}
+    <div class="asset-num">
+        <span ng-if="g.currLang=='cn'"><i class="fz-16">≈</i> {{info.total * info.usdRatio['USDT'].cny_ratio | number:2}} CNY</span>
+        <span ng-if="g.currLang!='cn'"><i class="fz-16">≈</i> {{info.total | number:4}} USDT</span>
+    </div>
+</div>
+
+<!--我的数字货币-->
+<div class="tab-box">
+    <p class="sub" ng-click="info.goFinance()">{{120381 | translate}}</p>
+    <ul class="tit reset">
+        <li class="active">{{120380 | translate}}</li>
+    </ul>
+    <div class="tab_of">
+        <table cellspacing="0px">
+            <tr>
+                <td width="15%">{{120382 | translate}}</td>
+                <td width="15%">{{100250 | translate}}</td>
+                <td width="15%">{{100251 | translate}}</td>
+                <td width="15%">{{120087 | translate}}</td>
+                <td width="20%">{{100096 | translate}}(USDT)</td>
+                <td width="7%">{{100086 | translate}}</td>
+                <td width="7%"></td>
+                <td width="5%"></td>
+            </tr>
+            <tr ng-repeat="(k,v) in info.user.coin_list">
+                <td>{{k}}</td>
+                <td>{{v.free | coinNum:k}}</td>
+                <td>{{v.frozen | coinNum:k}}</td>
+                <td>{{v.free+v.frozen | coinNum:k}}</td>
+                <td>{{(v.free+v.frozen)*info.usdRatio[k].fiat_ratio | coinNum:'usdt'}}<div>≈{{(v.free+v.frozen)*info.usdRatio[k].fiat_ratio * info.usdRatio['USDT'].cny_ratio | number:2}} CNY</div></td>
+                <td class="lan" ng-click="info.goState('recharge', k)">{{100090 | translate}}</td>
+                <td class="lan" ng-click="info.goState('withdraw', k)">{{100091 | translate}}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="8" class="tab_td_last">{{130048 | translate}}</td>
+            </tr>
+        </table>
+        <!--<p class="center fz-14" style="color: #83929F; padding: 24px 0;">{{120383 | translate}}</p>-->
+    </div>
+</div>
+
+<!--基金资产-->
+<div class="tab-box">
+    <ul class="tit reset">
+        <li ng-class="{'active':info.activeClass=='fixed1'}" ng-click="info.switch('fixed1')">{{120133 | translate}}</li>
+        <li ng-class="{'active':info.activeClass=='fixed2'}" ng-click="info.switch('fixed2')">{{120134 | translate}}</li>
+        <li ng-class="{'active':info.activeClass=='etf'}" ng-click="info.switch('etf')">{{120385 | translate}}</li>
+        <!--<li ng-class="{'active':info.activeClass=='quan'}" ng-click="info.switch('quan')">{{120386 | translate}}</li>-->
+    </ul>
+
+    <div class="tab_of">
+        <table cellspacing="0px" ng-show="info.activeClass=='fixed1'">
+            <tr>
+                <td width="25%">{{120382 | translate}}</td>
+                <td width="15%">{{120387 | translate}}</td>
+                <td width="10%">{{120388 | translate}}</td>
+                <td width="15%">{{120389 | translate}}</td>
+                <td width="20%">{{120390 | translate}}</td>
+                <td width="10%">{{100097 | translate}}</td>
+                <td width="5%"></td>
+            </tr>
+            <tr ng-if="info.fund!=''" ng-repeat="item in info.fund" ng-click="info.goFundsDetails(item.dac_id, 'fixed')" style="height: 70px; cursor: pointer;">
+                <td>{{item.dac_tls[g.currLang=='cn' ? 'zh-cn' : 'en-us'].name | trim}}</td>
+                <td>{{item.trade_amount | coinNum:item.trade_currency}} {{item.trade_currency | uppercase}}</td>
+                <td>{{item.lock_days}}{{100348 | translate}}</td>
+                <td>{{item.profit_amount | coinNum:item.trade_currency}} {{item.profit_currency | uppercase}}</td>
+                <td class="color-gray">
+                    <p>{{item.dac_start_time | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+                    <p>{{item.dac_end_time | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+                </td>
+                <td ng-if="item.pay_profit == 0" class="lan">{{120391 | translate}}</td>
+                <td ng-if="item.pay_profit == 1">{{120392 | translate}}</td>
+                <td></td>
+            </tr>
+        </table>
+        <table cellspacing="0px" ng-show="info.activeClass=='fixed2'">
+            <tr>
+                <td width="26%">{{120382 | translate}}</td>
+                <td width="20%">{{120135 | translate}}</td>
+                <td width="20%">{{120136 | translate}}</td>
+                <td width="25%">{{120137 | translate}}</td>
+                <td width="4%">{{100086 | translate}}</td>
+                <td width="4%"></td>
+                <td width="1%"></td>
+            </tr>
+            <tr ng-if="info.fund!=''" ng-repeat="item in info.fund" ng-click="info.goFundsDetails(item.dac_id, 'flexible')" style="height: 70px; cursor: pointer;">
+                <td>{{item.dac_tls[g.currLang=='cn' ? 'zh-cn' : 'en-us'].name | trim}}</td>
+                <td>{{item.possess_amount | coinNum:item.trade_currency}} {{item.trade_currency | uppercase}}</td>
+                <td>{{item.last_24h_profit | coinNum:item.profit_currency}} {{item.profit_currency | uppercase}}</td>
+                <td>{{item.total_profit | coinNum:item.profit_currency}} {{item.profit_currency | uppercase}}</td>
+                <td class="lan">{{120049 | translate}}</td>
+                <td class="lan">{{120050 | translate}}</td>
+                <td></td>
+            </tr>
+        </table>
+        <table cellspacing="0px" ng-show="info.activeClass=='etf'">
+            <tr>
+                <td width="17%">{{120382 | translate}}</td>
+                <td width="16%">{{120064 | translate}}</td>
+                <td width="16%">{{120065 | translate}}</td>
+                <td width="16%">{{100129 | translate}}</td>
+                <td width="16%">{{120067 | translate}}</td>
+                <td width="7%">{{100086 | translate}}</td>
+                <td width="7%"></td>
+                <td width="5%"></td>
+            </tr>
+            <tr ng-if="info.fund!=''" ng-repeat="item in info.fund" ng-click="info.goPassiveFunds(item.dac_id)" style="height: 70px; cursor: pointer;">
+                <td>{{item.dac_tls[g.currLang=='cn' ? 'zh-cn' : 'en-us'].name | trim}}</td>
+                <td>{{item.dac_price_on_usdt | coinNum:'usdt'}} USDT</td>
+                <td>{{item.possess_amount}}</td>
+                <td ng-if="g.currLang=='en'">{{item.possess_amount * item.dac_price_on_usdt | coinNum:'usdt'}} USDT</td>
+                <td ng-if="g.currLang=='cn'">{{item.possess_amount * item.dac_price_on_usdt * info.usdRatio['USDT'].cny_ratio | number:2}} CNY</td>
+                <td>{{item.sellable_amount}}</td>
+                <!--<td class="lan" ng-click="info.exchangePassiveFunds(0);$event.stopPropagation();">{{120049 | translate}}</td>-->
+                <!--<td class="lan" ng-click="info.exchangePassiveFunds(1);$event.stopPropagation();">{{120050 | translate}}</td>-->
+                <td class="lan" ng-click="info.goPassiveFunds(item.dac_id, 0); $event.stopPropagation();">{{120049 | translate}}</td>
+                <td class="lan" ng-click="info.goPassiveFunds(item.dac_id, 1); $event.stopPropagation();">{{120050 | translate}}</td>
+                <td></td>
+            </tr>
+        </table>
+        <div ng-if="info.fund==''">
+            <img style="width: 61px; margin: 60px auto; display: block;" src="/common/images/finance-record.png" width="100%">
+        </div>
+    </div>
+</div>
+
+<!--持有的数字资产组合-->
+<!--<div class="white-section fz-14">
+    <h3 class="asset-tips-title"><span>{{'100081' | translate}}</span></h3>
+    <div class="asset-table-section">
+        <table class="common-table asset">
+            <thead>
+                <tr>
+                    <th style="width: 24%;">{{'100082' | translate}}</th>
+                    <th style="width: 18%;">{{'100083' | translate}}</th>
+                    <th style="width: 18%;">{{'100084' | translate}}</th>
+                    <th style="width: 18%;">{{'100085' | translate}}</th>
+                    <th style="width: 22%;">{{'100086' | translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>BitUP Prime（BPP）</td>
+                    <td>BitUP LTD</td>
+                    <td>550.000000 BPP</td>
+                    <td>$ 1579.16</td>
+                    <td>
+                        <button class="common-btn ok" type="button" ng-click="info.goState('buy')">{{'100045' | translate}}</button>
+                        <button class="common-btn" type="button" ng-click="info.goState('sold')">{{'100046' | translate}}</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>{{'100087' | translate}}</td>
+                    <td><span class="color-base">$ 1579.16</span></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>-->
+
+<!--我的数字资产余额-->
+<!--<div class="white-section fz-14">
+    <h3 class="asset-tips-title"><span>{{'100088' | translate}}</span></h3>
+    <div class="asset-table-section">
+        <table class="common-table asset">
+            <thead>
+                <tr>
+                    <th style="width: 42%;">{{'100089' | translate}}</th>
+                    <th style="width: 18%;">{{'100084' | translate}}</th>
+                    <th style="width: 18%;">{{'100085' | translate}}</th>
+                    <th style="width: 22%;">{{'100086' | translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="(k,v) in info.user.coin_list">
+                    <td>{{(k == 'BTC' ? ('100092' | translate) : 'BitUP')}}（{{k}}）</td>
+                    <td>{{(v.free + v.frozen) | number:(k=='BTC'?8:2)}}</td>
+                    <td>{{((v.free + v.frozen) * info.usdRatio[k].fiat_ratio) | currency}}</td>
+                    <td>
+                        <button class="common-btn ok" type="button" ng-click="info.goState('recharge', k)">{{'100090' | translate}}</button>
+                        <button class="common-btn" type="button" ng-click="info.goState('withdraw', k)">{{'100091' | translate}}</button>
+                    </td>
+                </tr>
+                &lt;!&ndash;<tr>&ndash;&gt;
+                    &lt;!&ndash;<td>{{'100053' | translate}}（ETH）</td>&ndash;&gt;
+                    &lt;!&ndash;<td>0.349624 ETH</td>&ndash;&gt;
+                    &lt;!&ndash;<td>$ 420.35</td>&ndash;&gt;
+                    &lt;!&ndash;<td>&ndash;&gt;
+                        &lt;!&ndash;<button class="common-btn ok" type="button" ng-click="info.goState('recharge')">{{'100090' | translate}}</button>&ndash;&gt;
+                        &lt;!&ndash;<button class="common-btn" type="button" ng-click="info.goState('withdraw')">{{'100091' | translate}}</button>&ndash;&gt;
+                    &lt;!&ndash;</td>&ndash;&gt;
+                &lt;!&ndash;</tr>&ndash;&gt;
+                <tr>
+                    <td></td>
+                    <td>{{'100087' | translate}}</td>
+                    <td><span class="color-base">{{info.total | currency}}</span></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>-->

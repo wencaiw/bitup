@@ -1,0 +1,390 @@
+
+<div class="breadcrumb-nav">
+    <a ui-sref="dashboard.trade.detail">{{'100010' | translate}}</a>
+    <span class="separator">/</span>
+    <a ui-sref="dashboard.trade.detail">{{'100032' | translate}}</a>
+    <span class="separator">/</span>
+    <span class="cur-nav">{{'100103'|translate:g.orderType}}</span>
+</div>
+<h3 class="sub-page-title">
+    {{'100099'|translate:g.orderingType}} - {{'100032' | translate}}
+    <span ng-if="info.showDetail">{{'100151' | translate}}</span>
+    <span class="trade_rate up">0.00201100 BTC <i>≈ ¥10.8100</i><i class="common-icon icon-up"></i></span>
+</h3>
+<!--旧版本-->
+<!--<div class="sub-page-main">-->
+    <!--<div class="trade-order-section" ng-if="info.orderType != 'detail'">-->
+        <!--<dl>-->
+            <!--<dt>{{'100065' | translate}}</dt>-->
+            <!--<dd>-->
+                <!--<p>{{'100066' | translate}}：{{g.bppList['BPP'].name}}</p>-->
+                <!--<p>{{'100067' | translate}}：{{g.bppList['BPP'].designer}}</p>-->
+                <!--<p>{{info.showDetail?('100122' | translate):('100068' | translate)}}：${{g.bppList['BPP'].usd | number:6}} &emsp;<span class="color-yellow fz-12">{{'100106' | translate}}</span></p>-->
+            <!--</dd>-->
+        <!--</dl>-->
+        <!--<dl ng-if="info.showDetail">-->
+            <!--<dt>{{'100146' | translate}}</dt>-->
+            <!--<dd>-->
+                <!--<p>{{ info.orderType == 'buy'? ('100045' | translate) : ('100046' | translate)}} BPP：{{info.bppNum | number:6}} BPP</p>-->
+                <!--<p>{{'100059' | translate}}：{{(info.orderType == 'sold' ? (info.currencyNum*g.userInfo.ratio | number:6) : 0) + ' ' + info.currentCurrency.key}}</p>-->
+                <!--<p>{{ info.orderType=='buy' ? ('100144'|translate:info.currencyLg) : ('100145'|translate:info.currencyLg)}} ：{{(info.currencyNum | number:6 )+ ' ' + info.currentCurrency.key}}</p>-->
+                <!--<p>{{'100074' | translate}}：{{info.currentCurrency.ratio | number:6}} {{info.currentCurrency.key}}/BPP</p>-->
+                <!--<p>{{'100096' | translate}}：${{g.bppList.BPP.usd * info.bppNum | number:2}}</p>-->
+                <!--<p>{{'100124' | translate}}：kjiddoe8-lpa3-jkh2-44dk-09385jslvhda</p>-->
+                <!--<p>{{'100098' | translate}}：2017.03.08 12:30</p>-->
+                <!--<p>{{'100097' | translate}}：<span class="color-green">{{'100118' | translate}}</span></p>-->
+            <!--</dd>-->
+        <!--</dl>-->
+        <!--<dl ng-if="info.showDetail">-->
+            <!--<dt>{{'100147' | translate}}</dt>-->
+            <!--<dd>-->
+                <!--<p>{{'100149' | translate}}：550.000000 BPP &emsp;<span class="color-base">{{'100047' | translate}} $ 1579.16</span></p>-->
+                <!--<p>{{'100150' | translate:info.currencyLg}}：{{info.equityValue[info.currentCurrency.key].num}} {{info.currentCurrency.key}} &emsp;<span class="color-base">{{'100047' | translate}} $ {{info.equityValue[info.currentCurrency.key].price}}</span></p>-->
+                <!--<p style="margin: 40px 0;"><a ng-href="#assets" class="link-btn">{{'100148' | translate}}</a></p>-->
+            <!--</dd>-->
+        <!--</dl>-->
+        <!--<dl ng-if="info.showTradeOperate">-->
+            <!--<dt>{{'100103'|translate:g.orderInfo}}</dt>-->
+            <!--<dd>-->
+                <!--<div class="form-box">-->
+                    <!--<label><span class="required">*</span><span>{{'100103'|translate:g.orderMethod}}：</span></label>-->
+                    <!--<div class="form-content">-->
+                        <!--&lt;!&ndash;<input type="text" class="input-text">&ndash;&gt;-->
+                        <!--<div class="dropdown-box input-text" ng-class="{'on':g.panelStatus.currencyList=='show'}" ng-click="info.toggleCurrency()">-->
+                            <!--<div class="choosed" style="color:#a1a1a1;" ng-if="!info.currentCurrency.name">{{'100103'|translate:g.orderMethodTips}}</div>-->
+                            <!--<div class="choosed" ng-if="info.currentCurrency.name">-->
+                                <!--<i class="bank-icon" ng-class="info.currentCurrency.key"></i>-->
+                                <!--<span class="bname">{{info.currentCurrency.name}}</span>-->
+                                <!--<span>1 BPP</span>-->
+                                <!--<span class="arrow">⇋</span>-->
+                                <!--<span>{{info.currentCurrency.ratio | number:6}} {{info.currentCurrency.key}}</span>-->
+                            <!--</div>-->
+                            <!--<div class="item-list" ng-show="g.panelStatus.currencyList=='show'">-->
+                                <!--<div class="box" ng-repeat = "(key, item) in info.currencyList" ng-click="info.chooseCurrency(item)">-->
+                                    <!--<i class="bank-icon" ng-class="item.key"></i>-->
+                                    <!--<span class="bname">{{item.name}}</span>-->
+                                    <!--<span>1 BPP</span>-->
+                                    <!--<span class="arrow">⇋</span>-->
+                                    <!--<span>{{item.ratio | number:6}} {{item.key}}</span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-box" ng-if="info.showCurrencyNum">-->
+                    <!--<label><span class="required">*</span><span>{{'100103'|translate:g.orderAmount}}：</span></label>-->
+                    <!--<div class="form-content" style="width: auto">-->
+                        <!--<div class="clearfix">-->
+                            <!--<div class="order-num-control">-->
+                                <!--<p ng-if="info.orderType=='buy'">{{'100142'|translate}}</p>-->
+                                <!--<p ng-if="info.orderType=='sold'">{{'100143'|translate}}</p>-->
+                                <!--<input type="text" class="input-text" ng-model="info.bppNum" ng-class="{'error' : (info.orderType=='sold' && info.error)}">-->
+                                <!--<p ng-if="info.orderType=='buy'">{{'100139'|translate}} <span class="color-base middle">{{g.bppList.BPP.usd * info.bppNum | currency: '$'}}</span></p>-->
+                                <!--<p ng-if="info.orderType=='sold'">{{'100141'|translate}} <span class="color-base middle">{{g.userInfo.bppList.BPP.num | number:6}} BPP</span></p>-->
+                            <!--</div>-->
+                            <!--<div class="order-num-arrow">⇋</div>-->
+                            <!--<div class="order-num-control" style="width:auto;">-->
+                                <!--<p>{{ info.orderType=='buy' ? ('100144'|translate:info.currencyLg) : ('100145'|translate:info.currencyLg)}}</p>-->
+                                <!--<div class="por" style="width: 580px;">-->
+                                    <!--<p class="dib" style="width: 240px;"><input type="text" class="input-text" ng-model="info.currencyNum2"  ng-class="{'error' : (info.orderType=='buy' && info.error)}"></p>&emsp;&emsp;&emsp;&emsp;-->
+                                    <!--<p class="dib color-red clearfix" ng-if="info.error" style="width: 350px;position: absolute;top: 7px;"><i class="warning-icon middle fl"></i>&emsp;<span class="middle fl" style="width: 320px;margin-left: 8px;">数量不足，请重新输入{{info.type}}数量<span ng-if="info.orderType=='buy'">或者进行充值</span></span></p>-->
+                                <!--</div>-->
+                                <!--<p ng-if="info.orderType=='buy'">{{'100115'|translate}} <span class="color-base middle">{{g.userInfo[info.currentCurrency.key] + ' ' + info.currentCurrency.key}}</span> <a ng-href="#recharge" class="link">{{'100140' | translate}}</a></p>-->
+                                <!--<p ng-if="info.orderType=='sold'">{{'100096'|translate}} <span class="color-base middle">{{g.bppList.BPP.usd * info.bppNum | currency}}</span>，{{'100059'|translate}}<span class="color-base middle">0.5%</span></p>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-box" ng-if="info.showCurrencyNum">-->
+                    <!--<label></label>-->
+                    <!--<div class="form-content">-->
+                        <!--<button class="common-btn ok" type="button" ng-disabled="(!info.bppNum && !info.currencyNum) || info.error" ng-click="info.goPreview()">{{'100069' | translate}}</button>-->
+                        <!--<p class="color-yellow" ng-if="info.orderType=='buy'">{{'100070' | translate}}</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</dd>-->
+        <!--</dl>-->
+    <!--</div>-->
+    <!--<div class="trade-order-section" ng-if="info.orderType == 'detail'">-->
+        <!--<dl>-->
+            <!--<dt>{{'100065' | translate}}</dt>-->
+            <!--<dd>-->
+                <!--<p>{{'100066' | translate}}：BitUP Prime</p>-->
+                <!--<p>{{'100067' | translate}}：{{info.orderDetail.designer || ""}}</p>-->
+                <!--<p>{{'100122' | translate}}：${{info.orderDetail.price}}</p>-->
+            <!--</dd>-->
+        <!--</dl>-->
+        <!--<dl>-->
+            <!--<dt>{{'100146' | translate}}</dt>-->
+            <!--<dd>-->
+                <!--<p>{{ info.orderDetail.type == 'buy'? ('100045' | translate) : ('100046' | translate)}} BPP：{{info.orderDetail.number | number:6}} BPP</p>-->
+                <!--<p>{{'100059' | translate}}：{{(0 | number:6) + ' ETH'}}</p>-->
+                <!--<p>{{info.orderDetail.type=='buy' ? ('100144'|translate:info.currencyLgDetail) : ('100145'|translate:info.currencyLgDetail)}}：{{info.orderDetail.number | number:6}} ETH</p>-->
+                <!--<p>{{'100074' | translate}}：0.001441 ETH/BPP</p>-->
+                <!--<p>{{'100096' | translate}}：${{info.orderDetail.fee | number:2}}</p>-->
+                <!--<p>{{'100124' | translate}}：kjiddoe8-lpa3-jkh2-44dk-09385jslvhda</p>-->
+                <!--<p>{{'100098' | translate}}：{{info.orderDetail.tradeDate}}</p>-->
+                <!--<p>{{'100097' | translate}}：<span class="color-green">{{'100118' | translate}}</span></p>-->
+            <!--</dd>-->
+        <!--</dl>-->
+    <!--</div>-->
+<!--</div>-->
+
+<div class="sub-page-main">
+    <div class="trade-order-section" ng-if="info.orderType != 'detail'">
+        <dl ng-if="info.showDetail">
+            <dt>{{'100065' | translate}}</dt>
+            <dd>
+                <p><label>DAC：</label>{{g.bppList['BPP'].name}}</p>
+                <!--<p>{{'100067' | translate}}：{{g.bppList['BPP'].designer}}</p>-->
+                <!--<p>{{info.showDetail?('100122' | translate):('100068' | translate)}}：${{g.bppList['BPP'].usd | number:6}} &emsp;<span class="color-yellow fz-12">{{'100106' | translate}}</span></p>-->
+                <p><label>交易价格：</label>0.00001000BTC</p>
+            </dd>
+        </dl>
+        <dl ng-if="info.showDetail">
+            <dt>{{'100146' | translate}}</dt>
+            <dd>
+                <p><label>{{ info.orderType == 'buy'? ('100045' | translate) : ('100046' | translate)}} BPP数量：</label>{{info.bppNum | number:6}} BPP</p>
+                <p><label>{{ info.orderType == 'buy'? '花费' : '获得'}} BTC数量：</label>{{info.bppNum | number:6}} BTC</p>
+                <p><label>{{'100059' | translate}}：</label>{{(info.orderType == 'sold' ? (info.currencyNum*g.userInfo.ratio | number:6) : 0) + ' ' + info.currentCurrency.key}}</p>
+                <!--<p><label>{{ info.orderType=='buy' ? ('100144'|translate:info.currencyLg) : ('100145'|translate:info.currencyLg)}} ：</label>{{(info.currencyNum | number:6 )+ ' ' + info.currentCurrency.key}}</p>-->
+                <!--<p><label>{{'100074' | translate}}：</label>{{info.currentCurrency.ratio | number:6}} {{info.currentCurrency.key}}/BPP</p>-->
+                <!--<p><label>{{'100096' | translate}}：</label>${{g.bppList.BPP.usd * info.bppNum | number:2}}</p>-->
+                <p><label>{{'100124' | translate}}：</label>kjiddoe8-lpa3-jkh2-44dk-09385jslvhda</p>
+                <p><label>{{'100098' | translate}}：</label>2017.03.08 12:30</p>
+                <p><label>{{'100097' | translate}}：</label><span class="color-green">{{'100118' | translate}}</span></p>
+            </dd>
+        </dl>
+        <dl ng-if="info.showDetail">
+            <dt>{{'100147' | translate}}</dt>
+            <dd>
+                <p><label>{{'100149' | translate}}：</label>550.000000 BPP &emsp;<span class="color-base">{{'100047' | translate}} $ 1579.16</span></p>
+                <p><label>{{'100150' | translate:info.currencyLg}}：</label>{{info.equityValue[info.currentCurrency.key].num}} {{info.currentCurrency.key}} &emsp;<span class="color-base">{{'100047' | translate}} $ {{info.equityValue[info.currentCurrency.key].price}}</span></p>
+                <!--<p style="margin: 40px 0;"><a ng-href="#assets" class="link-btn">{{'100148' | translate}}</a></p>-->
+                <p style="margin: 40px 0;"><a ui-sref="dashboard.assets" class="common-btn link-btn">返回</a></p>
+            </dd>
+        </dl>
+        <dl ng-if="info.showTradeOperate" ng-show="false">
+            <dt>{{'100103'|translate:g.orderInfo}}</dt>
+            <dd>
+                <div class="form-box">
+                    <label><span class="required">*</span><span>{{'100103'|translate:g.orderMethod}}：</span></label>
+                    <div class="form-content">
+                        <!--<input type="text" class="input-text">-->
+                        <div class="dropdown-box input-text" ng-class="{'on':g.panelStatus.currencyList=='show'}" ng-click="info.toggleCurrency()">
+                            <div class="choosed" style="color:#a1a1a1;" ng-if="!info.currentCurrency.name">{{'100103'|translate:g.orderMethodTips}}</div>
+                            <div class="choosed" ng-if="info.currentCurrency.name">
+                                <i class="bank-icon" ng-class="info.currentCurrency.key"></i>
+                                <span class="bname">{{info.currentCurrency.name}}</span>
+                                <span>1 BPP</span>
+                                <span class="arrow">⇋</span>
+                                <span>{{info.currentCurrency.ratio | number:6}} {{info.currentCurrency.key}}</span>
+                            </div>
+                            <div class="item-list" ng-show="g.panelStatus.currencyList=='show'">
+                                <div class="box" ng-repeat = "(key, item) in info.currencyList" ng-click="info.chooseCurrency(item)">
+                                    <i class="bank-icon" ng-class="item.key"></i>
+                                    <span class="bname">{{item.name}}</span>
+                                    <span>1 BPP</span>
+                                    <span class="arrow">⇋</span>
+                                    <span>{{item.ratio | number:6}} {{item.key}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-box" ng-if="info.showCurrencyNum">
+                    <label><span class="required">*</span><span>{{'100103'|translate:g.orderAmount}}：</span></label>
+                    <div class="form-content" style="width: auto">
+                        <div class="clearfix">
+                            <div class="order-num-control">
+                                <p ng-if="info.orderType=='buy'">{{'100142'|translate}}</p>
+                                <p ng-if="info.orderType=='sold'">{{'100143'|translate}}</p>
+                                <input type="text" class="input-text" ng-model="info.bppNum" ng-class="{'error' : (info.orderType=='sold' && info.error)}">
+                                <p ng-if="info.orderType=='buy'">{{'100139'|translate}} <span class="color-base middle">{{g.bppList.BPP.usd * info.bppNum | currency: '$'}}</span></p>
+                                <p ng-if="info.orderType=='sold'">{{'100141'|translate}} <span class="color-base middle">{{g.userInfo.bppList.BPP.num | number:6}} BPP</span></p>
+                            </div>
+                            <div class="order-num-arrow">⇋</div>
+                            <div class="order-num-control" style="width:auto;">
+                                <p>{{ info.orderType=='buy' ? ('100144'|translate:info.currencyLg) : ('100145'|translate:info.currencyLg)}}</p>
+                                <div class="por" style="width: 580px;">
+                                    <p class="dib" style="width: 240px;"><input type="text" class="input-text" ng-model="info.currencyNum2"  ng-class="{'error' : (info.orderType=='buy' && info.error)}"></p>&emsp;&emsp;&emsp;&emsp;
+                                    <p class="dib color-red clearfix" ng-if="info.error" style="width: 350px;position: absolute;top: 7px;"><i class="warning-icon middle fl"></i>&emsp;<span class="middle fl" style="width: 320px;margin-left: 8px;">数量不足，请重新输入{{info.type}}数量<span ng-if="info.orderType=='buy'">或者进行充值</span></span></p>
+                                </div>
+                                <p ng-if="info.orderType=='buy'">{{'100115'|translate}} <span class="color-base middle">{{g.userInfo[info.currentCurrency.key] + ' ' + info.currentCurrency.key}}</span> <a ui-sref="dashboard.recharge" class="link">{{'100140' | translate}}</a></p>
+                                <p ng-if="info.orderType=='sold'">{{'100096'|translate}} <span class="color-base middle">{{g.bppList.BPP.usd * info.bppNum | currency}}</span>，{{'100059'|translate}}<span class="color-base middle">0.5%</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-box" ng-if="info.showCurrencyNum">
+                    <label></label>
+                    <div class="form-content">
+                        <button class="common-btn ok" type="button" ng-disabled="(!info.bppNum && !info.currencyNum) || info.error" ng-click="info.goPreview()">{{'100069' | translate}}</button>
+                        <p class="color-yellow" ng-if="info.orderType=='buy'">{{'100070' | translate}}</p>
+                    </div>
+                </div>
+            </dd>
+        </dl>
+        <div class="order-main" ng-if="info.showTradeOperate">
+            <div class="form-box">
+                <label><span class="required">*</span><span>{{ info.orderType == 'buy'? ('100222' | translate) : ('100223' | translate)}}</span></label>
+                <ul class="bee_list clearfix">
+                    <li class="selected">
+                        <p class="name">BitCoin(BTC)</p>
+                        <p class="num" ng-if="info.orderType == 'buy'">可用余额：<span class="color-yellow">0.00000000BTC</span></p>
+                        <p class="num" ng-if="info.orderType == 'sold'">兑换率: <span class="color-yellow">0.00002700 BTC/BPP</span></p>
+                    </li>
+                    <li class="disabled">
+                        <p class="name">Ether(ETH)</p>
+                        <p class="num" ng-if="info.orderType == 'buy'">可用余额：0.00000000BTC</p>
+                        <p class="num" ng-if="info.orderType == 'sold'">兑换率: 0.00002700 BTC/BPP</p>
+                    </li>
+                </ul>
+            </div>
+            <div ng-if="info.orderType == 'buy'">
+                <div class="form-box">
+                    <label>
+                        <span class="required">*</span><span>花费BTC数量</span>
+                        <span class="tips">兑换率: <i class="color-yellow">0.000027 BTC/BPP</i></span>
+                    </label>
+                    <div class="form-content">
+                        <p class="input-box">
+                            <input type="text" class="input-text" ng-model="info.currencyNum2"  ng-class="{'error' : (info.orderType=='buy' && info.error)}">
+                            <span class="unit">BTC</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="form-box">
+                    <label><span>预估获得BPP份额</span></label>
+                    <div class="form-content">
+                        <p class="input-box">
+                            <input type="text" class="input-text" ng-disabled="true" ng-model="info.bppNum" ng-class="{'error' : (info.orderType=='sold' && info.error)}">
+                            <span class="unit">BPP</span>
+                        </p>
+                        <p class="tips">折合：<span class="color-yellow">¥0.0000</span></p>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="info.orderType == 'sold'">
+                <div class="form-box">
+                    <label>
+                        <span class="required">*</span><span>卖出BPP数量</span>
+                        <span class="tips">可用数量: <i class="color-yellow">100.0000BPP</i></span>
+                    </label>
+                    <div class="form-content">
+                        <p class="input-box">
+                            <input type="text" class="input-text" ng-model="info.currencyNum2"  ng-class="{'error' : (info.orderType=='buy' && info.error)}">
+                            <span class="unit">BPP</span>
+                        </p>
+                        <p class="tips">折合：<span class="color-yellow">¥0.0000</span></p>
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <div class="form-box short fl">
+                        <label><span>手续费</span></label>
+                        <div class="form-content">
+                            <p class="input-box">
+                                <input type="text" class="input-text" ng-disabled="true" ng-model="info.bppNum" ng-class="{'error' : (info.orderType=='sold' && info.error)}">
+                                <span class="unit">BTC</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-box short fr">
+                        <label><span>预估获得BTC数量</span></label>
+                        <div class="form-content">
+                            <p class="input-box">
+                                <input type="text" class="input-text" ng-disabled="true" ng-model="info.bppNum" ng-class="{'error' : (info.orderType=='sold' && info.error)}">
+                                <span class="unit">BTC</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-box">
+                <button class="common-btn ok" type="button" ng-disabled="(!info.bppNum && !info.currencyNum) || info.error" ng-click="info.goPreview()">{{'100187' | translate}}</button>
+                <button class="common-btn" type="button">返回</button>
+            </div>
+            <div class="tips-box">
+                <p>注：</p>
+                <p>1.受价值波动影响，成交价格以订单成功价格为准。</p>
+                <p>2.最少成交为0.5BTC，少于0.5BTC将不会成功。</p>
+                <p>3.BPP管理费为年化3%。</p>
+            </div>
+        </div>
+    </div>
+    <div class="trade-order-section" ng-if="info.orderType == 'detail'">
+        <dl>
+            <dt>{{'100065' | translate}}</dt>
+            <dd>
+                <p>{{'100066' | translate}}：BitUP Prime</p>
+                <p>{{'100067' | translate}}：{{info.orderDetail.designer || ""}}</p>
+                <p>{{'100122' | translate}}：${{info.orderDetail.price}}</p>
+            </dd>
+        </dl>
+        <dl>
+            <dt>{{'100146' | translate}}</dt>
+            <dd>
+                <p>{{ info.orderDetail.type == 'buy'? ('100045' | translate) : ('100046' | translate)}} BPP：{{info.orderDetail.number | number:6}} BPP</p>
+                <p>{{'100059' | translate}}：{{(0 | number:6) + ' ETH'}}</p>
+                <p>{{info.orderDetail.type=='buy' ? ('100144'|translate:info.currencyLgDetail) : ('100145'|translate:info.currencyLgDetail)}}：{{info.orderDetail.number | number:6}} ETH</p>
+                <p>{{'100074' | translate}}：0.001441 ETH/BPP</p>
+                <p>{{'100096' | translate}}：${{info.orderDetail.fee | number:2}}</p>
+                <p>{{'100124' | translate}}：kjiddoe8-lpa3-jkh2-44dk-09385jslvhda</p>
+                <p>{{'100098' | translate}}：{{info.orderDetail.tradeDate}}</p>
+                <p>{{'100097' | translate}}：<span class="color-green">{{'100118' | translate}}</span></p>
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div class="order-bpopup-wrap fixed ng-scope" ng-if="info.showPopup">
+    <div class="order-bpopup-body">
+        <i class="icon icon-16 icon-close" ng-click="info.closePopup()"></i>
+        <h3 class="title">{{'100075' | translate}}</h3>
+        <ul class="form-list">
+            <li class="clearfix">
+                <label>{{ info.orderType == 'buy'? ('100045' | translate) : ('100046' | translate)}} BPP</label>
+                <div class="box">{{info.bppNum}} BPP</div>
+            </li>
+            <li class="clearfix">
+                <label>{{'100059' | translate}}</label>
+                <div class="box">{{(info.orderType == 'sold' ? (info.currencyNum*g.userInfo.ratio | number:6) : 0) + ' ' + info.currentCurrency.key}}</div>
+            </li>
+            <li class="clearfix">
+                <label>{{ info.orderType=='buy' ? ('100144'|translate:info.currencyLg) : ('100145'|translate:info.currencyLg)}}</label>
+                <div class="box">{{(info.currencyNum | number:6) + ' ' + info.currentCurrency.key}}</div>
+            </li>
+            <li class="clearfix">
+                <label>{{'100074' | translate}}</label>
+                <div class="box">{{info.currentCurrency.ratio | number:6}} {{info.currentCurrency.key}}/BPP</div>
+            </li>
+            <li class="clearfix">
+                <label>{{'100073' | translate}}</label>
+                <div class="box">$ {{g.bppList.BPP.usd * info.bppNum | number:2}}</div>
+            </li>
+        </ul>
+        <button class="common-btn ok submit-btn" ng-click="info.subOrder()" ng-disabled="info.subCountDown==0">{{'100072' | translate}} ({{info.subCountDown}}s)</button>
+    </div>
+</div>
+
+<div class="confirm-wrap" ng-show="false">
+    <div class="confirm-main">
+        <h3 class="title"><span>手机验证</span><i class="common-icon icon-close"></i></h3>
+        <div class="confirm-content form-content">
+            <div class="form-box">
+                <label>手机号码:</label>
+                <input type="text" value="185****3456" disabled class="input-text">
+            </div>
+            <div class="form-box">
+                <label><span class="required">*</span><span>手机验证码:</span></label>
+                <div class="mobile-box">
+                    <input type="text" placeholder="输入您的手机验证码" class="input-text">
+                    <button type="button" class="common-btn code-btn">获取验证码</button>
+                </div>
+            </div>
+            <div class="form-box btn-box">
+                <buttton class="common-btn ok submit-btn">确认</buttton>
+            </div>
+        </div>
+    </div>
+</div>

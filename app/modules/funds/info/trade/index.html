@@ -1,0 +1,108 @@
+<!--弹窗-->
+<div class="model" ng-show="info.sucTip">
+    <div class="box">
+        <div class="head">
+            <div class="close" ng-click="info.sucTip=false"></div>
+            <p>{{info.type==0 ? '120049':'120050' | translate}}{{300008 | translate}}</p>
+        </div>
+        <div class="cont reset">
+            <p>{{300009 | translate}}</p>
+            <p>{{120086 | translate}}</p>
+            <button class="common-btn ok" ng-click="info.sucTip=false">{{100160 | translate}}</button>
+        </div>
+    </div>
+</div>
+
+<div id="fund-detail" style="overflow: hidden;">
+    <!-- 面包屑 -->
+    <div class="detail-nav">
+        <a ui-sref="funds.index" title="{{'100399'| translate}}" rel="nofollow">{{'100399'| translate}}</a>
+        <span class="tip">/</span>
+        <a ui-sref="funds.list.{{publicData.currFundType}}" ng-init="fundListName = (publicData.currFundType == 'passive' ? '120385' : '120386')" title="{{fundListName | translate}}" rel="nofollow">{{fundListName | translate}}</a>
+        <span class="tip">/</span>
+        <a href="javascript:window.history.back();" rel="nofollow">{{publicData.fundInfo.dac_info_tl[g.currLang=='cn' ? 'zh-cn' : 'en-us'].name}}</a>
+        <span class="tip">/</span>
+        <span>{{info.type==0 ? '120049':'120050' | translate}}</span>
+    </div>
+
+    <!--基金数据-->
+    <div class="purchase-data">
+        <p class="tit">{{info.type==0 ? '120049':'120049' | translate}} - {{120385 | translate}}（{{publicData.fundInfo.dac_info_tl[g.currLang=='cn' ? 'zh-cn' : 'en-us'].name | trim}}）</p>
+        <ul class="list reset">
+            <li>{{120064 | translate}}<span class="color-green">{{info.data.dac_price_on_usdt | coinNum:'usdt'}} USDT</span></li>
+            <li>{{120065 | translate}}<span>{{info.data.user_possess_amount}} {{120068 | translate}}</span></li>
+            <li ng-if="info.type==0">{{120066 | translate}}<span>{{info.data.dac_left_on_usdt | coinNum:'usdt'}} USDT</span></li>
+            <li ng-if="info.type==1">{{120067 | translate}}<span>{{info.data.user_sellable_amount}} {{120068 | translate}}</span></li>
+        </ul>
+    </div>
+
+    <!--cont-->
+    <div class="cont">
+        <!--支付方式/选择资产-->
+        <p class="color-black fz-14"><span class="color-red">* </span>{{info.type==0 ? '120069':'120070' | translate}}</p>
+        <ul class="choice reset">
+            <li ng-class="{'active':info.choice=='BTC'}" ng-click="info.switch('BTC')">
+                <p class="tit">BTC</p>
+                <p class="desc">{{120071 | translate}}<span class="color-light-blue">{{publicData.userFunds.balances['btc'].free | coinNum:'btc'}}</span></p>
+            </li>
+            <li ng-class="{'active':info.choice=='ETH'}" ng-click="info.switch('ETH')">
+                <p class="tit">ETH</p>
+                <p class="desc">{{120071 | translate}}<span class="color-light-blue">{{publicData.userFunds.balances['eth'].free | coinNum:'eth'}}</span></p>
+            </li>
+            <!--<li ng-class="{'active':info.choice=='BUT'}" ng-click="info.switch('BUT')">
+                <p class="tit">BUT</p>
+                <p class="desc">{{120071 | translate}}<span class="color-light-blue">{{publicData.userFunds.balances['but'].free | coinNum:'but'}}</span></p>
+            </li>-->
+            <li class="recharge" ng-if="info.type==0">{{120072 | translate}}<a ui-sref="dashboard.assets"><span class="color-light-blue" style="cursor: pointer;">{{120073 | translate}}</span></a></li>
+
+        </ul>
+
+        <!--填写金额-->
+        <p class="color-black fz-14"><span class="color-red">* </span>{{info.type==0 ? '120074':'120075' | translate}}</p>
+        <div class="amount-box">
+            <input placeholder="0" ng-if="info.type==0" ng-model="info.buyNum">
+            <input placeholder="0" ng-if="info.type==1" ng-model="info.sellNum">
+            <span class="type">{{info.type==0 ? info.choice:(120068 | translate)}}</span>
+        </div>
+        <p class="desc" ng-if="info.type==0">{{120076 | translate}}{{info.minBuy | coinNum:info.choice}} {{info.choice}} <span class="all color-light-blue" ng-click="info.allBuy()" ng-show="info.buyDataDone">{{120096 | translate}}</span></p>
+        <!--<p class="desc" ng-if="info.type==0">{{120076 | translate}}100 USDT</p>-->
+        <p class="desc" ng-if="info.type==1">{{120077 | translate}}<span>{{info.data.user_sellable_amount}}</span> {{120068 | translate}} <span class="all color-light-blue" ng-click="info.allSell()" ng-show="info.sellDataDone">{{120078 | translate}}</span></p>
+
+        <!--手续费-->
+        <div class="service-charge" ng-if="info.type==1">
+            <!--<p class="color-black fz-14 fl"><span class="color-red">* </span>{{120079 | translate}}</p>-->
+            <!--<div class="switch-control fl" ng-class="{'hui':!info.switchControl}" ng-click="info.switchControl=!info.switchControl">
+                <span class="on" ng-show="info.switchControl">ON</span>
+                <span class="off" ng-show="!info.switchControl">OFF</span>
+                <div class="scroll-bar" ng-class="{'fr':info.switchControl}"></div>
+            </div>-->
+
+            <div class="reset"></div>
+            <div class="info reset">
+                <div class="left">
+                    <p class="p1">{{120061 | translate}}</p>
+                    <p ng-show="!info.switchControl">0.5%</p>
+                    <p ng-show="info.switchControl"><span class="color-orange2">0.3%</span> <del>0.5%</del></p>
+                </div>
+                <div class="right">
+                    <p class="p1">{{120062 | translate}}</p>
+                    <p ng-show="!info.switchControl">3%</p>
+                    <p ng-show="info.switchControl"><span class="color-orange2">1.8%</span> <del>3%</del></p>
+                </div>
+            </div>
+            <div class="info" ng-show="info.switchControl" style="margin-top: 0;">{{120081 | translate}}　<span class="color-orange2">{{120080 | translate}} {{info.save<0 ? 0:info.save | coinNum:'usdt'}} USDT</span></div>
+        </div>
+
+
+        <!--按钮-->
+        <button class="common-btn ok" ng-click="info.send()">{{100187 | translate}}</button><button class="btn_back" ng-click="info.goBack()">{{100231 | translate}}</button>
+
+        <!--注明-->
+        <p class="color-gray2 fz-14" ng-if="info.type==0" style="margin-bottom: 10px;">{{120084 | translate}}<span class="color-orange2">0.00%</span>  <del>0.20%</del>{{120085 | translate}}</p>
+        <p class="color-gray2 fz-14" ng-if="info.type==1" style="margin-bottom: 10px;">{{120082 | translate}}</p>
+        <!--<p class="color-gray2 fz-14" ng-if="info.type==1">　　{{120083 | translate}}</p>-->
+
+    </div>
+
+</div>
+

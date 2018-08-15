@@ -1,0 +1,36 @@
+<div class="active-fund bor-box" ng-repeat="(k,v) in info.dataList">
+    <div class="tit">{{v.dac_info_tl[g.currLang=='cn' ? 'zh-cn' : 'en-us'].name}}</div>
+    <ul class="list clearfix">
+        <li>
+            <p class="val">{{(v.latest_price||0) | coinNum: 'usdt'}} USDT</p>
+            <p class="key">{{120105 | translate}}</p>
+        </li>
+        <li>
+            <p class="val" ng-class="{'red':v.day_fluctuation < 0}">{{((v.day_fluctuation||0) * 100) | number:2}}%</p>
+            <p class="key">{{120106 | translate}}</p>
+        </li>
+        <li>
+            <p class="val" ng-class="{'red':v.week_fluctuation < 0}">{{((v.week_fluctuation||0) * 100) | number:2}}%</p>
+            <p class="key">{{120107 | translate}}</p>
+        </li>
+        <li>
+            <p class="val" ng-class="{'red':v.month_fluctuation < 0}">{{((v.month_fluctuation||0) * 100) | number:2}}%</p>
+            <p class="key">{{120108 | translate}}</p>
+        </li>
+        <li>
+            <p class="val" ng-class="{'red':v.three_month_fluctuation < 0}">{{((v.three_month_fluctuation||0) * 100) | number:2}}%</p>
+            <p class="key">{{120109 | translate}}</p>
+        </li>
+        <li>
+            <p class="val color-black">{{fundInfo.nowDate > v.end_time ? (130107 | translate) : (v.status == 1 ? (120052 | translate) : (130108 | translate))}}</p>
+            <p class="key">{{100097 | translate}}</p>
+        </li>
+        <li ng-click="info.goLink('active', v.id)">
+            <p class="color-green2 zhizhen">{{130013 | translate}}</p>
+        </li>
+    </ul>
+    <div class="tag" ng-if="v.recommend == 1">
+        <img src="/common/images/img-mark.png" style="width: 90px;">
+        <p class="tag-text">{{120111 | translate}}</p>
+    </div>
+</div>

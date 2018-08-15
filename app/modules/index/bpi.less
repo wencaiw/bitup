@@ -1,0 +1,251 @@
+.bpi-main-body{
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto auto;
+    color: #4F6475;
+    font-size: 14px;
+    .title{
+        font-weight: bold;
+        color: #213B52;
+        font-size: 16px;
+    }
+    .new-page{
+        padding: 20px;
+        background: #fff;
+        .title{
+            padding: 20px 0;
+            i{
+                width: 8px;
+                height: 16px;
+                margin-right: 7px;
+                background-color: #03BCC0;
+                display: inline-block;
+                vertical-align: -3px;
+            }
+        }
+        p{
+            line-height: 28px;
+        }
+        p.down{
+            color: #09263F;
+            margin-top: 16px;
+            a{
+                color: #03BCC0;
+                margin: 0 10px;
+            }
+        }
+        .list {
+            font-size: 14px;
+            color: #4F6475;
+            table{
+                width: 100%;
+                border-collapse:collapse;
+                tr{
+                    &:nth-child(odd) {
+                        background: #F9F9FB;
+                    }
+                    &:nth-child(even) {
+                        background: #fff;
+                    }
+                    td{
+                        min-width: 25%;
+                        height: 40px;
+                        text-align: center;
+                        border: none;
+                        //border-style: none;
+                    }
+                }
+            }
+            li {
+                line-height: 24px;
+                padding: 6px 0px;
+                &:nth-child(odd) {
+                    background: #F9F9FB;
+                }
+                &:nth-child(even) {
+                    background: #fff;
+                }
+                >p{
+                    width: 25%;
+                    float: left;
+                    text-align: center;
+                    word-break: break-word;
+                }
+                .clear();
+            }
+            &.content{
+                li {
+                    height: auto;
+                    min-height: 40px;
+                }
+            }
+        }
+        &.img-data{
+            background-color: #f7f7f7;
+            padding: 20px 0px;
+            position: relative;
+            .right-time{
+                position: absolute;
+                right: 0px;
+                top: 30px;
+                color: #83929F;
+            }
+            .tab{
+                li{
+                    height: 32px;
+                    line-height: 32px;
+                    padding: 0 20px;
+                    border: 1px solid #E9E9E9;
+                    background-color: #F9F9FB;
+                    border-radius: 4px 4px 0 0;
+                    max-width: 120px;
+                    float: left;
+                    cursor: pointer;
+                    &.active{
+                        background-color: #fff;
+                        border-bottom: 0px;
+                    }
+                }
+                li+li{
+                    margin-left: 2px;
+                }
+                .clear();
+            }
+            .content{
+                background-color: #fff;
+                padding: 20px;
+                margin-top: -1px;
+                .top{
+                    .price{
+                        font-size: 36px;
+                        color: #09263F;
+                        float: left;
+                    }
+                    .right-info{
+                        margin-left: 33px;
+                        float: left;
+                        width: 70%;
+                        margin-top: 17px;
+                        li{
+                            float: left;
+                            width: 30%;
+                            span{
+                                color:#2CBE4E;
+                                &.red{
+                                    color:#DF1A1A;
+                                }
+                            }
+                        }
+                        .clear();
+                    }
+                    .clear();
+                }
+                .time-tab{
+                    margin-top: 24px;
+                    li{
+                        color: #09263F;
+                        height: 32px;
+                        line-height: 32px;
+                        float: left;
+                        cursor: pointer;
+                        &.active{
+                            color: #03BCC0;
+                            border-bottom: 1px solid #03BCC0;
+                        }
+                    }
+                    li+li{
+                        margin-left: 24px;
+                    }
+                    .clear();
+                }
+                .chart-con{
+                    width: 100%;
+                    height: 280px;
+                    margin-top: 21px;
+                    #chart1{
+                        width: 100%; 
+                        height: 100%; 
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.clear(){
+    &:after {
+        content: '';
+        clear: both;
+        display: block;
+    }
+}
+.scrollbar(){
+    &::-webkit-scrollbar {
+        height: 3px;
+        background: transparent;
+      }
+    &::-webkit-scrollbar-thumb {
+        height: 3px;
+        background-color: #ccc;
+        border-radius: 4px;
+      }
+    &::-webkit-scrollbar-button {
+        display: none!important;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .htmlSize();
+}
+@media screen and (max-width: 320px) {
+    .htmlSize();
+}
+
+.htmlSize(){
+    .bpi-main-body .new-page{
+        padding: 5px;
+        &.img-data{
+            .right-time{
+                position: inherit;
+                margin-left: 5px;
+                top: 0px;
+            }
+            .tab{
+                margin-top:10px;
+                li{
+                    padding: 0 5px;
+                }
+            }
+            .content{
+                .top{
+                    .right-info{
+                        margin-left: 0px;
+                        margin-top: 0px;
+                        width: 100%;
+                        li{
+                            width: 100%;
+                        }
+                        li+li{
+                            margin-top: 10px;
+                        }
+                    }
+                }
+                .chart-con{
+                    #chart1{
+                        width: 105%; 
+                    }
+                }
+            }
+        } 
+        .list{
+            font-size: 10px;
+            li > p{
+                width: 20%;
+                &.w30{
+                    width: 30%;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,35 @@
+
+<div class="passive-fund bor-box">
+    <ul class="list clearfix">
+        <li ng-repeat="(k,v) in info.dataList">
+            <div class="desc">
+                <p class="tit fz-16 fl" style="margin-right: 10px;">{{v.dac_info_tl[g.currLang=='cn' ? 'zh-cn' : 'en-us'].name}}</p>
+                <p class="tit fz-16">
+                    <span class="color-green3">{{(v.latest_price||0) | coinNum: 'usdt'}} USDT</span>
+                    <span class="fz-14 color-gray2">≈ {{g.currLang=='cn' ? (v.latest_price * v.cny_ratio | currency: '¥') : (v.latest_price | currency: '$')}}</span>
+                </p>
+                <ul class="dynamic clearfix">
+                    <li>{{120106 | translate}} <span ng-class="{'red':v.day_fluctuation < 0}">{{((v.day_fluctuation||0) * 100) | number:2}}%</span></li>
+                    <li>{{120107 | translate}} <span ng-class="{'red':v.week_fluctuation < 0}">{{((v.week_fluctuation||0) * 100) | number:2}}%</span></li>
+                    <li>{{120108 | translate}} <span ng-class="{'red':v.month_fluctuation < 0}">{{((v.month_fluctuation||0) * 100) | number:2}}%</span></li>
+                </ul>
+            </div>
+            <div class="cont">
+                <highchart style="width: 100%; height: 100%;display: block;" config="v.simpleLine.chartConfig"></highchart>
+            </div>
+            <div class="statu">
+                <div class="fl">
+                    <p class="status">
+                        {{100097 | translate}}：<span ng-class="{'blue':fundInfo.nowDate < v.end_time && v.status == 1}">{{fundInfo.nowDate > v.end_time ? (130107 | translate) : (v.status == 1 ? (120052 | translate) : (130108 | translate))}}</span>
+                    </p>
+                    <p>{{130089 | translate}}：{{v.dac_sold_amount * v.latest_price | coinNum:'usdt'}} USDT</p>
+                </div>
+                <div class="detail" ng-click="info.goLink('passive', v.id)">{{130013 | translate}}</div>
+            </div>
+            <div class="tag" ng-if="v.recommend == 1">
+                <img src="/common/images/img-mark.png">
+                <p class="tag-text">{{120111 | translate}}</p>
+            </div>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,524 @@
+/*mobile*/
+.home-menu a.mobile{
+    display: none;
+}
+.header .menu-icon{
+    display: none;
+}
+@media screen and (max-width: 640px) {
+    body{
+        min-width: 100%;
+        padding-top: 60px;
+        /*overflow-x: hidden;*/
+    }
+    .switchLang,#logout2{
+        display: block;
+    }
+    .header{
+        position: fixed;
+        top:0;
+        left: 0;
+        width: 100%;
+        z-index:6;
+    }
+    .header .fast-enter{
+        display: none;
+    }
+    .login-wrap{
+        height: 470px;
+        padding-top: 30px;
+    }
+    .banner-box{
+        display: none;
+    }
+    .login-main{
+        float: none;
+        margin: 0 auto;
+        max-width: 94%;
+    }
+    .header .menu-icon{
+        border: 0;
+        background-color: transparent;
+        position: absolute;
+        top: 18px;
+        right: 10px;
+        width: 22px;
+        height: 22px;
+        padding: 0;
+        z-index:2;
+        outline: none;
+        display: block;
+    }
+    .header .menu-icon > i{
+        width: 100%;
+        height: 2px;
+        background-color: #03BCC0;
+        display: block;
+        margin: 3px 0;
+        float: left;
+    }
+    .header .logo-container{
+        padding: 14px 0;
+        z-index:2;
+    }
+    .header .logo-container .home-menu{
+        bottom:auto;
+        top: 60px;
+        right: 0;
+        left: 0;
+        background-color: #fff;
+        z-index:2;
+        /*display: none;*/
+        border-bottom: 3px solid #03BCC0;
+    }
+    .header .logo-container .home-menu > a{
+        float: none;
+        display: block;
+        padding: 10px 0;
+    }
+    .header .logo-container .home-menu > a.coming-soon{
+        opacity:.3;
+    }
+    .header .logo-container .home-menu > a:hover{
+        color: #1a1a1a;
+        border-bottom-color: transparent;
+    }
+    .header .logo-container .home-menu > a.coming-soon:after,.header .logo-container .home-menu > a.coming-soon:before{
+        display: none!important;
+    }
+    .header .logo-container .my-account,
+    .header .logo-container .my-account.islogin-mobile{
+        display: none;
+    }
+    .header .logo-container > .logo-coral{
+        height: 32px;
+        margin-left: 10px;
+        z-index:2;
+        position: relative;
+    }
+    .header .logo-container > .logo-coral img{
+        height: 32px!important;
+    }
+    .home-menu a.mobile{
+        display: block;
+    }
+    .lang-link{
+        position: absolute;
+        right: 80px;
+        top: 50%;
+        margin-top: -13px;
+        font-size: 12px;
+        line-height: 20px;
+        padding: 3px 0;
+        z-index:2;
+    }
+    .home-section3.login-section{
+        display: none;
+    }
+
+    .footer{
+        text-align: center;
+        height: auto;
+        /*padding: 20px 15px;*/
+        margin-top: 0;
+        padding-top: 0px;
+    }
+    .footer .nav{
+        float: none;
+    }
+    .footer .nav > a, .footer .nav > span{
+        /*display: block;*/
+    }
+    .footer .nav ul >li{
+        position: relative;
+        float: none;
+        width: 96%;
+        margin-left: 2%;
+    }
+    .footer .nav ul li h4{
+        /* margin: 30px 0 10px 0; */
+        padding: 10px 0;
+        margin-bottom: 0px;
+        text-align: left;
+    }
+    .footer .nav ul li h4:after{
+        position: absolute;
+        content: '+';
+        right: 0px;
+    }
+    .footer .nav ul li + li{
+        border-top: 1px solid #4F6475;
+    }
+    .footer .nav ul li ul li{
+        text-align: left;
+        line-height: 28px;
+    }
+    .footer .nav ul li ul li + li{
+        border-top: 0px;
+    }
+    .footer .nav ul li ul{
+        display: none;
+    }
+    .footer .nav ul li.open ul{
+        display: block;
+    }
+    .footer .nav ul li.open h4:after{
+        content: 'x';
+    }
+    /* .footer .nav ul li ul li:first-child h4{
+        margin-top: 0;
+    } */
+    .footer .nav ul >li.footer_share_main{
+        float: none;
+    }
+    .footer .nav ul >li.footer_share_main .share_list{
+        text-align: center;
+    }
+    .footer .nav ul >li.footer_share_main{
+        width: 96%;
+        margin-left: 2%;
+        margin-top: 0px;
+        border-top: 1px solid #4F6475;
+    }
+    .footer .nav ul >li.footer_share_main ul{
+        display: block;
+    }
+    .footer .nav ul >li.footer_share_main h4:after{
+        content: '';
+    }
+    .footer .nav ul >li.footer_share_main .share_list .item .icon{
+        margin-top: 0px;
+    }
+
+    .footer-email{
+        display: block;
+    }
+    .footer .nav > span{
+        display: none;
+    }
+    .footer .nav > i.email{
+        display: none;
+    }
+    .footer .nav a:last-child{
+        /* display: none; */
+    }
+    .footer .copyright-box{
+        float: none;
+        margin-top: 10px;
+    }
+    .footer .copyright-box > .fl{
+        float: none;
+    }
+
+    .home-menu-wrap{
+        /*display: none;*/
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0,0,0,0);
+        z-index:1;
+    }
+
+    /*注册页*/
+    .register-wrap .login-main{
+        margin-top: 0;
+    }
+
+    /*user*/
+    .user-container, .guide-container{
+        margin-top: 0;
+    }
+    .user-banner{
+        -webkit-background-size: cover;
+        background-size: cover;
+        display: -webkit-box;
+        padding: 15px 10px;
+        height:auto;
+        -webkit-box-align: center;
+        margin-bottom: 10px;
+    }
+    .user-banner .avart-box{
+        width: 60px;
+        height: 60px;
+        float: none;
+    }
+    .user-banner .info-box{
+        font-size: 12px;
+        margin-left: 10px;
+        float: none;
+        padding-top: 0;
+        -webkit-box-flex: 1;
+    }
+    .user-banner .info-box .name{
+        font-size: 16px;
+    }
+    .user-banner .info-box .account > span:first-child{
+        display: block;
+    }
+    .user-banner .info-box .account .line{
+        display: none;
+    }
+    .user-main, .guide-main{
+        padding-left: 0;
+        margin-top: 10px;
+        min-height:inherit;
+        overflow-x: hidden;
+    }
+    .user-main .menu-slide, .guide-main .menu-slide{
+        position: static;
+        display: -webkit-box;
+        width: 100%;
+        padding-top: 0;
+        box-shadow: none;
+        border-bottom:none;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .user-main .menu-slide li, .guide-main .menu-slide li{
+        -webkit-box-flex: 1;
+        position: relative;
+    }
+    .guide-main .menu-slide li{
+        text-align: center;
+    }
+    .other-page-main .menu-slide li .title{
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .user-main .menu-slide li .title{
+        min-height: 50px;
+        font-size: 10px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 15px 0;
+    }
+    .user-main .menu-slide li.current .sub-menu, .guide-main .menu-slide li.current .sub-menu, .user-main .menu-slide li.show-menu .sub-menu{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index:2;
+        border-left: 1px solid #eee;
+        border-right: 1px solid #eee;
+    }
+    .guide-main .menu-slide-long{
+        position: relative;
+        z-index:2;
+        background-color: #fff;
+    }
+    .guide-main .menu-slide-long .menu-slide{
+        /*overflow-x: auto;*/
+        /*overflow-y: hidden;*/
+        display: flex;
+        transform: translate3d(0px, 0px, 0px);
+        border-right:none;
+    }
+    .guide-main .menu-slide-long .menu-slide li{
+        -webkit-box-flex: 0;
+        -webkit-flex-shrink: 0;
+        width:auto;
+    }
+    .user-main .content-panel, .guide-main .content-panel{
+        margin-top: 10px;
+        padding:15px;
+        box-shadow: none;
+        min-height:inherit;
+    }
+    .user-main .content-panel .form-group{
+        width: 100%;
+    }
+    .user-main .content-panel .form-box, .user-main .content-panel .form-box label{
+        display: block;
+    }
+    .user-main .content-panel .form-box label{
+        margin-bottom: 6px;
+    }
+    .user-main .content-panel .form-box .form-control .fixed-text{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 80px;
+    }
+    .user-main .content-panel .form-box .form-control .mobile-box .input-text{
+        width: 100%;
+        padding-left: 90px;
+    }
+    .user-main .content-panel .common-btn{
+        width: 100%;
+        display: block;
+    }
+
+    .candy-data-main{
+        width: 100%;
+    }
+    .candy-data-main .data-con .box{
+        width: 100%;
+    }
+    .candy-data-main .tips-box{
+        height: auto;
+    }
+
+    .guide-main .content-panel p{
+        padding-right: 0px;
+    }
+    .user-main .menu-slide li .sub-menu > a, .guide-main .menu-slide li .sub-menu > a, .menu-slide-long > .sub-menu > a{
+        padding-left: 10px;
+    }
+
+    .user-main .content-panel .candy_tips{
+        padding-right: 0px;
+    }
+    .user-main .content-panel .level-list{
+        margin-top: 20px;
+    }
+    .user-main .content-panel .level-list > li{
+        /*float: none;*/
+        margin: 10px auto;
+        width: 33.333%;
+        font-size: 12px;
+    }
+    .user-main .content-panel .level-list > li .icon{
+        width: 45px;
+        height: 45px;
+        margin-bottom: 10px;
+    }
+    .user-main .content-panel .level-list > li .common-btn{
+        margin-top: 20px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 12px;
+    }
+    .user-main .content-panel .level-list2{
+        margin-right: 0;
+        margin-top: 25px;
+    }
+    .user-main .content-panel .form-box .form-control .mobile-box .select-box{
+        width: 100%;
+    }
+    .user-main .content-panel .form-box .form-control{
+        width: 100%;
+        display: block;
+    }
+    .user-main .content-panel .mul-btn-box .common-btn{
+        width: 46%;
+        margin: 0 2% !important;
+        float: left;
+    }
+    .user-main .content-panel .form-box .form-control .mobile-box.mobile-code .input-text{
+        padding-left: 10px;
+        padding-right: 110px;
+    }
+    .user-main .content-panel .form-box .form-control .mobile-box.mobile-code .code-btn{
+        position: absolute;
+        right: 1px;
+        top: 1px;
+        z-index:2;
+        box-shadow: none;
+        font-size: 12px;
+        width: 100px;
+    }
+    .user-main .content-panel .form-box .form-control .mobile-box.mobile-code .code-btn:before{
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 6px;
+        bottom: 6px;
+        border-left: 1px solid #D9D9D9;
+    }
+    .user-main .content-panel .form-box .form-control .error-text{
+        left: 0;
+        top: 50px;
+    }
+    .user-main .content-panel .level-list2 > li .content{
+        padding: 10px 12px;
+    }
+    .user-main .content-panel .level-list2 > li .icon{
+        margin-right: 5px;
+    }
+    .user-main .content-panel .level-list2 > li .content span:nth-child(2n){
+        width: 50%;
+        display: inline-block;
+    }
+    .user-main .content-panel .level-list2 > li .content span:nth-child(3n){
+        width: 20%;
+        line-height: 20px;
+        text-align: right;
+    }
+    /* About BUT */
+    .aboutbut_title{
+        font-size: 14px;
+        padding: 15px;
+        margin-top: 24px;
+    }
+    .aboutbut_main{
+        font-size: 12px;
+        padding: 22px 15px;
+    }
+    .aboutbut_main > h4{
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    .aboutbut_main > p{
+        margin-bottom: 8px;
+        line-height: 26px;
+    }
+    .aboutbut_main .trading_list{
+        margin: 20px 0px;
+    }
+    .aboutbut_main .trading_list > a, .aboutbut_main .trading_list > span{
+        height: 60px;
+        width: 46%;
+        margin: 0 2% 15px 2%;
+        padding-top: 36px;
+        background-size: auto 20px;
+        background-position: center 8px;
+        font-size: 8px;
+        white-space: nowrap;
+    }
+    .aboutbut_main .trading_list > span{
+        display: -webkit-box;
+        -webkit-box-align: center;
+        -webkit-box-pack: center;
+        padding-top: 0;
+    }
+    .footer_share_main .share_list .item{
+        margin: 0 4px;
+        width: 36px;
+        height: 36px;
+        padding-top: 10px;
+    }
+    .footer_share_main .share_list .item .icon{
+        width: 18px;
+    }
+    .mobile_hide{
+        display: none;
+    }
+    .mobile_show{
+        display: block;
+    }
+}
+@media screen and (max-width: 320px) {
+    .login-main{
+        width: 94%;
+        padding: 0 20px 55px;
+    }
+    .fundmarket_main .fixedfund_list li.btc .rate_box{
+        margin: 0px;
+        font-size: 10px;
+    }
+    .fundmarket_main .fixedfund_list li .rate_box .rate{
+        font-size: 18px;
+    }
+    .fundmarket_main .fixedfund_list li + li {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+    .fundmarket_main .fixedfund_list li .buy_btn:hover::after{
+        display: none;
+    }
+    
+}

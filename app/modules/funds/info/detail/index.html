@@ -1,0 +1,186 @@
+<div id="fund-detail">
+    <!-- 面包屑 -->
+    <div class="detail-nav">
+        <a ui-sref="funds.index" title="{{'100399'| translate}}" rel="nofollow">{{'100399'| translate}}</a>
+        <span class="tip">/</span>
+        <a ui-sref="funds.list.{{publicData.currFundType}}" ng-init="fundListName = (publicData.currFundType == 'passive' ? '120385' : '120386')" title="{{fundListName | translate}}" rel="nofollow">{{fundListName | translate}}</a>
+        <span class="tip">/</span>
+        <span title="{{publicData.fundInfo.dac_info_tl[g.currLang=='cn' ? 'zh-cn' : 'en-us'].name}}">{{publicData.fundInfo.dac_info_tl[g.currLang=='cn' ? 'zh-cn' : 'en-us'].name}}</span>
+    </div>
+
+    <!--被动基金数据-->
+    <div class="bpp-data">
+        <p class="name">
+            {{publicData.fundInfo.dac_info_tl[g.currLang=='cn' ? 'zh-cn' : 'en-us'].name}}
+            <span class="val" ng-class="{'red' : info.priceData[info.priceData.length-1].y < info.priceData[info.priceData.length-2].y}">
+                {{info.priceData[info.priceData.length-1].y | coinNum: 'usdt'}} USDT
+                <span class="coin"> ≈ {{g.currLang=='cn' ? (info.onePrice * info.cny_ratio | currency: '¥') : (info.onePrice | currency: '$')}}</span>
+            </span>
+            <span class="status" ng-class="{'blue':fundInfo.nowDate < publicData.fundInfo.end_time && publicData.fundInfo.status == 1}">{{publicData.fundInfo ? (fundInfo.nowDate > publicData.fundInfo.end_time ? (130107 | translate) : (publicData.fundInfo.status == 1 ? (120052 | translate) : (130108 | translate))) : ''}}</span>
+        </p>
+        <ul class="list reset">
+            <li>{{120053 | translate}} <span ng-class="{'red':info.bppData.day_fluctuation < 0}">{{((info.bppData.day_fluctuation||0) * 100) | number:2}}%</span></li>
+            <li>{{120054 | translate}} <span ng-class="{'red':info.bppData.week_fluctuation < 0}">{{((info.bppData.week_fluctuation||0) * 100) | number:2}}%</span></li>
+            <li>{{120055 | translate}} <span ng-class="{'red':info.bppData.month_fluctuation < 0}">{{((info.bppData.month_fluctuation||0) * 100) | number:2}}%</span></li>
+            <li>{{120056 | translate}} <span ng-class="{'red':info.bppData.three_month_fluctuation < 0}">{{((info.bppData.three_month_fluctuation||0) * 100) | number:2}}%</span></li>
+            <li>{{120057 | translate}} <span ng-class="{'red':info.bppData.six_month_fluctuation < 0}">{{((info.bppData.six_month_fluctuation||0) * 100) | number:2}}%</span></li>
+        </ul>
+    </div>
+    
+    <div class="detail-container">
+        <!-- 图表 -->
+        <div class="bpp-chart">
+            <ul class="bpp-tab">
+                <li class="active">{{(publicData.currFundType == 'active' ? '130131' : '130077') | translate}}</li>
+            </ul>
+            <ul class="time-tab">
+                <li ng-class="{'active' : info.currTime == 0}" ng-click="info.switchTime(0)">{{'130063' | translate}}</li>
+                <li ng-class="{'active' : info.currTime == 1}" ng-click="info.switchTime(1)">{{'130064' | translate}}</li>
+                <li ng-class="{'active' : info.currTime == 3}" ng-click="info.switchTime(3)">{{'130065' | translate}}</li>
+            </ul>
+            <highchart id="chart1" config="info.area.chartConfig" style="width: 105%; height: 248px; display: block;"></highchart>
+        </div>
+
+        <!-- 申购/赎回 -->
+        <div class="funds-operation">
+            <ul class="bpp-tab">
+                <li class="active">{{'100040' | translate}} ({{publicData.fundInfo.symbol}})</li>
+            </ul>
+
+            <!--未登录-->
+            <div class="login" ng-if="!info.islogin" compile="130106 | translate"></div>
+            <!--登录-->
+            <div class="reset" ng-if="info.islogin">
+                <div class="left">
+                    <p class="num">{{publicData.userFunds.user_possess_amount || '--'}}</p>
+                    <p class="desc">{{120058 | translate}}</p>
+                </div>
+                <div class="right">
+                    <p class="num">{{(info.allPrice | coinNum: 'usdt') || '--'}}</p>
+                    <p class="desc">{{120059 | translate}} (USDT)</p>
+                </div>
+            </div>
+            <div class="bottom">
+                <!-- <p class="p1">{{120063 | translate}}<span class="color-base">{{publicData.fundInfo.dac_trade_limit.trade_currency | uppercase}}</span></p> -->
+                <ul class="info">
+                    <li ng-class="{'tip':publicData.fundInfo.dac_fee.real_entry_ratio != publicData.fundInfo.dac_fee.shown_entry_ratio}">
+                        <span class="color-base">{{publicData.fundInfo.dac_fee.real_entry_ratio * 100 | number:2}}%</span>
+                        <del ng-if="publicData.fundInfo.dac_fee.real_entry_ratio != publicData.fundInfo.dac_fee.shown_entry_ratio">{{(publicData.fundInfo.dac_fee.shown_entry_ratio * 100) | number:2}}%</del>
+                        <br/>{{120060 | translate}}
+                    </li>
+                    <li><span class="color-base">{{publicData.fundInfo.dac_fee.real_exit_ratio * 100 | number:2}}%</span><br/>{{120061 | translate}}</li>
+                    <li><span class="color-base">{{publicData.fundInfo.dac_fee.real_management_ratio * 100 | number:2}}%</span><br/>{{120062 | translate}}</li>
+                </ul>
+            </div>
+            <!--<p class="tip">{{'130079' | translate: publicData.dacDiscount}}</p>-->
+            <button ng-if="publicData.currFundType == 'passive'" class="btn-active" ng-disabled="!(fundInfo.nowDate < publicData.fundInfo.end_time && publicData.fundInfo.status == 1)" ng-click="info.go(0)">{{120049 | translate}}</button>
+            <button ng-if="publicData.currFundType == 'passive'" class="btn-not-active" ng-click="info.go(1)">{{120050 | translate}}</button>
+            <div ng-if="publicData.currFundType == 'active'" class="upcoming-events">
+                <div class="text-content">
+                    {{130132 | translate}}
+                    <span>{{publicData.fundInfo.dac_trade_limit.buy_start_time | date:'MM.dd'}} -- {{publicData.fundInfo.dac_trade_limit.buy_end_time | date:'MM.dd'}}</span><br/>
+                    {{130133 | translate}}
+                </div>
+                <img src="/common/images/wx-wechat.png">
+            </div>
+        </div>
+    </div>
+    <!-- 说明&抢购记录 -->
+    <div class="detail-single">
+        <div class="tab-box">
+            <ul>
+                <li ng-class="{'active':info.tabActive==0}" ng-click="info.tabClick(0)">{{'130080' | translate}}</li>
+                <li ng-class="{'active':info.tabActive==1}" ng-click="info.tabClick(1)">{{'130081' | translate}}</li>
+                <li ng-if="publicData.currFundType != 'active'" && ng-class="{'active':info.tabActive==2}" ng-click="info.tabClick(2)">{{'130082' | translate}}</li>
+                <li ng-if="info.islogin" ng-class="{'active':info.tabActive==3}" ng-click="info.tabClick(3)">{{'130083' | translate}}</li>
+            </ul>
+            <div class="tab-cont">
+                <table cellspacing="0" class="list content" ng-if="info.tabActive==0">
+                    <tr>
+                        <td class="w-25">{{'130084' | translate}}</td>
+                        <td class="w-75">{{publicData.fundInfo.dac_info_tl[g.currLang=='cn' ? 'zh-cn' : 'en-us'].name}}</td>
+                    </tr>
+                    <tr>
+                        <td class="w-25">{{'130085' | translate}}</td>
+                        <td class="w-75">{{publicData.fundInfo.dac_info_tl[g.currLang=='cn' ? 'zh-cn' : 'en-us'].admin}}</td>
+                    </tr>
+                    <tr>
+                        <td class="w-25">{{'130086' | translate}}</td>
+                        <td class="w-75">{{(publicData.fundInfo.type == 10 ? '120385' : '120386') | translate}}</td>
+                    </tr>
+                    <tr>
+                        <td class="w-25">{{'130087' | translate}}</td>
+                        <td class="w-75">{{publicData.fundInfo.dac_trade_limit.trade_currency | uppercase}}</td>
+                    </tr>
+                    <tr>
+                        <td class="w-25">{{'130088' | translate}}</td>
+                        <td class="w-75">{{(publicData.fundInfo.dac_trade_limit.capacity | coinNum:publicData.fundInfo.base_currency)  + ' ' + (publicData.fundInfo.base_currency | uppercase)}}</td>
+                    </tr>
+                    <tr>
+                        <td class="w-25">{{'130089' | translate}}</td>
+                        <td class="w-75">{{info.fundPrice | coinNum:'usdt'}} USDT</td>
+                    </tr>
+                    <tr ng-repeat="item in publicData.fundInfo.descriptions[g.currLang=='cn' ? 'zh-cn' : 'en-us']">
+                        <td class="w-25" ng-bind="item.name"></td>
+                        <td class="w-75" ng-bind-html="item.content | htmlTag"></td>
+                    </tr>
+                </table>
+                <table cellspacing="0" class="list content" ng-if="info.tabActive==1 && (info.reportData || info.reportData.length > 0)">
+                    <tr class="down" ng-repeat="item in info.reportData[g.currLang=='cn' ? 'zh-cn' : 'en-us']" ng-click="info.pageLink(item.docUrl);">
+                        <td class="w-75" class="down-title"><b>【{{publicData.fundInfo.symbol}} {{'130090' | translate}}】</b>{{item.title}}</td>
+                        <td class="w-25 center" ng-bind="item.publishTime | date:'yyyy-MM-dd HH:mm:ss'"></td>
+                    </tr>
+                </table>
+                <table cellspacing="0" class="list content numberList" ng-if="info.tabActive==2 && (info.combinationData || info.combinationData.length>0)">
+                    <tr>
+                        <td>{{'130091' | translate}}</td>
+                        <td>{{'130092' | translate}}</td>
+                        <td>{{'130093' | translate}}</td>
+                        <td>{{'130094' | translate}}</td>
+                    </tr>
+                    <tr ng-repeat="(k, v) in info.combinationData.latest">
+                        <td>{{$index+1}}</td>
+                        <td>{{k | uppercase}}</td>
+                        <td>{{info.combinationData.init[k] ? ((info.combinationData.init[k] * 100 | number:2)+'%') : ''}}</td>
+                        <td>{{v ? ((v * 100 | number:2)+'%') : ''}}</td>
+                    </tr>
+                </table>
+                <table cellspacing="0" class="list content numberList" ng-if="info.tabActive==3 && (info.dkList || info.dkList.length > 0)">
+                    <tr>
+                        <td>{{'130095' | translate}}</td>
+                        <td>{{'130096' | translate}}</td>
+                        <td>{{'130097' | translate}}</td>
+                        <td>{{'130112' | translate}}</td>
+                        <td>{{'130113' | translate}}</td>
+                        <td>{{'130098' | translate}}</td>
+                        <td>{{'130099' | translate}}</td>
+                    </tr>
+                    <tr ng-repeat="(k,v) in info.dkList">
+                        <td>{{v.created_at | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                        <td>{{v.type == 0 ? (120049 | translate) : (120050 | translate)}}</td>
+                        <td ng-style="{color: v.status == 1 ? (v.type == 0 ? '#DF5042' : '#2CBE4E') : '#213B52'}">{{!!v.trade_currency_amount ? (v.type == 0 ? '-' : '+') + (v.trade_currency_amount | coinNum: v.trade_currency) +' '+ (v.trade_currency | uppercase) : '--'}}</td>
+                        <td>{{!!v.amount ? (v.amount | coinNum:'usdt') : '--'}}</td>
+                        <td>{{!!v.dac_price ? (v.dac_price | coinNum:'usdt') : '--'}}</td>
+                        <td>{{JSON.stringify(v.dac_order_fee)}}
+                            <p ng-if="v.status != 1">--</p>
+                            <p ng-if="v.status == 1 && v.type == 0">0</p>
+                            <p ng-repeat="(key, value) in v.dac_order_fee" ng-if="v.status == 1 && v.type == 1">{{value + ' ' + (key | uppercase)}}</p>
+                        </td>
+                        <td class="status"
+                        ng-class="{'gray': v.status == -1,'doing': v.status == 0}">
+                        {{v.status == 1 ? (130102 | translate) : (v.status == -1 ? (130100 | translate) : (130101  | translate))}} 
+                        <a ng-if="(publicData.fundInfo.dac_trade_limit.cancellable_interval + v.created_at) >= fundInfo.nowDate && v.status == 0"
+                        href="javascript:void(0);"
+                        ng-click="info.setCancel(v.id, $index)">{{130103 | translate}}</a>
+                        </td>
+                    </tr>
+                </table>
+                <div class="nothing" 
+                ng-if="(info.tabActive==1 && (!info.reportData || info.reportData.length==0)) || (info.tabActive==2 && (!info.combinationData || info.combinationData.length==0)) || (info.tabActive==3 && (!info.dkList || info.dkList.length==0))">
+                    <img src="/pages/common/images/finance-record.png" alt="">
+                    <span>暂无记录</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

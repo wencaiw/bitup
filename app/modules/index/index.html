@@ -1,0 +1,67 @@
+<div class="bpi-main-body">
+    <div class="new-page title">{{'130057' | translate}}</div>
+    <div class="new-page img-data" style="margin-top: 5px;">
+        <div class="right-time">{{'130058' | translate}}{{!!info.currDate ? (info.currDate|date:'yyyy/MM/dd HH:mm:ss') : ''}}</div>
+        <ul class="tab">
+            <li ng-class="{'active': info.indexType=='bp10'}" ng-click="info.switchTab('bp10')">{{'130059' | translate}}</li>
+            <li ng-class="{'active': info.indexType=='bpp'}" ng-click="info.switchTab('bpp')">{{'130116' | translate}}</li>
+            <!--<li>比普10指数</li>-->
+        </ul>
+        <div class="content">
+            <div class="top">
+                <span class="price" ng-bind="info.currPrice=='--' ? '--' : (info.currPrice | number:8)"></span>
+                <ul class="right-info">
+                    <li>{{'130060' | translate}} <span ng-class="{'red' : info.fluctuation<0}" ng-bind="info.fluctuation=='--' ? '--' : ((info.fluctuation * 100 | number:2) + '%')"></span></li>
+                    <li>{{'130061' | translate}} <span ng-class="{'red' : info.maxPrice<0}" ng-bind="info.maxPrice=='--' ? '--' : (info.maxPrice | number:8)"></span></li>
+                    <li>{{'130062' | translate}} <span ng-class="{'red' : info.minPrice<0}" ng-bind="info.minPrice=='--' ? '--' : (info.minPrice | number:8)"></span></li>
+                </ul>
+            </div>
+
+            <ul class="time-tab">
+                <li ng-class="{'active' : info.currTime == 0}" ng-click="info.switchTime(0)">{{'130063' | translate}}</li>
+                <li ng-class="{'active' : info.currTime == 1}" ng-click="info.switchTime(1)">{{'130064' | translate}}</li>
+                <li ng-class="{'active' : info.currTime == 2}" ng-click="info.switchTime(2)">{{'130065' | translate}}</li>
+            </ul>
+            <div class="chart-con">
+                <highchart id="chart1" config="info.area.chartConfig"></highchart>
+            </div>
+        </div>
+    </div>
+
+    <div class="new-page" style="margin-top: 5px;">
+        <div class="title"><i></i>{{'130066' | translate}}</div>
+        <p ng-bind-html="(info.indexType == 'bp10' ? 130067 : 130115) | translate | htmlTag"></p>
+        <p class="down">{{info.indexType == 'bp10' ? '130111' : '130117' | translate}} <a ng-href="{{info.indexUrlCn}}" target="_bank">中文版</a> | <a ng-href="{{info.indexUrlEn}}" target="_bank">English</a></p>
+        <div class="title"><i></i>{{'130068' | translate}}</div>
+        <div class="list">
+            <table>
+                <tr>
+                    <td>{{'130069' | translate}}</td>
+                    <td>{{'130070' | translate}}</td>
+                    <td>{{'130071' | translate}}（USDT）</td>
+                    <td ng-if="info.indexType == 'bp10'">{{'130072' | translate}}</td>
+                </tr>
+                <tr ng-repeat="item in info.dataList">
+                    <td ng-bind="item.token | uppercase"></td>
+                    <td ng-bind="(item.percentage * 100 | number:2) + '%'"></td>
+                    <td ng-bind="item.price"></td>
+                    <td ng-if="info.indexType == 'bp10'" ng-bind="item.market_cap | currency: '$'"></td>
+                </tr>
+            </table>
+            <!--<ul>-->
+            <!--<li>-->
+            <!--<p>{{'130069' | translate}}</p>-->
+            <!--<p>{{'130070' | translate}}</p>-->
+            <!--<p class="w30">{{'130071' | translate}}（USDT）</p>-->
+            <!--<p class="w30" ng-if="info.indexType == 'bp10'">{{'130072' | translate}}</p>-->
+            <!--</li>-->
+            <!--<li ng-repeat="item in info.dataList">-->
+            <!--<p ng-bind="item.token | uppercase"></p>-->
+            <!--<p ng-bind="(item.percentage * 100 | number:2) + '%'"></p>-->
+            <!--<p class="w30" ng-bind="item.price"></p>-->
+            <!--<p class="w30" ng-if="info.indexType == 'bp10'" ng-bind="item.market_cap | currency: '$'"></p>-->
+            <!--</li>-->
+            <!--</ul>-->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,190 @@
+<div class="breadcrumb-nav">
+    <a ui-sref="dashboard.assets">{{'100217' | translate}}</a>
+    <span class="separator">/</span>
+    <span class="cur-nav">{{100091 | translate}} - {{info.currentBi.coin | uppercase}}</span>
+</div>
+<!--<h3 class="sub-page-title" ng-show="!info.showOperation">选择提现货币</h3>-->
+<h3 class="sub-page-title">{{100091 | translate}} - {{info.currentBi.coin | uppercase}}</h3>
+<div class="white-section" style="min-height: 600px;">
+    <!--<ul class="rc-choose-list" ng-show="!info.showOperation && !info.show2FA && !info.showEmailConfirm">
+        <li ng-repeat="item in info.biList" ng-click="info.chooseBi(item)">
+            <div class="box box1"><i class="icon" ng-class="item.key"></i></div>
+            <div class="box">
+                <p class="fz-16">{{item.name}}{{item.key}}</p>
+                <p>账户余额&emsp;<span class="color-base">{{item.num}} {{item.key}}</span></p>
+            </div>
+        </li>
+    </ul>-->
+
+    <div class="rc-main"><!--ng-show="!info.show2FA && !info.showEmailConfirm"-->
+        <p class="p1">{{100233 | translate}}<span>Tier {{info.user.tier_level}}</span></p>
+        <!--<p class="p1">{{100233 | translate}}<span>Tier {{info.user.tier_level==0?0.00:(info.user.tier_level==1?1000.00:"∞")}}</span>{{100237 | translate}}<span>${{info.user.tier_level==0?'0.00':(info.user.tier_level==1?'1000.00':"∞")}}</span>{{100235 | translate}}<span>${{info.user.tier_level==0?'0.00':(info.user.tier_level==1?'1000.00':"∞")}}</span>{{100236 | translate}}.</p>-->
+        <!--<p class="p2">{{100225 | translate}}<span>{{100232 | translate:info.user.tier_level}}</span></p>-->
+
+
+        <div class="rc-form">
+            <!--提现地址-->
+            <div class="form-box">
+                <div class="form-control">
+                    <span class="color-red fz-16">* </span><label>{{100238 | translate}}</label>
+                </div>
+                <div class="form-control">
+                    <input class="input-text" ng-model="info.currencyAddress"
+                           placeholder="{{100239 | translate}}">
+                    <p class="error-text" ng-show="info.address">
+                        <i class="warning-icon"></i>
+                        <span>{{120091 | translate}}</span>
+                    </p>
+                </div>
+            </div>
+            <!--提现数量-->
+            <div class="form-box">
+                <div class="form-control">
+                    <span class="color-red fz-16">* </span><label>{{100071 | translate}}</label>
+                    <span class="label-right">{{100218 | translate}}：<span class="color-light-blue">{{info.balance}}</span> <!--{{100240 | translate}}：<span class="color-light-blue">{{info.currentBi.free}}</span>--></span>
+                </div>
+                <div class="form-control">
+                    <input class="input-text" ng-model="info.currencyNum"
+                           ng-class="{'error':info.numError}" placeholder="{{100241 | translate:info.currentBi.coin | uppercase}}">
+                    <span class="unit-tips">{{info.currentBi.coin | uppercase}}</span>
+                    <p class="error-text" ng-show="info.numError">
+                        <i class="warning-icon"></i>
+                        <span>{{120092 | translate}}</span>
+                    </p>
+                </div>
+            </div>
+            <!--费用/到账数量-->
+            <div class="form-box">
+                <div class="form-control">
+                    <div class="w50 f-left">
+                        <div class="form-control">
+                            <label>{{100057 | translate}}</label>
+                        </div>
+                        <div class="form-control">
+                            <input class="input-text" ng-model="info.cost" placeholder="{{info.cost}}" disabled>
+                            <span class="unit-tips">{{info.currentBi.coin | uppercase}}</span>
+                        </div>
+                    </div>
+
+                    <div class="w50 f-right">
+                        <div class="form-control">
+                            <label>{{100243 | translate}}</label>
+                        </div>
+                        <div class="form-control">
+                            <input ng-if="!info.currencyNum" class="input-text" value="0" placeholder="0.0000" disabled>
+                            <input ng-if="info.currencyNum" class="input-text" ng-model="info.userGetNumber" placeholder="0.0000" disabled>
+                            <span class="unit-tips">{{info.currentBi.coin | uppercase}}</span>
+                        </div>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+            </div>
+            <!--手机验证-->
+            <div class="form-box">
+                <div class="form-control">
+                    <span class="color-red fz-16">* </span><label>{{100182 | translate}}：</label>
+                </div>
+                <div class="form-control">
+                    <input class="input-text" type="text" ng-model="info.user.mobile" disabled>
+                </div>
+            </div>
+            <div class="form-box">
+                <div class="form-control">
+                    <span class="color-red fz-16">* </span><label>{{100184 | translate}}：</label>
+                </div>
+                <div class="form-control">
+                    <input class="input-text" ng-model="info.v_code">
+                    <div class="send" ng-click="info.sendCode()" ng-bind="info.phone_v_code"></div>
+                    <p class="error-text" ng-show="info.ConfirmCodeErr">
+                        <i class="warning-icon"></i>
+                        <span>{{120093 | translate}}</span>
+                    </p>
+                    <div style="clear: both"></div>
+                </div>
+            </div>
+            <!--邮箱验证-->
+            <div class="form-box">
+                <div class="form-control">
+                    <span class="color-red fz-16">* </span><label>{{100153 | translate}}：</label>
+                </div>
+                <div class="form-control">
+                    <input class="input-text" ng-model="info.user.account" disabled>
+                </div>
+            </div>
+            <div class="form-box">
+                <div class="form-control">
+                    <span class="color-red fz-16">* </span><label>{{100260 | translate}}：</label>
+                </div>
+                <div class="form-control">
+                    <input class="input-text" ng-model="info.e_code">
+                    <div class="send" ng-click="info.sendEmailCode()" ng-bind="info.email_v_code"></div>
+                    <p class="error-text" ng-show="info.emailCodeErr">
+                        <i class="warning-icon"></i>
+                        <span>{{120094 | translate}}</span>
+                    </p>
+                    <div style="clear: both"></div>
+                </div>
+            </div>
+            <!--2fa-->
+            <div class="form-box" ng-show="info.show2FA">
+                <div class="form-control">
+                    <span class="color-red fz-16">* </span><label>{{100244 | translate}}</label>
+                </div>
+                <div class="form-control">
+                    <input class="input-text" ng-model="info.code"
+                           ng-class="{'error':info.codeError}" placeholder="{{100245 | translate}}">
+                    <p class="error-text" ng-show="info.codeError">
+                        <i class="warning-icon"></i>
+                        <span>{{120095 | translate}}</span>
+                    </p>
+                </div>
+            </div>
+
+            <div>
+                <button class="common-btn ok" type="submit" ng-disabled="info.numError" ng-click="info.nextStep()">{{100187 | translate}}
+                </button>
+                <button class="btn_back" ng-click="info.goBack()">{{100231 | translate}}</button>
+            </div>
+
+            <p class="p5">{{100227 | translate}}</p>
+            <p class="p5">{{100246 | translate:info.currCoin}}</p>
+            <p class="p5">{{100368 | translate:info}}</p>
+            <p class="p5">{{100230 | translate}}</p>
+        </div>
+    </div>
+</div>
+
+<!--<div class="order-bpopup-wrap fixed ng-scope" ng-if="info.showPopup">
+    <div class="order-bpopup-body">
+        <i class="icon icon-16 icon-close" ng-click="info.closePopup()"></i>
+        <h3 class="title">订单预览</h3>
+        <ul class="form-list">
+            <li class="clearfix">
+                <label>提现{{info.currentBi.name}}</label>
+                <div class="box">{{info.currencyNum | number:6}} {{info.currentBi.key}}</div>
+            </li>
+            <li class="clearfix">
+                <label>可得{{info.currentBi.name}}</label>
+                <div class="box">{{info.currencyNum * (1-g.userInfo.withdrawRatio) | number:6}} {{info.currentBi.key}}
+                </div>
+            </li>
+            <li class="clearfix">
+                <label>{{'100059' | translate}}</label>
+                <div class="box">{{info.currencyNum * g.userInfo.withdrawRatio | number:6}} {{info.currentBi.key}}</div>
+            </li>
+            <li class="clearfix">
+                <label>{{'100073' | translate}}</label>
+                <div class="box">$ {{info.currencyNum * (1-g.userInfo.withdrawRatio) * info.currentBi.price |
+                    number:2}}
+                </div>
+            </li>
+            <li class="clearfix">
+                <label>{{'100121' | translate}}</label>
+                <div class="box mul">{{info.currencyAddress}}</div>
+            </li>
+        </ul>
+        <button class="submit-btn" ng-click="info.subOrder()" ng-disabled="info.subCountDown==0">{{'100072' |
+            translate}}
+        </button>
+    </div>
+</div>-->

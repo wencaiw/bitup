@@ -1,0 +1,141 @@
+<!--标题-->
+<div class="page-title recharge-title">
+    {{'100217' | translate}}
+</div>
+<!--<div class="clearfix">
+    <div class="recharge-balance fl">
+        <p class="p1">BTC{{'100218' | translate}}</p>
+        <p class="p2">{{balance}}<span> BTC</span></p>
+        <div class="btn-box">
+            <button class="common-btn ok" type="button" ng-click="info.goState('recharge',info.dataList.BTC)">{{'100090' | translate}}</button>
+            <button class="common-btn" type="button" ng-click="info.goState('withdraw',info.dataList.BTC)">{{'100091' | translate}}</button>
+        </div>
+    </div>
+    <div class="recharge-balance fr">
+        <p class="p1">BUT{{'100218' | translate}}</p>
+        <p class="p2">{{balance}}<span> BUT</span></p>
+        <div class="btn-box">
+            <button class="common-btn ok" type="button" ng-click="info.goState('recharge',info.dataList.BTC)">{{'100090' | translate}}</button>
+            <button class="common-btn" type="button" ng-click="info.goState('withdraw',info.dataList.BUT)">{{'100091' | translate}}</button>
+        </div>
+    </div>
+</div>-->
+<div style="background: #fff;margin-top:20px;padding: 0 17px 20px;">
+    <div class="list-nav">
+        <div class="left">
+            <span ng-repeat="item in info.coinList" ng-class="{'active': info.pageConfig.currentCoin == item}" ng-click="info.selectCoin(item)">{{item ? item : ('130074' | translate)}}</span>
+        </div>
+        <div class="right">
+            <span>{{info.pageConfig.currentType >= '0' ? (info.typeList[info.pageConfig.currentType+1] | translate) : ('130073' | translate)}}</span>
+            <div class="items">
+                <span ng-repeat="(k, v) in info.typeList" ng-click="info.selectType(k)">{{v ? (v | translate) : ('130073' | translate)}}</span>
+            </div>
+        </div>
+    </div>
+    <table class="common-table long operate">
+        <tr style="background: #F9F9FB;border: 1px solid #E6E6E6;">
+            <th style="width: 20%; color: #4F6475;">{{'100098' | translate}}</th>
+            <th style="width: 15%; color: #4F6475;">{{'100093' | translate}}</th>
+            <th style="width: 15%; color: #4F6475;">{{'100117' | translate}}</th>
+            <th style="width: 20%; color: #4F6475;">{{'100095' | translate}}</th>
+            <!--<th style="width: 15%; color: #4F6475;">{{'100096' | translate}}</th>-->
+            <th style="width: 15%; color: #4F6475;">{{'100097' | translate}}</th>
+        </tr>
+        <tbody>
+        <tr ng-if="info.dataList!=''" ng-repeat="item in info.dataList" ng-click="info.goState('detail',item)">
+            <td>{{item.created_at | date:'yyyy-MM-dd'}}</td>
+            <td ng-if="item.type=='WITHDRAW'">{{130076 | translate}}</td>
+            <td ng-if="item.type=='DEPOSIT'">{{130075 | translate}}</td>
+            <td ng-if="item.type=='REWARD'">{{120097 | translate}}</td>
+            <td>{{item.coin | uppercase}}</td>
+            <!--<td ng-if="item.coin=='BTC'">{{'100092' | translate}}（BTC）</td>-->
+            <!--<td ng-if="item.coin=='ETH'">{{'100053' | translate}}（ETH）</td>-->
+            <td>{{info.withdrawNum(item.amount, item.txn_fee) | coinNum:item.coin}}</td>
+            <!--<td>{{item.fiat_amount| currency: '$'}}</td>-->
+            <td ng-if="item.type=='WITHDRAW' && item.approve_withdraw == 0">{{'100247' | translate}}</td>
+            <td ng-if="item.type=='WITHDRAW' && item.approve_withdraw == 1">{{'100118' | translate}}</td>
+            <td ng-if="item.type=='WITHDRAW' && item.approve_withdraw == -1">{{'100248' | translate}}</td>
+
+            <td ng-if="item.type=='DEPOSIT' && item.sync_balance == 0">{{'100247' | translate}}</td>
+            <td ng-if="item.type=='DEPOSIT' && item.sync_balance == 1">{{'100118' | translate}}</td>
+            <td ng-if="item.type=='DEPOSIT' && item.sync_balance == -1">{{'100248' | translate}}</td>
+
+            <td ng-if="item.type=='REWARD' && item.sync_balance == 0">{{'100247' | translate}}</td>
+            <td ng-if="item.type=='REWARD' && item.sync_balance == 1">{{'100118' | translate}}</td>
+            <td ng-if="item.type=='REWARD' && item.sync_balance == -1">{{'100248' | translate}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <div ng-if="info.dataList==''" style="padding: 60px 0;"><img style="width: 61px; margin: 60px auto; display: block;" src="/common/images/finance-record.png" width="100%"></div>
+    <page config='info.pageConfig'></page>
+</div>
+<!--账户余额-->
+<!--<div class="white-section" style="padding: 16px;">-->
+    <!--<p class="fz-16" style="margin-bottom: 16px;">{{'100115' | translate}}</p>-->
+    <!--<div class="recharge-table-con">-->
+        <!--<table class="common-table long operate">-->
+            <!--<tr style="background: #F9F9FB;border: 1px solid #E6E6E6;">-->
+                <!--<th style="width: 20%; color: #4F6475;">{{'100117' | translate}}</th>-->
+                <!--<th style="width: 28%; color: #4F6475;">{{'100250' | translate}}</th>-->
+                <!--<th style="width: 42%; color: #4F6475;">{{'100251' | translate}}</th>-->
+                <!--<th style="width: 5%; color: #4F6475;"></th>-->
+                <!--<th style="width: 5%; color: #4F6475;">{{'100086' | translate}}</th>-->
+            <!--</tr>-->
+            <!--<tbody>-->
+                <!--<tr ng-repeat="(k, v) in info.user.coin_list">-->
+                    <!--<td>{{k}}</td>-->
+                    <!--<td>{{v.free | number:(k=='BTC'?8:2)}}</td>-->
+                    <!--<td>{{v.frozen | number:(k=='BTC'?8:2)}}</td>-->
+                    <!--<td class="color-light-blue" ng-click="info.goState('recharge', k)" style="white-space: nowrap;">{{'100090' | translate}}</td>-->
+                    <!--<td class="color-light-blue" ng-click="info.goState('withdraw', k)" style="white-space: nowrap;">{{'100091' | translate}}</td>-->
+                <!--</tr>-->
+            <!--</tbody>-->
+        <!--</table>-->
+        <!--<div ng-if="info.user.balances.length==0 || !info.user.balances"><img style="width: 61px; margin: 60px auto; display: block;" src="/common/images/finance-record.png" width="100%"></div>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--交易记录-->
+<!--<div class="white-section" style="padding: 16px;">-->
+    <!--<p class="fz-16" style="margin-bottom: 16px;">{{'100116' | translate}}</p>-->
+    <!--<div class="recharge-table-con">-->
+        <!--<table class="common-table long operate">-->
+            <!--<tr style="background: #F9F9FB;border: 1px solid #E6E6E6;">-->
+                <!--<th style="width: 20%; color: #4F6475;">{{'100098' | translate}}</th>-->
+                <!--<th style="width: 15%; color: #4F6475;">{{'100093' | translate}}</th>-->
+                <!--<th style="width: 15%; color: #4F6475;">{{'100117' | translate}}</th>-->
+                <!--<th style="width: 20%; color: #4F6475;">{{'100095' | translate}}</th>-->
+                <!--<th style="width: 15%; color: #4F6475;">{{'100096' | translate}}</th>-->
+                <!--<th style="width: 15%; color: #4F6475;">{{'100097' | translate}}</th>-->
+            <!--</tr>-->
+            <!--<tbody>-->
+            <!--<tr ng-if="info.dataList!=''" ng-repeat="item in info.dataList" ng-click="info.goState('detail',item)">-->
+                <!--<td>{{item.create_date}}</td>-->
+                <!--<td>{{item.type}}</td>-->
+                <!--<td>{{item.coin | uppercase}}</td>-->
+                <!--&lt;!&ndash;<td ng-if="item.coin=='BTC'">{{'100092' | translate}}（BTC）</td>&ndash;&gt;-->
+                <!--&lt;!&ndash;<td ng-if="item.coin=='ETH'">{{'100053' | translate}}（ETH）</td>&ndash;&gt;-->
+                <!--<td>{{item.amount+item.txn_fee | number:(item.coin=='but'?2:8)}} {{item.key}}</td>-->
+                <!--<td>{{item.fiat_amount| currency: '$'}}</td>-->
+                <!--<td ng-if="item.type=='WITHDRAW' && item.approve_withdraw == 0">{{'100247' | translate}}</td>-->
+                <!--<td ng-if="item.type=='WITHDRAW' && item.approve_withdraw == 1">{{'100118' | translate}}</td>-->
+                <!--<td ng-if="item.type=='WITHDRAW' && item.approve_withdraw == -1">{{'100248' | translate}}</td>-->
+                <!--<td ng-if="item.type=='DEPOSIT' && item.sync_balance == 0">{{'100247' | translate}}</td>-->
+                <!--<td ng-if="item.type=='DEPOSIT' && item.sync_balance == 1">{{'100118' | translate}}</td>-->
+                <!--<td ng-if="item.type=='DEPOSIT' && item.sync_balance == -1">{{'100248' | translate}}</td>-->
+            <!--</tr>-->
+            <!--</tbody>-->
+        <!--</table>-->
+        <!--<div ng-if="info.dataList==''"><img style="width: 61px; margin: 60px auto; display: block;" src="/common/images/finance-record.png" width="100%"></div>-->
+    <!--</div>-->
+    <!-- <div class="page-wrap">
+        <span class="page start"></span>
+        <span class="page prev"></span>
+        <span class="page on">1</span>
+        <span class="page">2</span>
+        <span class="page">3</span>
+        <span class="page next"></span>
+        <span class="page end"></span>
+    </div> -->
+    <!--<page config="info.pageConfig"></page>-->
+<!--</div>-->

@@ -1,0 +1,38 @@
+<div class="common-container user-container">
+    <div class="user-banner clearfix">
+        <p class="avart-box"></p>
+        <div class="info-box">
+            <p class="name">{{'100023' | translate}}，{{info.user.account}}</p>
+            <p class="account">
+                <span>{{'100164' | translate}}：{{info.user.account}}</span>
+                <span class="line"></span>
+                <span>{{'100165' | translate}}：</span><i class="level level{{info.user.tier_level}}"></i><span ng-if="g.currLang == 'cn'">级</span>
+            </p>
+        </div>
+        <!--<p class="last-login">{{'100166' | translate}}：{{info.user.address}} ｜ {{'100167' | translate}}：{{info.user.last_login_date}}</p>-->
+    </div>
+    <div class="user-main clearfix">
+        <ul class="menu-slide">
+            <li ng-class="{'current':userInfo.menu=='hongbao'}" ui-sref="dashboard.user.hongbao">
+                <h3 class="title single"><i class="icon"></i><span>{{'130134' | translate}}</span></h3>
+            </li>
+            <li ng-class="{'current':userInfo.menu=='candy'}" ui-sref="dashboard.user.candy">
+                <h3 class="title single"><i class="icon"></i><span>{{'100180' | translate}}</span></h3>
+            </li>
+            <li ng-class="{'current':userInfo.menu=='auth'}" ui-sref="dashboard.user.auth">
+                <h3 class="title single"><i class="icon"></i><span>{{'100168' | translate}}</span></h3>
+            </li>
+            <li ng-class="{'current':userInfo.menu=='pwd' || userInfo.menu=='2fa','show-menu':userInfo.showSubMenu.securitySettings}">
+                <h3 class="title" ng-click="userInfo.openSubMenu('securitySettings')"><i class="icon"></i><span class="middle">{{'100169' | translate}}</span></h3>
+                <div class="sub-menu" ng-show="userInfo.showSubMenu.securitySettings">
+                    <a href="javascript:;" ui-sref="dashboard.user.pwd" ng-class="{'current':userInfo.menu=='pwd'}"><i class="icon"></i>{{'100170' | translate}}</a>
+                    <a href="javascript:;" ui-sref="dashboard.user.2fa" ng-class="{'current':userInfo.menu=='2fa'}"><i class="icon"></i>{{'100171' | translate}}</a>
+                </div>
+            </li>
+            <li ng-class="{'current':userInfo.menu=='privilege'}">
+                <h3 class="title single"><i class="icon"></i><span class="coming-soon" text="{{'100214' | translate}}">{{'100172' | translate}}</span></h3>
+            </li>
+        </ul>
+        <div ui-view="user"></div>
+    </div>
+</div>

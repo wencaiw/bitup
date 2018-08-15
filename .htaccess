@@ -1,0 +1,21 @@
+#Options +FollowSymlinks
+RewriteEngine on
+RewriteBase /
+#
+#RewriteCond %{HTTP_HOST} ^(bitup.com|www.bitup.com)$ [NC]
+#RewriteCond %{SERVER_PORT} !^443
+#RewriteRule ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [L,R=301]
+
+# 如果请求的是现有资源，则按原样执行
+#RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
+#RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
+#RewriteRule ^ - [L]d''ΩΩ  sS
+
+# 如果请求的资源不存在，则使用index.html
+RewriteCond %{REQUEST_URI} !^/(index(.*).php)$ [NC]
+RewriteCond %{REQUEST_URI} ^/(dashboard|funds|index)(.*)$
+RewriteRule ^.*$ ./app/index.php
+
+#RewriteRule ^(dashboard|funds|index)(.*)$ ./app/index.php
+
+ErrorDocument 404 /404.php

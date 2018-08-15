@@ -1,0 +1,41 @@
+
+<h3 class="sub-page-title">{{info.depositDetail.type=='WITHDRAW'?('100253' | translate):('100252' | translate)}}</h3>
+<div class="sub-page-main">
+    <div class="trade-order-section">
+        <dl>
+            <dt>{{info.depositDetail.type=='WITHDRAW'?('100255' | translate):('100254' | translate)}}</dt>
+            <dd>
+                <!--<p>{{'100256' | translate}}：{{info.depositDetail.coin=='btc'?('100092' | translate):('100373' | translate)}}（{{info.depositDetail.coin | uppercase}}）</p>-->
+                <p>{{'100256' | translate}}：{{info.depositDetail.coin | uppercase}}</p>
+                <p>{{'100121' | translate}}：{{info.depositDetail.address}}</p>
+            </dd>
+        </dl>
+        <dl>
+            <dt>{{info.depositDetail.type=='WITHDRAW'?('100253' | translate):('100252' | translate)}}</dt>
+            <dd>
+                <p>{{'100071' | translate}}：{{info.depositDetail.amount + info.depositDetail.txn_fee | number:(info.depositDetail.coin=='but'?2:8)}} {{info.depositDetail.coin | uppercase}}</p>
+                <p>{{'100057' | translate}}：{{info.depositDetail.txn_fee | number:(info.depositDetail.coin=='but'?2:8)}} {{info.depositDetail.coin | uppercase}}</p>
+                <p>{{'100243' | translate}}：{{info.depositDetail.amount | number:(info.depositDetail.coin=='but'?2:8)}} {{info.depositDetail.coin | uppercase}}</p>
+                <p>{{'100124' | translate}}：{{info.depositDetail.order_id}}</p>
+                <p>{{'100257' | translate}}：{{info.depositDetail.created_at | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+                <p>
+                    {{'100258' | translate}}：
+                    <!--<span class="color-red" ng-if="info.depositDetail.syncBalance==0">{{'100259' | translate}}...</span>
+                    <span class="color-green" ng-if="info.depositDetail.syncBalance==1">{{'100118' | translate}}</span>-->
+                    <span class="color-green" ng-if="info.depositDetail.type=='WITHDRAW' && info.depositDetail.approve_withdraw == 0">{{'100247' | translate}}</span>
+                    <span class="color-green" ng-if="info.depositDetail.type=='WITHDRAW' && info.depositDetail.approve_withdraw == 1">{{'100118' | translate}}</span>
+                    <span ng-if="info.depositDetail.type=='WITHDRAW' && info.depositDetail.approve_withdraw == -1">{{'100248' | translate}}</span>
+
+                    <span class="color-green" ng-if="info.depositDetail.type=='DEPOSIT' && info.depositDetail.sync_balance == 0">{{'100247' | translate}}</span>
+                    <span class="color-green" ng-if="info.depositDetail.type=='DEPOSIT' && info.depositDetail.sync_balance == 1">{{'100118' | translate}}</span>
+                    <span ng-if="info.depositDetail.type=='DEPOSIT' && info.depositDetail.sync_balance == -1">{{'100248' | translate}}</span>
+
+                    <span class="color-green" ng-if="info.depositDetail.type=='REWARD' && info.depositDetail.sync_balance == 0">{{'100247' | translate}}</span>
+                    <span class="color-green" ng-if="info.depositDetail.type=='REWARD' && info.depositDetail.sync_balance == 1">{{'100118' | translate}}</span>
+                    <span ng-if="info.depositDetail.type=='REWARD' && info.depositDetail.sync_balance == -1">{{'100248' | translate}}</span>
+                </p>
+                <button style="margin: 40px 0;" class="btn_back" ng-click="info.goBack()">{{100231 | translate}}</button>
+            </dd>
+        </dl>
+    </div>
+</div>

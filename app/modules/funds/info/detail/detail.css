@@ -1,0 +1,577 @@
+#fund-detail {
+  /*被动基金详情*/
+}
+#fund-detail * {
+  box-sizing: border-box;
+}
+#fund-detail .w-20 {
+  width: 20%;
+  min-height: 1px;
+}
+#fund-detail .w-25 {
+  width: 25%;
+  min-height: 1px;
+}
+#fund-detail .w-25.center {
+  text-align: center;
+}
+#fund-detail .w-25 {
+  width: 25%;
+  min-height: 1px;
+}
+#fund-detail .w-75 {
+  width: 75%;
+  min-height: 1px;
+}
+#fund-detail .btn-active {
+  background-color: #03BCC0;
+  margin-right: 42px;
+}
+#fund-detail .btn-active:hover {
+  background-color: #02A3A7;
+}
+#fund-detail .btn-active:disabled {
+  background-color: #4F6475;
+}
+#fund-detail .btn-active:disabled:hover {
+  background-color: #4F6475;
+}
+#fund-detail .btn-active,
+#fund-detail .btn-not-active {
+  width: 200px;
+  height: 40px;
+  font-size: 14px;
+  color: #fff;
+  border: 0px;
+  margin: 32px 0 0 0;
+  cursor: pointer;
+}
+#fund-detail .btn-not-active {
+  margin-left: 40px;
+}
+#fund-detail .bpp-data {
+  width: 100%;
+  min-height: 108px;
+  padding: 19px 24px;
+  background: #fff;
+  margin-bottom: 16px;
+}
+#fund-detail .bpp-data .name {
+  font-size: 24px;
+  color: #09263F;
+  margin-bottom: 16px;
+}
+#fund-detail .bpp-data .name .val {
+  font-size: 20px;
+  color: #81c88c;
+  margin-left: 16px;
+}
+#fund-detail .bpp-data .name .val.red {
+  color: #D0011B;
+}
+#fund-detail .bpp-data .name .val .coin {
+  font-size: 14px;
+  color: #002800;
+}
+#fund-detail .bpp-data .name .status {
+  float: right;
+  font-size: 16px;
+  color: #4F6475;
+  line-height: 36px;
+}
+#fund-detail .bpp-data .name .status.blue {
+  color: #03BCC0;
+}
+#fund-detail .bpp-data .list li {
+  width: 177px;
+  max-width: 20%;
+  float: left;
+  font-size: 14px;
+  color: #072A41;
+}
+#fund-detail .bpp-data .list li span {
+  color: #81c88c!important;
+}
+#fund-detail .bpp-data .list li span.red {
+  color: #DF5042!important;
+}
+#fund-detail .tab-box {
+  padding: 0px;
+  margin-top: 0px;
+}
+#fund-detail .detail-container .bpp-chart {
+  overflow: hidden;
+}
+#fund-detail .detail-container .bpp-chart .time-tab {
+  margin-top: 24px;
+}
+#fund-detail .detail-container .bpp-chart .time-tab li {
+  color: #09263F;
+  height: 32px;
+  line-height: 32px;
+  float: left;
+  cursor: pointer;
+}
+#fund-detail .detail-container .bpp-chart .time-tab li.active {
+  color: #03BCC0;
+  border-bottom: 1px solid #03BCC0;
+}
+#fund-detail .detail-container .bpp-chart .time-tab li + li {
+  margin-left: 24px;
+}
+#fund-detail .detail-container .bpp-chart .time-tab:after {
+  content: '';
+  clear: both;
+  display: block;
+}
+#fund-detail .detail-container .bpp-chart,
+#fund-detail .detail-container .funds-operation {
+  width: 55%;
+  float: left;
+  background: #fff;
+  min-height: 354px;
+  padding: 10px 25px 0 25px;
+}
+#fund-detail .detail-container .bpp-chart .bpp-tab,
+#fund-detail .detail-container .funds-operation .bpp-tab {
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px solid #EEEEEE;
+}
+#fund-detail .detail-container .bpp-chart .bpp-tab li,
+#fund-detail .detail-container .funds-operation .bpp-tab li {
+  float: left;
+  margin-right: 20px;
+  font-size: 16px;
+  height: 40px;
+  color: #213B52;
+  cursor: pointer;
+}
+#fund-detail .detail-container .bpp-chart .bpp-tab .active,
+#fund-detail .detail-container .funds-operation .bpp-tab .active {
+  color: #03BCC0;
+  border-bottom: 2px solid #03BCC0;
+}
+#fund-detail .detail-container .funds-operation {
+  width: 43.33%;
+  float: right;
+}
+#fund-detail .detail-container .funds-operation .bpp-tab {
+  margin-bottom: 32px;
+}
+#fund-detail .detail-container .funds-operation .login {
+  height: 90px;
+  line-height: 90px;
+  background: #F9F9FB;
+  font-size: 14px;
+  color: #4F6475;
+  border-bottom: 2px solid #fff;
+  text-align: center;
+}
+#fund-detail .detail-container .funds-operation .login.yes {
+  height: auto;
+  line-height: inherit;
+  text-align: left;
+}
+#fund-detail .detail-container .funds-operation .login.yes:after {
+  content: '';
+  clear: both;
+  display: block;
+}
+#fund-detail .detail-container .funds-operation .left,
+#fund-detail .detail-container .funds-operation .right {
+  background: #F9F9FB;
+  padding: 16px 12px;
+  height: 84px;
+  width: 50%;
+  border-bottom: 2px solid #fff;
+  float: left;
+  border-right: 1px solid #fff;
+}
+#fund-detail .detail-container .funds-operation .left .num,
+#fund-detail .detail-container .funds-operation .right .num {
+  font-size: 18px;
+  color: #09263F;
+}
+#fund-detail .detail-container .funds-operation .left .desc,
+#fund-detail .detail-container .funds-operation .right .desc {
+  font-size: 14px;
+  color: #4F6475;
+  margin-top: 8px;
+}
+#fund-detail .detail-container .funds-operation .right {
+  border-left: 1px solid #fff;
+  border-right: 0;
+}
+#fund-detail .detail-container .funds-operation .bottom {
+  width: 100%;
+  background: #F9F9FB;
+  padding: 15px 12px;
+  font-size: 12px;
+  color: #4F6475;
+}
+#fund-detail .detail-container .funds-operation .bottom .p1 {
+  margin-bottom: 6px;
+}
+#fund-detail .detail-container .funds-operation .bottom .info li {
+  float: left;
+  line-height: 20px;
+}
+#fund-detail .detail-container .funds-operation .bottom .info li.tip {
+  margin-top: 0px;
+  padding-left: 0px;
+}
+#fund-detail .detail-container .funds-operation .bottom .info li del {
+  margin-left: 5px;
+}
+#fund-detail .detail-container .funds-operation .bottom .info li + li,
+#fund-detail .detail-container .funds-operation .bottom .info li:first-child {
+  margin-right: 50px;
+}
+#fund-detail .detail-container .funds-operation .bottom .info:after {
+  content: '';
+  clear: both;
+  display: block;
+}
+#fund-detail .detail-container .funds-operation .tip {
+  color: #4F6475;
+  margin-top: 12px;
+  padding-left: 12px;
+}
+#fund-detail .detail-container .funds-operation .upcoming-events {
+  display: table;
+  width: 100%;
+  margin-top: 12px;
+  border: 1px solid #eee;
+}
+#fund-detail .detail-container .funds-operation .upcoming-events .text-content {
+  display: table-cell;
+  vertical-align: middle;
+  line-height: 24px;
+  padding: 0 20px;
+  color: #4F6475;
+}
+#fund-detail .detail-container .funds-operation .upcoming-events .text-content span {
+  color: #090000;
+}
+#fund-detail .detail-container .funds-operation .upcoming-events img {
+  width: 80px;
+  float: right;
+  margin-right: 20px;
+}
+#fund-detail .detail-container .funds-operation .upcoming-events:after {
+  content: '';
+  clear: both;
+  display: block;
+}
+#fund-detail .detail-container .funds-operation:after {
+  content: '';
+  clear: both;
+  display: block;
+}
+#fund-detail .detail-container:after {
+  content: '';
+  clear: both;
+  display: block;
+}
+#fund-detail .detail-single {
+  width: 100%;
+  background: #fff;
+  font-size: 12px;
+  color: #4F6475;
+  margin-top: 15px;
+  padding: 16px 24px;
+  display: flex;
+}
+#fund-detail .detail-single .tab-box {
+  width: 100%;
+}
+#fund-detail .detail-single .tab-box > ul {
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px solid #EEEEEE;
+}
+#fund-detail .detail-single .tab-box > ul li {
+  float: left;
+  margin-right: 20px;
+  font-size: 16px;
+  height: 40px;
+  color: #213B52;
+  cursor: pointer;
+}
+#fund-detail .detail-single .tab-box > ul li.active {
+  color: #03BCC0;
+  border-bottom: 2px solid #03BCC0;
+}
+#fund-detail .detail-single .tab-box .tab-cont {
+  margin-top: 40px;
+  border-bottom: 1px solid #EFF2F4;
+}
+#fund-detail .detail-single .tab-box .tab-cont .tab-tit {
+  height: 40px;
+  line-height: 40px;
+  background: #F5F7F9;
+  font-size: 12px;
+  color: #213B52;
+  padding-left: 24px;
+}
+#fund-detail .detail-single .tab-box .tab-cont .tab-tit > p {
+  float: left;
+}
+#fund-detail .detail-single .tab-box .tab-cont .nothing {
+  width: 100%;
+  text-align: center;
+  height: 392px;
+  padding: 60px 0;
+}
+#fund-detail .detail-single .tab-box .tab-cont .nothing img {
+  width: 46px;
+  display: block;
+  margin: 0 auto;
+}
+#fund-detail .detail-single .tab-box .tab-cont .nothing span {
+  display: block;
+  margin-top: 10px;
+}
+#fund-detail .detail-single .tab-box .tab-cont .list {
+  font-size: 14px;
+  color: #4F6475;
+  overflow-y: auto;
+}
+#fund-detail .detail-single .tab-box .tab-cont .list tr {
+  line-height: 24px;
+  padding: 18px 0px 18px 24px;
+}
+#fund-detail .detail-single .tab-box .tab-cont .list tr:nth-child(odd) {
+  background: #F9F9FB;
+}
+#fund-detail .detail-single .tab-box .tab-cont .list tr:nth-child(even) {
+  background: #fff;
+}
+#fund-detail .detail-single .tab-box .tab-cont .list tr p {
+  line-height: 18px;
+}
+#fund-detail .detail-single .tab-box .tab-cont .list tr .status {
+  color: #03BCC0;
+}
+#fund-detail .detail-single .tab-box .tab-cont .list tr .status.gray {
+  color: #4F6475;
+}
+#fund-detail .detail-single .tab-box .tab-cont .list tr .status.doing {
+  color: #FF6618;
+}
+#fund-detail .detail-single .tab-box .tab-cont .list tr .status.doing a {
+  color: #4F6475;
+  border: 1px solid #4F6475;
+  padding: 1px 5px;
+  border-radius: 2px;
+  margin-left: 5px;
+}
+#fund-detail .detail-single .tab-box .tab-cont .list tr.down {
+  cursor: pointer;
+}
+#fund-detail .detail-single .tab-box .tab-cont .list tr:first-child {
+  font-size: inherit;
+  color: #213B52;
+}
+#fund-detail .detail-single .tab-box .tab-cont .list tr td {
+  padding: 12px 16px;
+}
+#fund-detail .detail-single .tab-box .tab-cont .list tr:after {
+  content: '';
+  clear: both;
+  display: block;
+}
+#fund-detail .detail-single .tab-box .tab-cont .list.content li {
+  height: auto;
+  min-height: 40px;
+}
+#fund-detail .detail-single .tab-box .tab-cont .list.numberList li {
+  line-height: 40px;
+  padding: 0;
+}
+#fund-detail .detail-single .tab-box .tab-cont .list::-webkit-scrollbar {
+  width: 6px;
+  background: transparent;
+}
+#fund-detail .detail-single .tab-box .tab-cont .list::-webkit-scrollbar-thumb {
+  width: 6px;
+  background: #03BCC0;
+  border-radius: 4px;
+}
+#fund-detail .detail-single .tab-box .tab-cont .list::-webkit-scrollbar-button {
+  display: none!important;
+}
+#fund-detail .detail-single .tab-box .tab-cont .down-title b {
+  color: #03BCC0;
+}
+@media screen and (max-width: 640px) {
+  #fund-detail {
+    padding: 10px 10px;
+  }
+  #fund-detail .bpp-data {
+    padding: 19px 10px;
+  }
+  #fund-detail .bpp-data .name {
+    font-size: 18px;
+  }
+  #fund-detail .bpp-data .name .val {
+    font-size: 16px;
+    margin-left: 0px;
+    display: inline-block;
+  }
+  #fund-detail .bpp-data .name .status {
+    font-size: 14px;
+    line-height: 24px;
+  }
+  #fund-detail .bpp-data .list li {
+    font-size: 12px;
+    max-width: 33%;
+    float: left;
+    line-height: 22px;
+  }
+  #fund-detail .detail-nav {
+    margin-left: 15px;
+  }
+  #fund-detail .detail-container .bpp-chart,
+  #fund-detail .detail-container .funds-operation {
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 0 10px;
+  }
+  #fund-detail .detail-container .bpp-chart .left,
+  #fund-detail .detail-container .funds-operation .left,
+  #fund-detail .detail-container .bpp-chart .right,
+  #fund-detail .detail-container .funds-operation .right,
+  #fund-detail .detail-container .bpp-chart .bottom,
+  #fund-detail .detail-container .funds-operation .bottom {
+    padding: 16px 12px;
+  }
+  #fund-detail .detail-container .bpp-chart .bottom,
+  #fund-detail .detail-container .funds-operation .bottom {
+    padding: 16px 12px 0px;
+  }
+  #fund-detail .detail-container .bpp-chart .bottom .info li + li,
+  #fund-detail .detail-container .funds-operation .bottom .info li + li,
+  #fund-detail .detail-container .bpp-chart .bottom .info li:first-child,
+  #fund-detail .detail-container .funds-operation .bottom .info li:first-child {
+    margin-bottom: 16px;
+    margin-right: 16px;
+  }
+  #fund-detail .detail-container .bpp-chart .upcoming-events .text-content,
+  #fund-detail .detail-container .funds-operation .upcoming-events .text-content {
+    padding: 0 8px;
+    font-size: 12px;
+  }
+  #fund-detail .detail-container .bpp-chart .upcoming-events img,
+  #fund-detail .detail-container .funds-operation .upcoming-events img {
+    margin-right: 8px;
+  }
+  #fund-detail .btn-active,
+  #fund-detail .btn-not-active {
+    width: 100%;
+    margin: 15px 0;
+  }
+  #fund-detail .cont .amount-box {
+    width: 100%;
+  }
+  #fund-detail .left .num,
+  #fund-detail .right .num {
+    font-size: 14px!important;
+  }
+  #fund-detail .detail-single {
+    margin-top: 0px;
+  }
+  #fund-detail .detail-single .tab-box .tab-cont .list tr td {
+    font-size: 12px;
+    padding: 10px;
+  }
+  #fund-detail .detail-single .tab-box > ul li {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 320px) {
+  #fund-detail {
+    padding: 10px 10px;
+  }
+  #fund-detail .bpp-data {
+    padding: 19px 10px;
+  }
+  #fund-detail .bpp-data .name {
+    font-size: 18px;
+  }
+  #fund-detail .bpp-data .name .val {
+    font-size: 16px;
+    margin-left: 0px;
+    display: inline-block;
+  }
+  #fund-detail .bpp-data .name .status {
+    font-size: 14px;
+    line-height: 24px;
+  }
+  #fund-detail .bpp-data .list li {
+    font-size: 12px;
+    max-width: 33%;
+    float: left;
+    line-height: 22px;
+  }
+  #fund-detail .detail-nav {
+    margin-left: 15px;
+  }
+  #fund-detail .detail-container .bpp-chart,
+  #fund-detail .detail-container .funds-operation {
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 0 10px;
+  }
+  #fund-detail .detail-container .bpp-chart .left,
+  #fund-detail .detail-container .funds-operation .left,
+  #fund-detail .detail-container .bpp-chart .right,
+  #fund-detail .detail-container .funds-operation .right,
+  #fund-detail .detail-container .bpp-chart .bottom,
+  #fund-detail .detail-container .funds-operation .bottom {
+    padding: 16px 12px;
+  }
+  #fund-detail .detail-container .bpp-chart .bottom,
+  #fund-detail .detail-container .funds-operation .bottom {
+    padding: 16px 12px 0px;
+  }
+  #fund-detail .detail-container .bpp-chart .bottom .info li + li,
+  #fund-detail .detail-container .funds-operation .bottom .info li + li,
+  #fund-detail .detail-container .bpp-chart .bottom .info li:first-child,
+  #fund-detail .detail-container .funds-operation .bottom .info li:first-child {
+    margin-bottom: 16px;
+    margin-right: 16px;
+  }
+  #fund-detail .detail-container .bpp-chart .upcoming-events .text-content,
+  #fund-detail .detail-container .funds-operation .upcoming-events .text-content {
+    padding: 0 8px;
+    font-size: 12px;
+  }
+  #fund-detail .detail-container .bpp-chart .upcoming-events img,
+  #fund-detail .detail-container .funds-operation .upcoming-events img {
+    margin-right: 8px;
+  }
+  #fund-detail .btn-active,
+  #fund-detail .btn-not-active {
+    width: 100%;
+    margin: 15px 0;
+  }
+  #fund-detail .cont .amount-box {
+    width: 100%;
+  }
+  #fund-detail .left .num,
+  #fund-detail .right .num {
+    font-size: 14px!important;
+  }
+  #fund-detail .detail-single {
+    margin-top: 0px;
+  }
+  #fund-detail .detail-single .tab-box .tab-cont .list tr td {
+    font-size: 12px;
+    padding: 10px;
+  }
+  #fund-detail .detail-single .tab-box > ul li {
+    font-size: 12px;
+  }
+}

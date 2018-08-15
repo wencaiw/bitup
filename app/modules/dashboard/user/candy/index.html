@@ -1,0 +1,54 @@
+
+<div class="content-panel" style="color: #4F6475;">
+    <h3 class="title">{{'100180' | translate}}</h3>
+    <p class="fz-14 p_title">{{130121 | translate}}</p>
+    <ul class="login_ul">
+        <li ng-bind-html="130122 | translate | htmlTag"></li>
+        <li ng-bind-html="130123 | translate | htmlTag"></li>
+        <li ng-bind-html="130124 | translate | htmlTag"></li>
+        <li ng-bind-html="130125 | translate | htmlTag"></li>
+    </ul>
+
+    <p class="fz-14 p_title">{{130130 | translate}}</p>
+    <div style="width: 100%; overflow: auto;">
+        <table class="login_table">
+            <thead>
+            <tr>
+                <td>{{130126 | translate}}</td>
+                <td>{{130127 | translate}}</td>
+                <td>{{130128 | translate}}</td>
+                <td>{{130129 | translate}}</td>
+            </tr>
+            </thead>
+            <tr class="ng-scope">
+                <td>{{info.candyInfo.registration_reward || 0}}</td>
+                <td>{{info.candyInfo.total_child_count || 0}}</td>
+                <td>{{info.candyInfo.valid_child_count || 0}}</td>
+                <td>{{info.candyInfo.reward || 0}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <!--邀请朋友-->
+    <div class="candy-data-main" ng-if="g.info.mobile_verified">
+        <p class="fz-14 p_title">{{'100191' | translate}}</p>
+        <p class="fz-12" style="margin: 8px 0;" >{{'100192' | translate}}</p>
+        <p class="tips-box" ng-bind-html="100213 | translate:info.candyInfo | htmlTag"></p>
+        <button class="common-btn ok copy-btn" ng-copyable copy-text="('100213' | translate:info.candyInfo)" ng-click="info.copySuccess()" ng-disabled="true">{{'100402' | translate}}</button>
+    </div>
+</div>
+<div class="bpopup-wrap" ng-show="info.ethAddress">
+    <div class="bpopup-main">
+        <h3 class="title">{{true ? ('100199' | translate) : ('100200' | translate)}}<i class="common-icon icon-close" ng-click="info.closeEthAddress()"></i></h3>
+        <div class="bpopup-content">
+            <p>{{'100195' | translate}}</p>
+            <p>{{'100196' | translate}}</p>
+            <div class="form-group">
+                <p><label>{{'100197' | translate}}</label></p>
+                <input type="text" class="input-text" placeholder="{{'100198' | translate}}" ng-model="info.eth_address" ng-keyup="info.clearError()">
+                <p class="color-red" style="margin-top: 8px;" ng-bind="info.errorText"></p>
+            </div>
+        </div>
+        <buttton class="common-btn ok" ng-if="!info.candyInfo.coin_address" ng-click="info.ethSub()"><span ng-hide="info.loading">{{'100187' | translate}}</span><i class="common-icon icon-loading middle" ng-show="info.loading"></i></buttton>
+    </div>
+</div>

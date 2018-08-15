@@ -1,0 +1,60 @@
+<div class="header">
+        <div class="fast-enter" style="text-align: right;">
+            <div class="common-container clearfix">
+                <div class="fl" ng-if="!g.isLogin">
+                    <a go="/login/"><span class="color-base">[{{'100001' | translate}}]</span></a>&emsp;&emsp;&emsp;
+                    <a go="/register/"><span class="color-base">[{{'100002' | translate}}]</span></a>
+                </div>
+                <div class="fl" ng-if="g.isLogin">
+                    {{'100023' | translate}}, <a ui-sref="dashboard.user.candy" class="color-base" ng-bind="g.info.account"></a>&emsp;&emsp;
+                    <a id="logout" href="javascript:;" ng-click="g.logout()"><span class="color-base">[{{'100024' | translate}}]</span></a>
+                </div>
+                <ul class="dib">
+                    <!-- <li><i class="common-icon icon-home"></i><a href="/">{{'100016' | translate}}</a></li> -->
+                    <!--<li class="coming-soon" text="{{'100214' | translate}}"><i class="common-icon icon-guide"></i><a href="javascript:;" target="_blank">{{'100017' | translate}}</a></li>-->
+                    <li><i class="common-icon icon-faq"></i><a href="https://bitup.zendesk.com/hc/zh-cn" target="_blank">{{'100018' | translate}}</a></li>
+                    <li id="lang"><a style="cursor: pointer;" ng-click="g.switching()">{{'100019' | translate}}</a><i class="common-icon icon-arrow-right"></i></li>
+                    <li class="coming-soon" text="{{'100214' | translate}}"><i class="common-icon icon-phone"></i><a href="javascript:;" class="download_link">{{'100020' | translate}}</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="logo-container common-container clearfix">
+            <a go="/" class="logo-coral">
+                <img style="height: 40px;" src="/common/images/logo-g.png?v=2">
+            </a>
+            <div class="home-menu-wrap" ng-show="g.mobileNav"></div>
+            <div class="home-menu" ng-show="mobileW<640 ? g.mobileNav : true" mobile-w="mobileW" resize>
+                <a class="switchLang" style="cursor: pointer;" ng-click="g.switching(); g.mobileNav = false;">{{'100019' | translate}}<i class="common-icon icon-arrow-right"></i></a>
+                <a go="/">{{'100016' | translate}}</a>
+                <a ui-sref="funds.index" ng-click="g.mobileNav = false;" ng-class="{'current' : g.currPage=='funds'}">{{'100399' | translate}}</a>
+                <!--<a href="javascript:void();" ng-click="g.stateGo('index', {type: 'bp10'});" ng-class="{'current' : g.currPage=='bp'}">{{'100401' | translate}}</a>-->
+                <a ng-href="index/bp10" ng-click="g.mobileNav = false;" ng-class="{'current' : g.currPage=='bp'}">{{'100401' | translate}}</a>
+                <!--<a ng-click="g.goState('/88btc')" ng-class="{'current' : g.currPage=='88btc'}">{{'100249' | translate}}</a>-->
+                <!--<a href="javascript:;" ng-class="{'current' : g.currPage=='tradeCenter'}" class="coming-soon" text="{{'100214' | translate}}">{{'100010' | translate}}</a>&lt;!&ndash; #/trade/detail &ndash;&gt;-->
+                <!--<a href="javascript:;" ng-class="{'current' : g.currPage=='tradeRecord'}" class="coming-soon" text="{{'100214' | translate}}">{{'100011' | translate}}</a>&lt;!&ndash; #/trade/record &ndash;&gt;-->
+                <!--<a href="javascript:;" ng-class="{'current' : g.currPage=='analysis'}" class="coming-soon" text="{{'100214' | translate}}">{{'100012' | translate}}</a>&lt;!&ndash; #/analysis &ndash;&gt;-->
+                <a ng-if="g.isLogin" class="mobile" ng-click="g.stateGo('dashboard.assets');" ng-class="{'current' : g.currPage=='assets'}" text="{{'100214' | translate}}">{{'100013' | translate}}</a><!-- #/assets -->
+                <a ng-if="g.isLogin" class="mobile" ng-click="g.stateGo('dashboard.finance.index');" ng-class="{'current' : g.currPage=='finance'}" text="{{'100214' | translate}}">{{'100014' | translate}}</a><!-- #/finance/index -->
+                <a ng-if="g.isLogin" class="mobile" ng-click="g.stateGo('dashboard.user.candy');" ng-class="{'current' : g.currPage=='user'}">{{'100015' | translate}}</a>
+                <a ng-if="!g.isLogin" go="/login" class="mobile">{{'100001' | translate}}</a>
+                <a ng-if="!g.isLogin" go="/register" class="mobile">{{'100002' | translate}}</a>
+                <a ng-if="g.isLogin" id="logout2" href="javascript:;" ng-click="g.logout()"><span>[{{'100024' | translate}}]</span></a>
+                <a ng-if="!g.isLogin" go="/login/" class="my-account islogin-mobile"><span>{{'100001' | translate}}/{{'100002' | translate}}</span></a>
+                <!--登录后-->
+                <a ng-if="g.isLogin" class="my-account islogin-mobile islogin">
+                    <i class="common-icon icon-account"></i><span>{{g.account}}</span>
+                    <object class="nav-top-list">
+                        <ul>
+                            <li><a ui-sref="dashboard.assets">{{'100013' | translate}}</a></li>
+                            <li><a ui-sref="dashboard.user.candy">{{'100180' | translate}}</a></li>
+                            <li><a ui-sref="dashboard.user.auth">{{'100168' | translate}}</a></li>
+                            <li><a ui-sref="dashboard.user.pwd">{{'100170' | translate}}</a></li>
+                            <li><a ui-sref="dashboard.user.2fa">{{'100171' | translate}}</a></li>
+                            <li><a href="javascript:;" ng-click="g.logout()">{{'100024' | translate}}</a></li>
+                        </ul>
+                    </object>
+                </a>
+            </div>
+            <button class="menu-icon" ng-click="g.mobileNav = (!!g.mobileNav ? false : true);"><i></i><i></i><i></i></button>
+        </div>
+    </div>

@@ -1,0 +1,61 @@
+*{
+    margin:0;
+    padding:0;
+    border:none;
+    outline:none;
+    box-sizing: border-box;
+
+}
+html,body{ width:100%; height:100%;}
+body{ max-width: 1024px;  margin:auto;  display: block;}
+ul{ list-style:none;}
+img{ vertical-align: middle; font-size: 0;}
+
+/*常用样式*/
+.dian{overflow:hidden; text-overflow:ellipsis;white-space:nowrap;}
+.zhizhen{ cursor:pointer;}
+.jinyong{ cursor:no-drop!important;}
+.li-height-no{ line-height: normal}
+.none{ display: none;}
+
+/*文字*/
+.fb{ font-weight: bold;}
+.rem1-2{ font-size: 1.2rem!important;}
+.rem1-4{ font-size: 1.4rem!important;}
+.rem1-5{ font-size: 1.5rem!important;}
+.rem1-6{ font-size: 1.6rem!important;}
+.rem1-8{ font-size: 1.8rem!important;}
+.rem2{ font-size: 2rem!important;}
+.rem2-2{ font-size: 2.2rem!important;}
+.rem2-4{ font-size: 2.4rem!important;}
+.rem2-6{ font-size: 2.6rem!important;}
+.rem2-8{ font-size: 2.8rem!important;}
+.rem3{ font-size: 3rem!important;}
+.rem4{ font-size: 4rem!important;}
+.rem5{ font-size: 5rem!important;}
+
+/*文字颜色*/
+.hei{ color:#000!important;}
+.bai{ color:#FFF!important;}
+.hong{ color: #ec4545!important;}
+
+
+/*背景色*/
+.bj_bai{ background:#FFF;}
+.bj_hui{ background:#F8F8F8;}
+
+/*文本*/
+.text-left {  text-align: left;  }
+.text-right {  text-align: right;  }
+.text-center {  text-align: center!important;}
+
+/***<浮动>***/
+.f-left{ float:left!important;}
+.f-right{ float:right!important;}
+.reset:after{
+    content: '';
+    width: 0;
+    height:0;
+    clear: both;
+    display: block;
+}

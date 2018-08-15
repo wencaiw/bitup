@@ -1,0 +1,208 @@
+<div id="fund-detail">
+    <!-- 面包屑 -->
+    <div class="detail-nav">
+        <a ui-sref="funds.index" title="{{'100399'| translate}}" rel="nofollow">{{'100399'| translate}}</a>
+        <span class="tip">/</span>
+        <a ui-sref="funds.list.bbb({type: info.proType})" ng-init="fundListName = (info.proType == 'fixed' ? '120384' : '130149')" title="{{fundListName | translate}}" rel="nofollow">{{fundListName | translate}}</a>
+        <span class="tip">/</span>
+        <span title="{{info.dataList[0].dac_info_tl[g.currLang=='cn' ? 'zh-cn' : 'en-us'].name}}">{{info.dataList[0].dac_info_tl[g.currLang=='cn' ? 'zh-cn' : 'en-us'].name}}</span>
+    </div>
+    <!-- 锁仓计划 -->
+    <div class="detail-container">
+        <div class="title">
+            <i class="{{info.dataList[0].base_currency}}"></i>{{info.dataList[0].dac_info_tl[g.currLang=='cn' ? 'zh-cn' : 'en-us'].name}}
+            <p>
+                {{info.time[0].times ? (info.time[0].times | d_hms) : (info.time[0].inner | translate)}}
+                <span>
+                    {{info.time[0].inner == '130110' ? (('130033' | translate) + (info.dataList[0].start_time | date:'yyyy.MM.dd') + ' ~ ' + (info.dataList[0].end_time | date:'yyyy.MM.dd') + (g.currLang=='cn' ? '(GMT+8)' : '')) : (info.time[0].times ? (info.time[0].inner | translate) : '')}}
+                </span>
+        </p>
+        </div>
+        <div ng-if="info.proType == 'fixed'" class="left">
+            <ul>
+                <li>
+                    <p class="l1">{{!!info.dataList[0].fixed_rate ? ((info.dataList[0].fixed_rate * 100) | number:2) : ''}}%</p>
+                    <p>{{'130008' | translate}}</p>
+                </li>
+                <li>
+                    <p>{{info.dataList[0].lock_days}}<i>{{'130045' | translate}}</i></p>
+                    <p>{{'130009' | translate}}</p>
+                </li>
+                <li>
+                    <p>{{info.dataList[0].dac_trade_limit.capacity | coinNum:info.dataList[0].base_currency}}<i>{{info.dataList[0].base_currency | uppercase}}</i></p>
+                    <p>{{'130010' | translate}}</p>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <p class="l1"><i>{{'130037' | translate}}</i>{{info.dataList[0].dac_trade_limit.but_balance_limit}}<i>BUT</i></p>
+                    <p>{{'130014' | translate}}</p>
+                </li>
+            </ul>
+
+            <span class="progress-bar-span" ng-style="{'width':(info.dataList[0].dac_sold_amount/info.dataList[0].dac_trade_limit.capacity*100) +'%'}">{{(info.dataList[0].dac_sold_amount/info.dataList[0].dac_trade_limit.capacity*100) | number:2}}%</span>
+            <div class="progress-bar">
+                <div ng-style="{'width':(info.dataList[0].dac_sold_amount/info.dataList[0].dac_trade_limit.capacity*100) +'%'}"></div>
+            </div>
+
+            <div class="row">
+                <p>{{'100302' | translate}} <i>{{info.dataList[0].dac_sold_amount | coinNum: info.dataList[0].base_currency}}{{info.dataList[0].base_currency | uppercase}}</i></p>
+                <p>{{'100310' | translate}} <i>{{(info.dataList[0].dac_trade_limit.capacity - info.dataList[0].dac_sold_amount) | coinNum: info.dataList[0].base_currency}}{{info.dataList[0].base_currency | uppercase}}</i></p>
+                <p>{{'130015' | translate}} <i>{{info.dataList[0].dac_buyer_number}}</i></p>
+            </div>
+
+        </div>
+        <div ng-if="info.proType == 'fixed'" class="right">
+            <!--已登录呈现-->
+            <div class="box" ng-if="info.islogin">
+                <div><!--预计收益-->
+                    <p>{{info.userFunds.user_total_profit | coinNum: info.dataList[0].base_currency}} {{info.dataList[0].base_currency | uppercase}}</p>
+                    <p>{{'120389' | translate}}</p>
+                </div>
+                <div><!--已抢购-->
+                    <p>{{info.userFunds.user_buy_amount | coinNum: info.dataList[0].base_currency}} {{info.dataList[0].base_currency | uppercase}}</p>
+                    <p>{{'130023' | translate}}</p>
+                </div>
+                <div>
+                    <p>{{'130025' | translate}}：<i>{{info.userFunds.balances[info.dataList[0].base_currency].free | coinNum: info.dataList[0].base_currency}} {{info.dataList[0].base_currency | uppercase}}</i> <a class="recharge" ui-sref="dashboard.assets">{{'130026' | translate}}</a></p>
+                </div>
+            </div>
+            <!--未登录呈现-->
+            <div ng-if="!info.islogin" class="box nothing" compile="130036 | translate"></div>
+            <!--抢购表单-->
+            <div class="dk-form">
+                <p class="head">{{g.currLang=='cn' ? (('130027' | translate) + (info.dataList[0].base_currency | uppercase) + ('100071' | translate)) : ((info.dataList[0].base_currency | uppercase) + ('130027' | translate))}}</p>
+                <input type="text" class="input-text" ng-model="info.amount" placeholder="{{info.dataList[0].dac_trade_limit.min_buy_amount + ' ~ ' + (info.dataList[0].dac_trade_limit.max_buy_amount==0 ? ('120115' | translate) : info.dataList[0].dac_trade_limit.max_buy_amount)}}" />
+                <span class="pr-domain">{{info.dataList[0].base_currency | uppercase}}</span>
+                <button class="{{info.islogin ? info.time[0].class_ : 'coming'}}" ng-disabled="info.time[0].class_=='coming' || (info.islogin && info.userFunds.tier_level < 1)" type="button" id="login-sub" ng-click="info.buy()">
+                    <span ng-if="!info.islogin">{{'130034' | translate}}</span>
+                    <span ng-if="info.islogin">
+                        {{info.time[0].times ? ('130034' | translate) : (info.time[0].inner | translate)}}
+                    </span>
+                    <i class="common-icon icon-loading middle" ng-show="info.loading"></i>
+                </button>
+                <p ng-if="info.userFunds.tier_level < 1" class="tips" ng-bind-html="('130044' | translate) | htmlTag"></p>
+            </div>
+        </div>
+        <div ng-if="info.proType == 'flexible'" class="left">
+            <ul class="flexible-info">
+                <li>
+                    <p class="l1">{{!!info.dataList[0].fixed_rate ? ((info.dataList[0].fixed_rate * 100) | number:2) + '%' : '--'}}</p>
+                    <p>{{'130008' | translate}}</p>
+                </li>
+                <li>
+                    <p ng-if="info.dataList[0].lock_days != null">{{info.dataList[0].lock_days}} <i>{{'130045' | translate}}</i></p>
+                    <p ng-if="info.dataList[0].lock_days == null"> -- </p>
+                    <p>{{'130009' | translate}}</p>
+                </li>
+                <li>
+                    <p>{{info.dataList[0].fixed_rate ? (info.dataList[0].fixed_rate / 365 * 10000).toFixed(5) : '--'}} <i>{{info.dataList[0].base_currency | uppercase}}</i></p>
+                    <p ng-bind-html="120113 | translate | htmlTag"></p>
+                </li>
+                <li>
+                    <p ng-if="info.dataList[0].dac_trade_limit.min_buy_amount">{{info.dataList[0].dac_trade_limit.min_buy_amount}} <i>{{info.dataList[0].base_currency | uppercase}}</i></p>
+                    <p ng-if="!info.dataList[0].dac_trade_limit.min_buy_amount">{{'120115' | translate}}</p>
+                    <p>{{'120101' | translate}}</p>
+                </li>
+                <li>
+                    <p>{{info.dataList[0].dac_trade_limit.buy_end_time ? (info.dataList[0].dac_trade_limit.buy_end_time | date:'yyyy.MM.dd')  : (120115 | translate)}}</p>
+                    <p>{{'120114' | translate}}</p>
+                </li>
+                <li>
+                    <p class="l1" ng-if="info.dataList[0].dac_trade_limit.but_balance_limit"><i>{{'130037' | translate}}</i>{{info.dataList[0].dac_trade_limit.but_balance_limit}}<i>{{info.dataList[0].base_currency | uppercase}}</i></p>
+                    <p ng-if="!info.dataList[0].dac_trade_limit.but_balance_limit">{{120115 | translate}}</p>
+                    <p>{{'130014' | translate}}</p>
+                </li>
+            </ul>
+        </div>
+        <div ng-if="info.proType == 'flexible'" class="right">
+            <!--已登录呈现-->
+            <div class="box" ng-if="info.islogin">
+                <div><!--预计收益-->
+                    <p>{{info.userFunds.user_possess_amount | coinNum: info.dataList[0].base_currency}} {{info.dataList[0].base_currency | uppercase}}</p>
+                    <p>{{'130150' | translate}}</p>
+                </div>
+                <div><!--已抢购-->
+                    <p>{{info.userFunds.user_total_profit | coinNum: info.dataList[0].base_currency}} {{info.dataList[0].base_currency | uppercase}}</p>
+                    <p>{{'130151' | translate}}</p>
+                </div>
+                <div>
+                    <p>{{'130025' | translate}}：<i>{{info.userFunds.balances[info.dataList[0].base_currency].free | coinNum: info.dataList[0].base_currency}} {{info.dataList[0].base_currency | uppercase}}</i> <a class="recharge" ui-sref="dashboard.assets">{{'130026' | translate}}</a></p>
+                </div>
+            </div>
+            <!--未登录呈现-->
+            <div ng-if="!info.islogin" class="box nothing" compile="130036 | translate"></div>
+            <!--抢购表单-->
+            <div class="dk-form conBox">
+                <div class="left">
+                    <input type="text" class="input-text" ng-model="info.amount" placeholder="{{(130155 | translate) + ' ' + (info.dataList[0].dac_trade_limit.min_buy_amount || ('120115' | translate))}}" />
+                    <span class="pr-domain">{{info.dataList[0].base_currency | uppercase}}</span>
+                    <p class="math_price">
+                        <em>{{130152 | translate}}：{{info.islogin ? (info.userFunds.balances[info.dataList[0].base_currency].free | coinNum: info.dataList[0].base_currency) : "--"}}</em>
+                        <span ng-click="info.dataInput('apply', info.userFunds.balances[info.dataList[0].base_currency].free)">{{120098 | translate}}</span>
+                    </p>
+                    <button type="button" ng-click="info.buy()" class="{{info.islogin ? info.time[0].class_ : ''}}" ng-disabled="info.islogin && (info.time[0].class_=='coming' || info.userFunds.tier_level < 1)" ng-class="{'coming': !info.islogin}">
+                        <span>{{120049 | translate}}</span>
+                        <i class="common-icon icon-loading middle" ng-show="info.loading"></i>
+                    </button>
+                </div>
+                <div class="right">
+                    <input type="text" class="input-text" ng-model="info.redeem" placeholder="{{130154 | translate}}" />
+                    <span class="pr-domain">{{info.dataList[0].base_currency | uppercase}}</span>
+                    <p class="math_price">
+                        <em>{{130153 | translate}}：{{info.islogin ? (info.userFunds.user_sellable_amount | coinNum: info.dataList[0].base_currency) : "--"}}</em>
+                        <span ng-click="info.dataInput('redeem', (info.userFunds.user_sellable_amount | coinNum: info.dataList[0].base_currency))">{{120098 | translate}}</span>
+                    </p>
+                    <button type="button" class="coming" ng-disabled="info.islogin && info.userFunds.user_sellable_amount <= 0" ng-click="info.redeemFun()">
+                        <span>{{120050 | translate}}</span>
+                    </button>
+                </div>
+            </div>
+            <p ng-if="info.userFunds.tier_level < 1" class="tips" ng-bind-html="('130044' | translate) | htmlTag"></p>
+        </div>
+        <div class="line"></div>
+    </div>
+    <!-- 说明&抢购记录 -->
+    <div class="detail-single">
+        <div class="tab-box">
+            <ul>
+                <li ng-class="{'active':info.tabActive==0}" ng-click="info.tabClick(0)">{{ '130031'| translate}}</li>
+                <li ng-if="info.islogin" ng-class="{'active':info.tabActive==1}" ng-click="info.tabClick(1)">{{ '130032'| translate}}</li>
+            </ul>
+            <div class="tab-cont">
+                <div class="tab-tit" ng-if="info.tabActive==1 && info.dkList.length>0">
+                    <p class="w-25">{{'130028' | translate}}</p>
+                    <p class="w-30">{{'130029' | translate}}</p>
+                    <p class="w-20">{{'100093' | translate}}</p>
+                    <p class="w-25">{{'130030' | translate}}</p>
+                </div>
+                <div class="nothing" ng-if="info.tabActive==1 && (!info.dkList || info.dkList.length==0)">
+                    <img src="/pages/common/images/finance-record.png" alt="">
+                    <span>暂无记录</span>
+                </div>
+
+                <ul class="list content" ng-if="info.tabActive==0">
+                    <li ng-repeat="(k, v) in info.dataList[0].descriptions[g.currLang=='cn' ? 'zh-cn' : 'en-us']" ng-if="info.proType!='flexible' || (info.proType=='flexible' && k != 'total_amount' && k != 'invest_per_buyer' && k !='qualification') ">
+                        <div class="w-25" ng-bind="v.name"></div>
+                        <div class="w-75" ng-bind-html="v.content | htmlTag"></div>
+                    </li>
+                </ul>
+
+                <ul class="list" ng-if="info.tabActive==1 && info.dkList.length>0">
+                    <li ng-repeat="(k,v) in info.dkList">
+                        <p class="w-25" ng-if="v.success_time">{{v.success_time | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+                        <p class="w-25" ng-if="!v.success_time">&nbsp;</p>
+                        <p class="w-30">{{v.trade_currency_amount | coinNum: v.trade_currency}} {{v.trade_currency | uppercase}}</p>
+                        <p class="w-20">{{(v.type == 0? '120049' : '120050') | translate}}</p>
+                        <p class="w-25 status" ng-class="{'gray': v.status == -1,'doing': v.status == 0}">
+                            {{v.status == 1 ? (130102 | translate) : (v.status == -1 ? (130100 | translate) : (130101  | translate))}} 
+                            <a ng-if="(info.dataList[0].dac_trade_limit.cancellable_interval + v.created_at) > fundInfo.nowDate && v.status != -1 && v.type == '0'"
+                                href="javascript:void(0);"
+                            ng-click="info.setCancel(v.id, $index)">{{130103 | translate}}</a>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

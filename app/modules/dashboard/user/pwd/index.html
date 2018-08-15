@@ -1,0 +1,49 @@
+
+<div class="content-panel">
+    <h3 class="title">{{'100170' | translate}}</h3>
+    <div ng-show="!info.success">
+        <p></p>
+        <div class="form-group">
+            <div class="form-box">
+                <label><span class="color-base fz-16">*</span>&nbsp;<span>{{'100173' | translate}}：</span></label>
+                <div class="form-control">
+                    <input type="password" class="input-text" placeholder="{{'100174' | translate}}" ng-model="info.oldPwd">
+                </div>
+            </div>
+            <div class="form-box">
+                <label><span class="color-base fz-16">*</span>&nbsp;<span>{{'100175' | translate}}：</span></label>
+                <div class="form-control">
+                    <input type="password" class="input-text" placeholder="{{'100176' | translate}}" ng-model="info.newPwd">
+                </div>
+            </div>
+            <div class="form-box">
+                <label><span class="color-base fz-16">*</span>&nbsp;<span>{{'100177' | translate}}：</span></label>
+                <div class="form-control">
+                    <input type="password" class="input-text" placeholder="{{'100178' | translate}}" ng-model="info.rePwd">
+                </div>
+            </div>
+            <div class="form-box btn-box">
+                <label></label>
+                <div class="form-control">
+                    <button type="button" class="common-btn ok" ng-click="info.subClick()"><span ng-hide="info.loading">{{'100179' | translate}}</span><i class="common-icon icon-loading middle" ng-show="info.loading"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="confirm-wrap" ng-show="false">
+    <div class="confirm-main">
+        <h3 class="title">{{'100170' | translate}}<i class="common-icon icon-close"></i></h3>
+        <div class="confirm-content">
+            <p>{{'100201' | translate}} <span class="color-base">3s</span></p>
+        </div>
+        <buttton class="common-btn ok">{{'100160' | translate}}</buttton>
+    </div>
+</div>
+
+
+<!--<input type="file" nv-file-select="" uploader="info.uploader" multiple />-->
+<!--<img style="width: 100px; height: 100px;" ng-src="{{info.testImg}}">-->
+
+
+

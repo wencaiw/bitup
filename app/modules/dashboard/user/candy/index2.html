@@ -1,0 +1,103 @@
+
+<div class="content-panel">
+    <h3 class="title">{{'100180' | translate}}</h3>
+    <p class="candy_tips" ng-if="g.currLang == 'cn'">完成手机认证，即可获得<span class="color-base">20个BUT</span>。然后分享您的链接给朋友，每成功邀请一个朋友完成BitUP注册且认证手机，即可获得<span class="color-base">10个BUT</span>。最多可获取<span class="color-base">500BUT</span>。发放标准为最低30BUT。<br /><span ng-if="!info.isBindingPhone">一个手机号只能绑定一个帐号。</span><br>严禁个人刷数据行为。最终解释权在BitUP。</p>
+    <!--<p style="padding-right: 50px;" ng-if="g.currLang == 'en'">-->
+        <!--You will get <span class="color-base">20 BUT</span> after completing mobile authentication. Sharing your unique inviting link to your friends, each successful invitation (register and auth mobile) earns you <span class="color-base">10 more BUT</span>. The upper limit of earning is <span class="color-base">500 BUT</span>. Once your earning is above 30 BUT, you can claim the candies.<br /><span ng-if="!info.isBindingPhone">One mobile can only bind one account.</span> <br>Please do not cheat during the event. Otherwise you won't receive the reward. BitUP has the ultimate power of interpretation.</p>-->
+    <div class="form-group" ng-if="!g.info.mobile_verified">
+        <div class="form-box">
+            <label><span class="color-base fz-16">*</span>&nbsp;<span>{{'100181' | translate}}：</span></label>
+            <div class="form-control">
+                <div class="select-box">
+                    <select class="input-text" ng-options="(item.n + '&nbsp;&nbsp;&nbsp;[+' +item.d + ']') for item in info.countryList" ng-model="info.country">
+                        <option value="">选择国籍</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-box">
+            <label><span class="color-base fz-16">*</span>&nbsp;<span>{{'100182' | translate}}：</span></label>
+            <div class="form-control">
+                <div class="mobile-box clearfix">
+                    <span class="fixed-text fl" ng-bind="'+' + info.country.d"></span>
+                    <input type="text" class="input-text fr" placeholder="{{'100183' | translate}}" ng-model="info.mobile">
+                </div>
+                <!--<p class="error-text">-->
+                    <!--<i class="warning-icon"></i>-->
+                    <!--<span>手机号格式不正确</span>-->
+                <!--</p>-->
+            </div>
+        </div>
+        <div class="form-box">
+            <label><span class="color-base fz-16">*</span>&nbsp;<span>{{'100184' | translate}}：</span></label>
+            <div class="form-control">
+                <div class="code-box">
+                    <input type="text" class="input-text" placeholder="{{'100185' | translate}}" ng-model="info.code">
+                    <span class="btn" ng-click="info.getCode()" ng-bind="g.countDownText || ('100186' | translate)"></span>
+                </div>
+            </div>
+        </div>
+        <div class="form-box btn-box">
+            <label></label>
+            <div class="form-control">
+                <button type="button" class="common-btn ok" ng-click="info.verifyCode()"><span ng-hide="info.loading">{{'100187' | translate}}</span><i class="common-icon icon-loading middle" ng-show="info.loading"></i></button>
+            </div>
+        </div>
+    </div>
+    <!--邀请朋友-->
+    <div class="candy-data-main" ng-if="g.info.mobile_verified">
+        <div class="data-con clearfix">
+            <div class="fl box">
+                <p>{{'100188' | translate}}</p>
+                <p class="num" ng-bind="info.candyInfo.valid_child_count"></p>
+            </div>
+            <div class="fr box">
+                <p>{{'100189' | translate}}</p>
+                <p class="num clearfix">
+                    <span class="fl" ng-bind="info.candyInfo.reward"></span>
+                    <a class="fr fz-14 color-blue link" ng-click="info.goEthAddress()">{{!info.candyInfo.coin_address ? ('100190' | translate) : ('100200' | translate)}}</a>
+                </p>
+            </div>
+        </div>
+        <p class="fz-18" ng-if="g.currLang == 'cn'">{{'100191' | translate}}</p>
+        <p style="margin: 8px 0;color:#4d4d4d;" ng-if="g.currLang == 'cn'">{{'100192' | translate}}</p>
+        <p class="tips-box" ng-if="g.currLang == 'cn'">
+            BitUP数字资产管理平台<br/>
+            即将推出数字货币基金<br/>
+            带您穿越熊牛，实现稳定投资回报<br/>
+            现在注册即送平台币BUT20枚，每邀请一人成功注册可再获10枚，共计30万枚。<br/>
+            <a href="https://www.bitup.com/register/?referral={{info.candyInfo.code}}" class="common-link color-blue" target="_blank">https://www.bitup.com/register/?referral={{info.candyInfo.code}}</a> 复制链接在浏览器打开注册<br/>
+            加入社群抢先参与基金产品优惠活动！<br/>
+            微信号：bitupofficial
+        </p>
+        <!--<p class="tips-box" ng-if="g.currLang == 'en'"></p>-->
+        <!--<p class="tips-box" ng-if="g.currLang == 'cn'">-->
+            <!--数字财富管理平台—BitUP，注册即送20枚BUT，共计300万枚BUT，送完即止。平台将在不久正式上线，支持购买和管理数字资产基金。<a href="http://www.bitup.com/register/?referral={{info.candyInfo.code}}" class="common-link color-blue" target="_blank">http://www.bitup.com/register/?referral={{info.candyInfo.code}}</a> 复制链接在浏览器打开。-->
+            <!--BitUP资产管理平台<br/>中文电报群: <a href="https://t.me/bitupcn" class="common-link color-blue" target="_blank">https://t.me/bitupcn</a><br/>带你进入数字资产投资3.0时代！<br/>ICO！再见！<br/>不论牛熊，都帮你实现高额收益！<br/>平台将在Q2正式上线，早鸟享优惠，现在注册即送平台币BUT20枚，共计300万枚BUT！送完即止。<br/><a href="https://www.bitup.com/register/?referral={{info.candyInfo.code}}" class="common-link color-blue" target="_blank">https://www.bitup.com/register/?referral={{info.candyInfo.code}}</a> 复制链接在浏览器打开。-->
+        <!--</p>-->
+        <!--<p class="tips-box" ng-if="g.currLang == 'en'">-->
+            <!--BitUP, your professional digital assests management platform. Register now, you'll get 20 BUT(BitUP token), There are 3,000,000BUT in the candy jar. The sooner, the better! BitUP platform is coming soon, where you can buy and manage your digital assests. <a href="http://www.bitup.com/register/?referral={{info.candyInfo.code}}" class="common-link color-blue" target="_blank">http://www.bitup.com/register/?referral={{info.candyInfo.code}}</a> Open this link in web browser to get your BUT candy!-->
+            <!--BitUP is an exciting new digital asset management platform. <br/>Telegram: <a href="https://t.me/bitupcn" class="common-link color-blue" target="_blank">https://t.me/bitupofficial</a><br/>Professionally managed funds take the guesswork out of cryptocurrency investment and minimize the risk. <br/>Sign up today and receive 20 BitUP Tokens (BUT) absolutely free! There are 3 million to give away and it’s first come, first served! Copy the link into your web browser to sign up and get your free tokens.<br/> <a href="https://www.bitup.com/register/?referral={{info.candyInfo.code}}" class="common-link color-blue" target="_blank">https://www.bitup.com/register/?referral={{info.candyInfo.code}}</a>-->
+        <!--</p>-->
+        <button ng-if="g.currLang == 'cn'" class="common-btn ok copy-btn" ng-copyable copy-text="('100213' | translate:info.candyInfo)" ng-click="info.copySuccess()">{{'100193' | translate}}</button>
+        <p class="clearfix">
+            <i class="common-icon icon-telegram fl"></i>
+            <a href="https://t.me/bitupofficial" target="_blank" class="color-blue fl" style="margin-left: 15px;line-height: 20px;margin-top: 2px;">{{'100194' | translate}}</a>
+        </p>
+    </div>
+</div>
+<div class="bpopup-wrap" ng-show="info.ethAddress">
+    <div class="bpopup-main">
+        <h3 class="title">{{true ? ('100199' | translate) : ('100200' | translate)}}<i class="common-icon icon-close" ng-click="info.closeEthAddress()"></i></h3>
+        <div class="bpopup-content">
+            <p>{{'100195' | translate}}</p>
+            <p>{{'100196' | translate}}</p>
+            <div class="form-group">
+                <p><label>{{'100197' | translate}}</label></p>
+                <input type="text" class="input-text" placeholder="{{'100198' | translate}}" ng-model="info.eth_address" ng-keyup="info.clearError()">
+                <p class="color-red" style="margin-top: 8px;" ng-bind="info.errorText"></p>
+            </div>
+        </div>
+        <buttton class="common-btn ok" ng-if="!info.candyInfo.coin_address" ng-click="info.ethSub()"><span ng-hide="info.loading">{{'100187' | translate}}</span><i class="common-icon icon-loading middle" ng-show="info.loading"></i></buttton>
+    </div>
+</div>

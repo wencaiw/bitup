@@ -1,0 +1,35 @@
+
+<div class="sub-page-main trade-record-main">
+    <ul class="tab-list long clearfix">
+        <li ng-repeat="(k,v) in info.tabList" ng-class="{'on' : info.currTab==k}" ng-click="info.switchTab(k)">{{v}}</li>
+    </ul>
+    <div class="table-con">
+        <table class="common-table long operate">
+            <tr>
+                <th style="width: 15%;">{{'100093' | translate}}</th>
+                <th style="width: 20%;">{{'100094' | translate}}</th>
+                <th style="width: 15%;">{{'100095' | translate}}</th>
+                <th style="width: 15%;">{{'100096' | translate}}</th>
+                <th style="width: 15%;">{{'100097' | translate}}</th>
+                <th style="width: 20%;">{{'100098' | translate}}</th>
+            </tr>
+            <tbody>
+            <tr ng-repeat="(k,v) in info.dataList" ng-click="info.goDetail(v)">
+                <td>{{v.type == 'buy' ? ('100101' | translate) : ('100102' | translate)}}</td>
+                <td>{{v.bpp}}</td>
+                <td>{{v.number | number:6}} BPP</td>
+                <td>$ {{v.fee}}</td>
+                <td>{{v.status ? ('100118' | translate) : ('100118' | translate)}}</td>
+                <td>{{v.tradeDate}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="page-wrap">
+        <span class="page start"></span>
+        <span class="page prev"></span>
+        <span class="page on">1</span>
+        <span class="page next"></span>
+        <span class="page end"></span>
+    </div>
+</div>

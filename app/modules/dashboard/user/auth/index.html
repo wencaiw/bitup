@@ -1,0 +1,330 @@
+<!--身份认证首页-->
+<div class="content-panel" ng-show="!userInfo.authLevel || userInfo.authLevel==0">
+    <h3 class="title">{{'100168' | translate}}</h3>
+    <p ng-if="info.currentLevel==0 && g.currLang=='cn'">您当前的认证等级是：<span class="color-base">0级</span>，<!--充值和提现的额度是：<span class="color-base">0.00美元</span>。-->完成1级身份认证后即可购买平台产品。</p>
+    <p ng-if="info.currentLevel==0 && g.currLang=='en'">Your verification status: <span class="color-base">Tier 0</span>, <!--you can deposit or withdraw  up to <span class="color-base">$0.00</span>--> After completing tier 1 verification, you can purchase platform products.</p>
+    <p ng-if="info.currentLevel==1 && g.currLang=='cn'">
+        您当前的认证等级是：<span class="color-base">1级</span>
+        <!-- ，充值和提现额度是<span class="color-base">1000.00美元</span>。 -->
+        <!-- 升级到 2级 可以增加充值和提现额度。 -->
+    </p>
+    <p ng-if="info.currentLevel==1 && g.currLang=='en'">
+        Your verification status: <span class="color-base">Tier 1</span>
+        <!-- , you can deposit or withdraw  up to <span class="color-base">$1000.00</span>. -->
+        <!-- 升级到 2级 可以增加充值和提现额度。 -->
+    </p>
+    <p ng-if="info.currentLevel==2 && g.currLang=='cn'">您当前的会员等级是：<span class="color-base">2级</span></p>
+    <p ng-if="info.currentLevel==2 && g.currLang=='en'">Your verification status: <span class="color-base">Tier 2</span></p>
+    <!--<ul class="level-list clearfix">-->
+        <!--<li class="level0 success">-->
+            <!--<i class="icon"></i>-->
+            <!--<p>认证0级<br />（邮箱已认证通过）</p>-->
+        <!--</li>-->
+        <!--<li class="level1" ng-class="{'un':!info.beingLevel,'being':info.beingLevel==1,'success':info.currentLevel > 0}">-->
+            <!--<i class="icon"></i>-->
+            <!--<p>认证1级<br />（<span ng-if="!info.beingLevel && info.currentLevel==0">验证基本信息和手机号</span><span ng-if="info.beingLevel==1">基本信息和手机号认证中...</span><span ng-if="info.currentLevel > 0">基本信息和手机号已认证通过</span>）</p>-->
+            <!--<button type="button" class="common-btn ok" ng-if="info.currentLevel==0" ng-disabled="info.beingLevel==1" ng-click="info.goAuth(1)">点击认证</button>-->
+        <!--</li>-->
+        <!--<li class="level2" ng-class="{'un':info.currentLevel < 2,'being':info.beingLevel==2,'success':info.currentLevel > 1}">-->
+            <!--<i class="icon"></i>-->
+            <!--<p>认证2级<br />（<span ng-if="info.currentLevel < 2">视频验证</span><span ng-if="info.currentLevel ==2">视频验证已认证通过</span>）</p>-->
+            <!--<button type="button" class="common-btn ok" ng-if="info.currentLevel==1" ng-click="info.goAuth(2)">点击认证</button>-->
+        <!--</li>-->
+    <!--</ul>-->
+    <ul class="level-list2 clearfix">
+        <li class="level0 success">
+            <h3 class="level-title"><span ng-if="g.currLang=='cn'">认证</span><span ng-if="g.currLang=='en'">Tier </span>0<span ng-if="g.currLang=='cn'">级</span></h3>
+            <p class="content">
+                <i class="icon"></i>
+                <span>{{'100260' | translate}}</span>
+                <span class="level-status">{{'100263' | translate}}</span>
+            </p>
+        </li>
+        <li class="level1" ng-class="{'un':!info.beingLevel,'being':info.beingLevel==1,'success':info.currentLevel > 0}">
+            <h3 class="level-title"><span ng-if="g.currLang=='cn'">认证</span><span ng-if="g.currLang=='en'">Tier </span>1<span ng-if="g.currLang=='cn'">级</span></h3>
+            <p class="content">
+                <i class="icon"></i>
+                <span>{{'100261' | translate}}</span>
+                <span ng-if="info.currentLevel > 0" class="level-status">{{'100263' | translate}}</span>
+                <span class="go-auth" ng-if="info.currentLevel == 0" ng-click="info.goAuth(1)">{{'100264' | translate}}</span>
+            </p>
+        </li>
+        <li class="level2" ng-class="{'un':info.currentLevel < 2,'being':info.beingLevel>0,'success':info.currentLevel == 2}">
+            <h3 class="level-title"><span ng-if="g.currLang=='cn'">认证</span><span ng-if="g.currLang=='en'">Tier </span>2<span ng-if="g.currLang=='cn'">级</span></h3>
+            <p class="content">
+                <i class="icon"></i>
+                <span>
+                    {{info.currentLevel==2 ? ('100374' | translate) : ((info.currentLevel <= 1 && (info.pending_status == 0 || info.pending_status == 1) ) ? ('100374' | translate) + ('130017' | translate) : ('100374' | translate) + ('130018' | translate) ) }}
+                </span>
+                <span class="level-status" ng-if="info.currentLevel ==2">{{'100263' | translate}}</span>
+                <span class="go-auth" ng-if="info.currentLevel == 0 && info.pending_status == 1" ng-class="{'disabled':info.currentLevel ==0}">{{'100264' | translate}}</span>
+                <span class="go-auth" ng-if="info.currentLevel == 1 && info.pending_status == 1" ng-class="{'disabled':info.currentLevel ==0}" ng-click="info.goAuth(3)">{{'100264' | translate}}</span>
+                <span class="wait" ng-if="info.currentLevel == 1 && info.pending_status == 0" >{{'130016' | translate}}</span>
+                <span class="go-auth" ng-if="info.currentLevel == 1 && info.pending_status == 2" ng-click="info.goAuth(3)">{{'130019' | translate}}</span>
+            </p>
+        </li>
+    </ul>
+</div>
+<!--身份认证 / 认证1/2级-->
+<div class="content-panel" ng-show="userInfo.authLevel==1 || userInfo.authLevel==2 || userInfo.authLevel==3" data-fs="{{userInfo.authLevel}}">
+    <div ng-if="userInfo.authLevel==1">
+        <h3 class="title">{{'100168' | translate}} / {{'100274' | translate}}</h3>
+        <p ng-hide="info.step==3">{{'100267' | translate}}</p>
+    </div>
+    <div ng-if="userInfo.authLevel==2">
+        <h3 class="title">{{'100168' | translate}} / {{'100275' | translate}}</h3>
+        <p ng-hide="info.step==2">请检查您在升级到<span class="color-base">1级</span>时填写的信息，务必确保您的个人信息与下一步做视频身份认证的信息是一致的。如需修改，请直接修改。</p>
+    </div>
+    <div ng-if="userInfo.authLevel==3">
+            <h3 class="title">{{'100168' | translate}} / {{'100383' | translate}}</h3>
+            <p ng-hide="info.step==3">{{'100384' | translate}}</p>
+        </div>
+    <!--信息填写-->
+    <div class="form-group" ng-show="(userInfo.authLevel==1 && info.step==1) || (userInfo.authLevel==2 && info.step==1) || userInfo.authLevel==3">
+        <div class="form-box">
+            <label class="base-tip"><span>{{'100265' | translate}}：</span></label>
+            <div class="form-control">
+                <div class="select-box">
+                    <select class="input-text" ng-options="(item.n + '&nbsp;&nbsp;&nbsp;[+' +item.d + ']') for item in info.countryList" ng-model="info.country" ng-disabled="info.mobile_verified==1">
+                        <option value="">{{'100265' | translate}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-box">
+            <label class="base-tip"><span>{{'100271' | translate}}</span></label>
+            <div class="form-control {{g.currLang}}">
+                <input type="text" class="input-text w-left" placeholder="{{'100276' | translate}}" ng-model="info.params.first_name">
+                <span class="w-span">{{'100385' | translate}}</span>
+                <input type="text" class="input-text w-left" placeholder="{{'100386' | translate}}" ng-model="info.params.last_name">
+            </div>
+        </div>
+        <div class="form-box">
+            <label class="base-tip"><span>{{'100268' | translate}}</span></label>
+            <div class="form-control">
+                <input type="text" class="input-text" placeholder="{{'100277' | translate}}" ng-model="info.params.birth_address">
+            </div>
+        </div>
+        <div class="form-box">
+            <label class="base-tip"><span>{{'100269' | translate}}</span></label>
+            <div class="form-control">
+                <div id="getDate">
+                    <!-- <input type="text" class="input-text"  placeholder="{{'100397' | translate}}" ng-change="info.dateChange('date', info.params.birth_date)" ng-model="info.params.birth_date">
+                    <tip error="info.date.error"></tip> -->
+                    <input type="text" class="input-text"  placeholder="{{'100397' | translate}}" ng-model="info.params.birth_date">
+                </div>
+            </div>
+        </div>
+        <div class="form-box mul">
+            <label class="base-tip" style="vertical-align: top;line-height: 40px;"><span>{{'100270' | translate}}</span></label>
+            <div class="form-control">
+                <div ng-if="info.country.n">
+                    <span class="fixed-text" style="display: block;width: 100%;margin-bottom: 8px;box-sizing: border-box;padding: 0 10px;text-align: left; position: inherit">{{info.country.n}}</span>
+                    <input type="text" class="input-text" placeholder="{{'100279' | translate}}" ng-model="info.params.city">
+                </div>
+                <input type="text" class="input-text" placeholder="{{'100280' | translate}}" ng-model="info.params.resident_address">
+                <input type="text" class="input-text" placeholder="{{'100281' | translate}}" ng-model="info.params.postal_code" style="margin-bottom: 0;">
+            </div>
+        </div>
+        <div class="form-box" ng-if="userInfo.authLevel!=3">
+            <label class="base-tip"><span>{{'100182' | translate}}：</span></label>
+            <div class="form-control">
+                <div class="mobile-box clearfix">
+                    <span class="fixed-text fl">＋{{info.country.d}}</span>
+                    <input style="position: initial;" type="text" class="input-text fr" placeholder="{{'100183' | translate}}" ng-model="info.params.mobile" ng-disabled="info.mobile_verified==1">
+                </div>
+                <p class="error-text" ng-show="info.numError">
+                    <i class="warning-icon"></i>
+                    <span>手机号格式不正确</span>
+                </p>
+            </div>
+        </div>
+        <div class="form-box" ng-if="userInfo.authLevel!=3">
+            <label class="base-tip"><span>{{'100184' | translate}}：</span></label>
+            <div class="form-control">
+                <div class="mobile-box mobile-code clearfix">
+                    <input type="text" class="input-text fl" placeholder="{{'100185' | translate}}" ng-model="info.params.sms_code">
+                    <button type="button" class="common-btn code-btn fr" 
+                    ng-disabled="!info.params.first_name || !info.params.last_name || !info.params.birth_address || !info.params.birth_date || !info.params.city || !info.params.resident_address || !info.params.postal_code || !info.params.mobile"
+                    ng-click="info.getCode()" ng-bind="g.countDownText || ('100186' | translate)">{{'100186' | translate}}</button>
+                </div>
+            </div>
+        </div>
+        <div class="form-box btn-box">
+            <label></label>
+            <div class="form-control">
+                <p class="mul-btn-box clearfix">
+                    <button style="margin-right: 30px;" ng-if="userInfo.authLevel==3" type="button" class="common-btn ok" 
+                    ng-click="info.saveAuth()" 
+                    ng-disabled="!info.params.first_name || !info.params.last_name || !info.params.birth_address || !info.params.birth_date || !info.params.city || !info.params.resident_address">
+                        <span ng-hide="info.loading">{{'100266' | translate}}</span>
+                        <i class="common-icon icon-loading middle" ng-show="info.loading"></i>
+                    </button>
+                    <button type="button" class="common-btn" style="margin-right: 30px;" ng-click="info.goPrev(0)">{{'100272' | translate}}</button>
+                    <button ng-if="userInfo.authLevel!=3" type="button" class="common-btn ok" ng-click="info.submitAuth()" ng-disabled="!info.params.first_name || !info.params.last_name || !info.params.birth_address || !info.params.birth_date || !info.params.city || !info.params.resident_address || !info.params.mobile || !info.params.sms_code">
+                        <span ng-hide="info.loading">{{'100187' | translate}}</span>
+                        <i class="common-icon icon-loading middle" ng-show="info.loading"></i>
+                    </button>
+                </p>
+                <p class="color-orange auth-tips" ng-if="userInfo.authLevel!=3">{{'100273' | translate}}</p>
+            </div>
+        </div>
+    </div>
+    <!-- <div ng-if="userInfo.authLevel==1" ng-show="info.step==3">
+        <div class="rz-status">
+            <i class="icon-smile"></i><span>认证中...</span>
+        </div>
+        <p>资料提交成功，我们的工作人员会在1个工作日内审核并反馈结果，请注意查收邮件。</p>
+    </div> -->
+    <div ng-if="userInfo.authLevel==2" ng-show="info.step==2">
+        <p>
+            视频电话接线员现在可以验证您的身份了。
+        </p>
+        <p style="margin:20px 0 40px;">认证工具APP：<span class="color-base">IDnow</span> 您可从手机的应用商城下载该APP，请提前准备好<span class="color-base">护照或身份证</span>。</p>
+        <p>在进行身份验证的时候，您需要使用以下IDnow识别码：</p>
+        <p style="font-size: 20px;color: #D92A24;margin:16px 0 40px;">AJF-KJPDL </p>
+        <p>点击查看 <a href="#" class="common-link color-blue">我们支持那些护照和身份证</a></p>
+    </div>
+</div>
+
+<!--2级-->
+<div class="content-panel" ng-show="userInfo.authLevel==4">
+    <div>
+        <h3 class="title">{{'100168' | translate}} / {{'100383' | translate}}</h3>
+        <p>{{'100384' | translate}}</p>
+    </div>
+    <!--2级 信息填写-->
+    <div class="form-group">
+        <div class="form-box">
+            <label><span>{{'100265' | translate}}:</span></label>
+            <div ng-if="info.country.n" class="form-control">
+                <span class="fixed-text" style="display: block;width: 100%;margin-bottom: 8px;box-sizing: border-box;padding: 0 10px;text-align: left;">{{info.country.n}}</span>
+            </div>
+        </div>
+        <div class="form-box twospan">
+            <label><span>{{'100271' | translate}}</span></label>
+            <div class="form-control {{g.currLang}}">
+                <span class="fixed-text w-left">{{info.params.first_name}}</span>
+                <span class="w-span">{{'100385' | translate}}</span>
+                <span class="fixed-text w-left">{{info.params.last_name}}</span>
+            </div>
+        </div>
+        <!--2级 外国国籍-->
+        <div ng-if="info.country.n!='China (中国)'">
+            <div class="form-box int">
+                <label class="base-tip"><span>{{'100392' | translate}}</span></label>
+                <div class="form-control">
+                    <input type="text" class="input-text" placeholder="{{'100394' | translate}}" ng-model="info.tierParams.passport_number">
+                </div>
+            </div>
+            <div class="form-box int">
+                <label class="base-tip"><span>{{'100393' | translate}}</span></label>
+                <div class="form-control w-100">
+                    <ul class="card-pic">
+                        <li class="card" ng-repeat="(k,v) in info.photoList track by $index" ng-if="k<2">
+                            <img src="{{v}}"/>
+                            <div>
+                                <i></i>
+                            </div>
+                            <input class="imgfile" type="file" accept="image/bmp,image/jpeg,image/jpg,image/png,image/svg" nv-file-select="" uploader="info.uploader" ng-click="info.changeNum(k)" multiple />
+                            <p><span>{{(k==0 ? '100395' : '100396') | translate}}</span></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form-box int">
+                <label class="base-tip"><span>{{130114 | translate}}：</span></label>
+                <div class="form-control w-100">
+                    <ul class="card-pic">
+                        <li class="card" ng-repeat="(k,v) in info.photoList track by $index" ng-if="k==2">
+                            <img src="{{v}}"/>
+                            <div>
+                                <i></i>
+                            </div>
+                            <input class="imgfile" type="file" accept="image/bmp,image/jpeg,image/jpg,image/png,image/svg" nv-file-select="" uploader="info.uploader" ng-click="info.changeNum(k)" multiple />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form-box">
+                <label class="base-tip"></label>
+                <div class="form-control w-100">
+                    <p ng-bind-html="100388 | translate | htmlTag" class="text-tip"></p>
+                </div>
+            </div>
+        </div>
+
+        <!--2级 中国国籍-->
+        <div ng-if="info.country.n=='China (中国)'">
+           <div class="form-box">
+                <label class="base-tip"><span>{{'100375' | translate}}</span></label>
+                <div class="form-control">
+                    <input type="text" class="input-text" placeholder="{{'100376' | translate}}" ng-model="info.tierParams.id_card_number">
+                </div>
+            </div>
+            <div class="form-box">
+                <label class="base-tip"><span>{{'100387' | translate}}</span></label>
+                <div class="form-control w-100">
+                    <ul class="card-pic">
+                        <li class="card" ng-repeat="(k,v) in info.photoListC track by $index">
+                            <img ng-src="{{v}}"/>
+                            <div>
+                                <i></i>
+                            </div>
+                            <input class="imgfile" type="file" accept="image/bmp,image/jpeg,image/jpg,image/png,image/svg" nv-file-select="" uploader="info.uploader" ng-click="info.changeNum(k)" multiple />
+                            <p><span>{{(k==0 ? '100389' : (k==1 ? '100390' : '100391')) | translate}}</span></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form-box">
+                <label class="base-tip"></label>
+                <div class="form-control w-100">
+                    <p ng-bind-html="100388 | translate | htmlTag" class="text-tip"></p>
+                </div>
+            </div>
+            <!--<div class="form-box">
+                <label><span class="color-base fz-16">*</span>&nbsp;<span>{{'100377' | translate}}</span></label>
+                <div class="form-control">
+                    <input type="text" class="input-text" placeholder="{{'100378' | translate}}" ng-model="info.tierParams.bank_number">
+                </div>
+            </div>
+            <div class="form-box">
+                <label><span class="color-base fz-16">*</span>&nbsp;<span>{{'100379' | translate}}</span></label>
+                <div class="form-control">
+                    <input type="text" class="input-text" placeholder="{{'100380' | translate}}" ng-model="info.tierParams.bank_name">
+                </div>
+            </div>
+            <div class="form-box">
+                <label><span class="color-base fz-16">*</span>&nbsp;<span>{{'100381' | translate}}</span></label>
+                <div class="form-control">
+                    <div class="mobile-box clearfix">
+                        <span class="fixed-text fl">＋{{info.country.d}}</span>
+                        <input type="text" class="input-text fr" placeholder="{{'100382' | translate}}" ng-model="info.tierParams.reserved_mobile">
+                    </div>
+                </div>
+            </div>-->
+            <div class="form-box">
+                <label class="base-tip"><span>{{'100184' | translate}}:</span></label>
+                <div class="form-control">
+                    <div class="mobile-box mobile-code clearfix">
+                        <input type="text" class="input-text fl" placeholder="{{'100185' | translate}}" ng-model="info.tierParams.sms_code">
+                        <button type="button" class="common-btn code-btn fr" ng-click="info.getCode(2)" ng-bind="g.countDownText || ('100186' | translate)">{{'100186' | translate}}</button>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <div class="form-box btn-box">
+            <label></label>
+            <div class="form-control">
+                <p class="mul-btn-box clearfix">
+                    <button type="button" class="common-btn ok" style="margin-right: 30px;" ng-click="info.saveTierInfo()" >
+                        <span ng-hide="info.loading">{{'100187' | translate}}</span>
+                        <i class="common-icon icon-loading middle" ng-show="info.loading"></i>
+                    </button>
+                    <button type="button" class="common-btn" ng-click="info.goPrev(3)">{{'100272' | translate}}</button>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

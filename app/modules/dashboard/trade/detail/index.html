@@ -1,0 +1,116 @@
+
+<div class="page-title trade-detail-section increase-section">
+    <h3>
+        <span>BitUP Prime (BPP)</span>&emsp;
+        <span class="up">0.00201100 BTC <i class="color-gray2 fz-14">≈ ¥10.8100</i><i class="common-icon icon-up"></i></span>
+        <!--<span class="up">${{g.userInfo.bppList.BPP.newUSD | number : 4}}<i class="common-icon icon-up"></i></span>-->
+    </h3>
+    <ul class="top-symbol-list">
+        <li><span>24{{'100033' | translate}}{{'100036' | translate}}</span><span class="sym-change {{g.userInfo.bppList.BPP.returnRate.day<0 ? 'down' : 'up'}}">{{(g.userInfo.bppList.BPP.returnRate.day<0 ? '' : '+') + (g.userInfo.bppList.BPP.returnRate.day*100 | number:2)}}%</span></li>
+        <li><span>1{{'100034' | translate}}{{'100036' | translate}}</span><span class="sym-change {{g.userInfo.bppList.BPP.returnRate.week<0 ? 'down' : 'up'}}">{{(g.userInfo.bppList.BPP.returnRate.week<0 ? '' : '+') + (g.userInfo.bppList.BPP.returnRate.week*100 | number:2)}}%</span></li>
+        <li><span>1{{'100035' | translate}}{{'100036' | translate}}</span><span class="sym-change {{g.userInfo.bppList.BPP.returnRate.month<0 ? 'down' : 'up'}}">{{(g.userInfo.bppList.BPP.returnRate.month<0 ? '' : '+') + (g.userInfo.bppList.BPP.returnRate.month*100 | number:2)}}%</span></li>
+        <li><span>3{{'100035' | translate}}{{'100036' | translate}}</span><span class="sym-change {{g.userInfo.bppList.BPP.returnRate.threeMonth<0 ? 'down' : 'up'}}">{{(g.userInfo.bppList.BPP.returnRate.threeMonth<0 ? '' : '+') + (g.userInfo.bppList.BPP.returnRate.threeMonth*100 | number:2)}}%</span></li>
+        <li><span>6{{'100035' | translate}}{{'100036' | translate}}</span><span class="sym-change {{g.userInfo.bppList.BPP.returnRate.sixMonth<0 ? 'down' : 'up'}}">{{(g.userInfo.bppList.BPP.returnRate.sixMonth<0 ? '' : '+') + (g.userInfo.bppList.BPP.returnRate.sixMonth*100 | number:2)}}%</span></li>
+    </ul>
+</div>
+<div class="clearfix">
+    <div class="trade-detail-section chart-panel-section fl">
+        <ul class="tab-list clearfix">
+            <li ng-class="{'on' : info.currTab==1}" ng-click="info.switchTab(1)">{{'100037' | translate}}</li>
+            <li ng-class="{'on' : info.currTab==7}" ng-click="info.switchTab(7)">{{'100038' | translate}}</li>
+            <li ng-class="{'on' : info.currTab==30}" ng-click="info.switchTab(30)">{{'100039' | translate}}</li>
+        </ul>
+        <div class="chart-con">
+            <highchart style="height: 200px;display: block;" config="info.line.chartConfig"></highchart>
+        </div>
+    </div>
+    <div class="trade-detail-section asset-section">
+        <ul class="tab-list clearfix">
+            <li class="on">{{'100040' | translate}}</li>
+        </ul>
+        <div class="asset-sum">
+            <p class="fz-20"><span style="color: #213B52;">{{g.userInfo.bppList['BPP'].num | number:6}} BPP</span><span class="color-gray2"> ({{'100047' | translate}} {{g.userInfo.bppList['BPP'].num*g.userInfo.bppList['BPP'].newUSD | currency:'$'}})</span></p>
+            <p class="fz-14 color-gray2">{{'100041' | translate}}</p>
+        </div>
+        <ul class="profit-list clearfix">
+            <li>
+                <p><span class="fz-16">{{(g.userInfo.bppList['BPP'].newUSD - g.userInfo.bppList['BPP'].oldUSD)*g.userInfo.bppList['BPP'].num | currency:'$'}}</span><br /><span class="{{(g.userInfo.bppList['BPP'].newUSD >= g.userInfo.bppList['BPP'].oldUSD) ? 'up' : 'down'}}">+94.29%</span></p>
+                <p class="flag">{{'100042' | translate}}</p>
+            </li>
+            <li>
+                <p><span class="fz-16">$0.00</span><br /><span class="up">＋0%</span></p>
+                <p class="flag">{{'100043' | translate}}</p>
+            </li>
+            <li>
+                <p><span class="fz-16">$766.37</span><br /><span class="up">+94.29%</span></p>
+                <p class="flag">{{'100044' | translate}}</p>
+            </li>
+        </ul>
+        <div class="btn-box" ng-show="true">
+            <button class="common-btn ok" type="button" ng-click="info.goState('buy')">{{'100045' | translate}}</button>
+            <button class="common-btn" type="button" ng-click="info.goState('sold')">{{'100046' | translate}}</button>
+        </div>
+        <div class="btn-box" ng-show="false">
+            <button class="common-btn full-btn" type="button">申购名额已满</button>
+        </div>
+    </div>
+</div>
+<div class="trade-detail-section statistic-section clearfix">
+    <div class="panel fl">
+        <h3>{{'100048' | translate}}</h3>
+        <table class="common-table">
+            <thead>
+                <tr>
+                    <th style="width: 10%">{{'100049' | translate}}</th>
+                    <th>{{'100050' | translate}}</th>
+                    <th style="width: 25%;">{{'100051' | translate}}</th>
+                    <th style="width: 33%;">{{'100052' | translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="(k,v) in g.bppList.BPP.member">
+                    <td>{{$index+1}}</td>
+                    <td>{{g.biList[k].name}}({{k}})</td>
+                    <td>{{v[0]*100 | number:2}}%</td>
+                    <td>{{v[1]*100 | number:2}}%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="panel fr">
+        <h3>{{'100219' | translate}}</h3>
+        <div class="content">
+            <ul class="fee-list clearfix">
+                <li>
+                    <p class="fz-16">封闭式基金</p>
+                    <p class="color-gray2">基金类型</p>
+                </li>
+                <li>
+                    <p class="fz-16">15</p>
+                    <p class="color-gray2">申购名额</p>
+                </li>
+                <li></li>
+                <li>
+                    <p class="fz-16">3%</p>
+                    <p class="color-gray2">{{'100058' | translate}}</p>
+                </li>
+                <li>
+                    <p class="fz-16">0%</p>
+                    <p class="color-gray2">{{'100060' | translate}}</p>
+                </li>
+                <li>
+                    <p class="fz-16">0.5%</p>
+                    <p class="color-gray2">{{'100061' | translate}}</p>
+                </li>
+            </ul>
+            <h4>{{'100220' | translate}}</h4>
+            <p>
+                {{'100063' | translate}}
+            </p>
+            <h4>{{'100221' | translate}}</h4>
+            <p>
+                {{'100111' | translate}}
+            </p>
+        </div>
+    </div>
+</div>
