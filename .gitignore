@@ -1,0 +1,13 @@
+www/
+bower_components/
+node_modules/
+hajay/
+.idea/
+.DS_Store
+npm-debug.log
+vendor/
+composer.lock
+.tags*
+.vscode
+test/
+www_change/
