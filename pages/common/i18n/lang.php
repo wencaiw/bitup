@@ -85,10 +85,10 @@ $lang = array(
         '100209' => 'BitUP Index',
 
         '100215' => "Notice for Investor",
-        '100249' => '88BTC Fund',
+        '100249' => 'Active Fund',
         '100357' => 'WeChat group:bitupofficial',
         '100358' => 'WeChat Official Account',
-        '100399' => 'Fund Market',
+        '100399' => 'Index Fund',
         '130049' => 'About BitUP',
         '130050' => 'White Paper',
         '130051' => 'Tools',
@@ -102,7 +102,8 @@ $lang = array(
         "130059" => "Identity verification",
         "130060" => "Change password",
         "130061" => "Two-factor authentication",
-        "130062" => "Sign Out"
+        "130062" => "Sign Out",
+        '130063' => 'Bulletin Center'
     ),
     'cn' => array(
         "100001" => "登录",
@@ -183,10 +184,10 @@ $lang = array(
         '100209' => '比普指数',
 
         '100215' => '投资者敬启',
-        '100249' => '88BTC基金',
+        '100249' => '主动基金',
         '100357' => '官方客服微信：bitupofficial（可以通过添加微信客服拉入群）',
         '100358' => '微信公众号',
-        '100399' => '基金超市',
+        '100399' => '指数基金',
         '130049' => '关于BitUP',
         '130050' => '白皮书',
         '130051' => '工具',
@@ -200,6 +201,7 @@ $lang = array(
         "130059" => "身份认证",
         "130060" => "修改密码",
         "130061" => "2FA认证",
-        "130062" => "安全退出"
+        "130062" => "安全退出",
+        '130063' => '平台公告'
     )
 );

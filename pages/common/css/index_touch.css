@@ -674,20 +674,23 @@ header .nav-top-list ul li:hover a{
     vertical-align: -3px;
 }
 .news .content a{
-    color: #03BCC0;
-    text-decoration: underline;
+    position: relative;
+    float: right;
+    text-decoration: none;
+    color: #09263F;
+    padding-right: 15px;
 }
-.news .content .close{
+.news .content a i{
     position: absolute;
+    top: 5px;
     right: 0px;
-    top: 50%;
-    margin-top: -8px;
-    width: 17px;
-    height: 17px;
+    width: 8px;
+    height: 16px;
     display: inline-block;
-    background: url(/common/images/icon-close-news.png) bottom no-repeat;
-    background-size: 100%;
+    background: url(/common/images/icon-more-news.png) no-repeat;
+    background-size: cover;
 }
+
 .module_top_bg{
     background: url("/common/images/index2/icon-ui.png") bottom no-repeat;
     background-size: 154px 14px;

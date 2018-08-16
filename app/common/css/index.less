@@ -173,6 +173,7 @@ a{
     }
 }
 .block{ display: block!important;}
+.mobile-show{ display: none;}
 .tab-box{
     background: #fff;
     padding: 24px 16px 24px;
@@ -197,12 +198,13 @@ a{
         color: #4F6475;
         border-bottom: 1px solid #E9E9E9;
         margin-bottom: 24px;
+        white-space:nowrap;
 
         li{
-            float: left;
             height:100%;
             margin-right: 32px;
             cursor: pointer;
+            display: inline-block;
 
             &.active{
                 height: 31px;

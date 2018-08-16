@@ -16,6 +16,7 @@
                         <li><a href="/about/"><?php echo $_Lang['130049']; ?></a></li>
                         <!--<li><a>{{'130050' | translate}}</a></li>-->
                         <li><a href="/about/but.php">BitUP Token(BUT)</a></li>
+                        <li><a href="https://bitup.zendesk.com/hc/zh-cn/categories/360000580011-%25E5%2585%25AC%25E5%2591%258A%25E4%25B8%25AD%25E5%25BF%2583" target="_blank"><?php echo $_Lang['130063']; ?></a></li>
                     </ul>
                 </li>
                 <!--<li>
@@ -29,8 +30,8 @@
                 <li>
                     <h4><?php echo $_Lang['130053']; ?></h4>
                     <ul>
-                        <li><a href="/funds/index"><?php echo $_Lang['100399']; ?></a></li>
-                        <li><a href="/88btc/"><?php echo $_Lang['100249']; ?></a></li>
+                        <li><a href="/funds/list/passive"><?php echo $_Lang['100399']; ?></a></li>
+                        <li><a href="/funds/list/active"><?php echo $_Lang['100249']; ?></a></li>
                         <!--<li><a>{{'130054' | translate}}</a></li>-->
                     </ul>
                 </li>

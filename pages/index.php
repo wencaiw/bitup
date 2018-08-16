@@ -109,8 +109,8 @@ $index = array(
         '1099' => '<p class="con2_en_p2" style="font-size: 42px;line-height:46px;padding: 8px 0 10px;">BITUP GIFTS THE FIRST 88BTC<br>FUND EARNINGS</p>',
         '1100' => 'View Details',
 //        '1101' => 'World\'s First Index Fund of Exchange Platform Tokens ',
-        '1101' => 'Grand launch of BUT token economy mechanism ',
-        '1102' => 'Learn more',
+        '1101' => '[Bulletin Center] Grand launch of BUT token economy mechanism ',
+        '1102' => 'more',
         '1103' => 'Index Fund',
         '1104' => 'Buy and sell freely, earn everyday',
         '1105' => 'WORLD\'S FIRST INDEX FUND OF<br/> EXCHANGE PLATFORM TOKENS',
@@ -222,8 +222,8 @@ $index = array(
         '1099' => '<p class="con2_cn_p2" style="font-size: 58px;"><span>BitUP豪送</span><br>88BTC基金收益</p>',
         '1100' => '查看详情',
 //        '1101' => 'BitUP发布BPP平台币基金，全球第一支布局平台币全赛道基金 ',
-        '1101' => 'BUT代币经济机制重磅发布 ',
-        '1102' => '点击查看',
+        '1101' => '【平台公告】BUT代币经济机制重磅发布 ',
+        '1102' => '更多',
         '1103' => '指数基金上线',
         '1104' => '买卖灵活   收益天天算',
         '1105' => '第一支平台币基金BPP首发',
@@ -371,7 +371,7 @@ $title = '数字资产管理平台 | Digital Asset Investment Platform';
     <div class="banner_index" id="banner_slide"><i class="on"></i><i></i><i></i></div>
 </div>
 <div class="news">
-    <div class="content"><i class="notice"></i><?php echo $_Index['1101']; ?><a href="https://bitup.zendesk.com/hc/zh-cn/articles/360012953112-BUT%E4%BB%A3%E5%B8%81%E7%BB%8F%E6%B5%8E%E6%9C%BA%E5%88%B6%E9%87%8D%E7%A3%85%E5%8F%91%E5%B8%83" target="_blank"><?php echo $_Index['1102']; ?></a><i class="close"></i></div>
+    <div class="content"><i class="notice"></i><?php echo $_Index['1101']; ?><a href="https://bitup.zendesk.com/hc/zh-cn/categories/360000580011-%25E5%2585%25AC%25E5%2591%258A%25E4%25B8%25AD%25E5%25BF%2583" target="_blank"><?php echo $_Index['1102']; ?><i></i></a></div>
 </div>
 <div class="pb_st c_container c_center">
     <div class="module_top_bg"><?php echo $_Index['1014']; ?></div>
@@ -576,10 +576,6 @@ $title = '数字资产管理平台 | Digital Asset Investment Platform';
 
                 }
             })
-        });
-        //关闭公告
-        $('.news .close').click(function(){
-            $('.news').hide();
         });
     });
 

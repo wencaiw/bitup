@@ -1,6 +1,6 @@
 <!--现有资产总计-->
 <div class="white-section page-title asset-title fz-16">
-    {{'100080' | translate}}
+    <p>{{'100080' | translate}}</p>
     <div class="asset-num">
         <span ng-if="g.currLang=='cn'"><i class="fz-16">≈</i> {{info.total * info.usdRatio['USDT'].cny_ratio | number:2}} CNY</span>
         <span ng-if="g.currLang!='cn'"><i class="fz-16">≈</i> {{info.total | number:4}} USDT</span>
@@ -10,7 +10,7 @@
 <!--我的数字货币-->
 <div class="tab-box">
     <p class="sub" ng-click="info.goFinance()">{{120381 | translate}}</p>
-    <ul class="tit reset">
+    <ul class="tit reset" style="overflow-x: visible">
         <li class="active">{{120380 | translate}}</li>
     </ul>
     <div class="tab_of">
@@ -109,7 +109,7 @@
                 <td width="7%"></td>
                 <td width="5%"></td>
             </tr>
-            <tr ng-if="info.fund!=''" ng-repeat="item in info.fund" ng-click="info.goPassiveFunds(item.dac_id, 'passive')" style="height: 70px; cursor: pointer;">
+            <tr ng-if="info.fund!=''" ng-repeat="item in info.fund" ng-click="info.goFunds(item.dac_id, 'passive')" style="height: 70px; cursor: pointer;">
                 <td>{{item.dac_tls[g.currLang=='cn' ? 'zh-cn' : 'en-us'].name | trim}}</td>
                 <td>{{item.dac_price_on_usdt | coinNum:'usdt'}} USDT</td>
                 <td>{{item.possess_amount}}</td>
@@ -118,8 +118,8 @@
                 <td>{{item.sellable_amount}}</td>
                 <!--<td class="lan" ng-click="info.exchangePassiveFunds(0);$event.stopPropagation();">{{120049 | translate}}</td>-->
                 <!--<td class="lan" ng-click="info.exchangePassiveFunds(1);$event.stopPropagation();">{{120050 | translate}}</td>-->
-                <td class="lan" ng-click="info.goPassiveFunds(item.dac_id, 0); $event.stopPropagation();">{{120049 | translate}}</td>
-                <td class="lan" ng-click="info.goPassiveFunds(item.dac_id, 1); $event.stopPropagation();">{{120050 | translate}}</td>
+                <td class="lan" ng-click="info.goFunds(item.dac_id, 'passive', 0); $event.stopPropagation();">{{120049 | translate}}</td>
+                <td class="lan" ng-click="info.goFunds(item.dac_id, 'passive', 1); $event.stopPropagation();">{{120050 | translate}}</td>
                 <td></td>
             </tr>
         </table>
@@ -134,13 +134,13 @@
                 <!--<td width="7%"></td>-->
                 <!--<td width="5%"></td>-->
             </tr>
-            <tr ng-if="info.fund!=''" ng-repeat="item in info.fund" ng-click="info.goPassiveFunds(item.dac_id, 'active')" style="height: 70px; cursor: pointer;">
+            <tr ng-if="info.fund!=''" ng-repeat="item in info.fund" ng-click="info.goFunds(item.dac_id, 'active')" style="height: 70px; cursor: pointer;">
                 <td>{{item.dac_tls[g.currLang=='cn' ? 'zh-cn' : 'en-us'].name | trim}}</td>
                 <td>{{item.dac_price_on_usdt | coinNum:'usdt'}} USDT</td>
                 <td>{{item.possess_amount}}</td>
                 <td ng-if="g.currLang=='en'">{{item.possess_amount * item.dac_price_on_usdt | coinNum:'usdt'}} USDT</td>
                 <td ng-if="g.currLang=='cn'">{{item.possess_amount * item.dac_price_on_usdt * info.usdRatio['USDT'].cny_ratio | number:2}} CNY</td>
-                <td>{{item.lock_days}}</td>
+                <td>{{item.lock_days}}{{100348 | translate}}</td>
                 <!--<td class="lan" ng-click="info.exchangePassiveFunds(0);$event.stopPropagation();">{{120049 | translate}}</td>-->
                 <!--<td class="lan" ng-click="info.exchangePassiveFunds(1);$event.stopPropagation();">{{120050 | translate}}</td>-->
                 <!--<td class="lan" ng-click="info.goPassiveFunds(item.dac_id, 0); $event.stopPropagation();">{{120049 | translate}}</td>-->

@@ -61,6 +61,13 @@ module.exports = {
                         }else{
                             $state.go('funds.info.detail', {type: fundType, dac_id: id});
                         }
+                    },
+                    goActiveFunds:function (id, type) {
+                        if(typeof(type) != 'undefined'){
+                            $state.go('funds.active.trade', {dac_id: id, tradeType: type});
+                        }else{
+                            $state.go('funds.active.detail', {dac_id: id});
+                        }
                     }
                 };
 

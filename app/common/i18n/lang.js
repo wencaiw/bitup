@@ -466,7 +466,7 @@ window.en = {
     '120097':'REWARD',
     '120098':'All',
     '120099':"Annual<br/>Percentage Rate",
-    '120100':'Lock-up<br/>Periods',
+    '120100':'Lock-up Periods',
     '120101':'Min Purchasing',
     '120102':'Current',
     '120103':'<b>BITUP GIFTS</b> THE FIRST 88BTC FUND EARNINGS',
@@ -661,6 +661,7 @@ window.en = {
     '130154':'Fill in the redemption share',
     '130155':'Min Investment',
     '130156':'Your redemption is successful.',
+    '130157':'Bulletin Center',
 
     // error
     '300000':'BUT balance is insufficient, after recharge, try again!',
@@ -1345,6 +1346,7 @@ window.cn = {
     '130154':'输入赎回数量',
     '130155':'起购金额',
     '130156':'赎回成功！',
+    '130157':'平台公告',
 
 
     '300000':'BUT余额不足,请充值后再试！',
