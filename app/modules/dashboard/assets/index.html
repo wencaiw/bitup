@@ -49,6 +49,7 @@
         <li ng-class="{'active':info.activeClass=='fixed1'}" ng-click="info.switch('fixed1')">{{120133 | translate}}</li>
         <li ng-class="{'active':info.activeClass=='fixed2'}" ng-click="info.switch('fixed2')">{{120134 | translate}}</li>
         <li ng-class="{'active':info.activeClass=='etf'}" ng-click="info.switch('etf')">{{120385 | translate}}</li>
+        <li ng-class="{'active':info.activeClass=='active'}" ng-click="info.switch('active')">{{120386 | translate}}</li>
         <!--<li ng-class="{'active':info.activeClass=='quan'}" ng-click="info.switch('quan')">{{120386 | translate}}</li>-->
     </ul>
 
@@ -63,7 +64,7 @@
                 <td width="10%">{{100097 | translate}}</td>
                 <td width="5%"></td>
             </tr>
-            <tr ng-if="info.fund!=''" ng-repeat="item in info.fund" ng-click="info.goFundsDetails(item.dac_id, 'fixed')" style="height: 70px; cursor: pointer;">
+            <tr ng-if="info.fund!=''" ng-repeat="item in info.fund" style="height: 70px; cursor: pointer;">
                 <td>{{item.dac_tls[g.currLang=='cn' ? 'zh-cn' : 'en-us'].name | trim}}</td>
                 <td>{{item.trade_amount | coinNum:item.trade_currency}} {{item.trade_currency | uppercase}}</td>
                 <td>{{item.lock_days}}{{100348 | translate}}</td>
@@ -83,18 +84,18 @@
                 <td width="20%">{{120135 | translate}}</td>
                 <td width="20%">{{120136 | translate}}</td>
                 <td width="25%">{{120137 | translate}}</td>
-                <td width="4%">{{100086 | translate}}</td>
-                <td width="4%"></td>
-                <td width="1%"></td>
+                <!--<td width="4%">{{100086 | translate}}</td>-->
+                <!--<td width="4%"></td>-->
+                <!--<td width="1%"></td>-->
             </tr>
-            <tr ng-if="info.fund!=''" ng-repeat="item in info.fund" ng-click="info.goFundsDetails(item.dac_id, 'flexible')" style="height: 70px; cursor: pointer;">
+            <tr ng-if="info.fund!=''" ng-repeat="item in info.fund" style="height: 70px; cursor: pointer;">
                 <td>{{item.dac_tls[g.currLang=='cn' ? 'zh-cn' : 'en-us'].name | trim}}</td>
                 <td>{{item.possess_amount | coinNum:item.trade_currency}} {{item.trade_currency | uppercase}}</td>
                 <td>{{item.last_24h_profit | coinNum:item.profit_currency}} {{item.profit_currency | uppercase}}</td>
                 <td>{{item.total_profit | coinNum:item.profit_currency}} {{item.profit_currency | uppercase}}</td>
-                <td class="lan">{{120049 | translate}}</td>
-                <td class="lan">{{120050 | translate}}</td>
-                <td></td>
+                <!--<td class="lan">{{120049 | translate}}</td>-->
+                <!--<td class="lan">{{120050 | translate}}</td>-->
+                <!--<td></td>-->
             </tr>
         </table>
         <table cellspacing="0px" ng-show="info.activeClass=='etf'">
@@ -108,7 +109,7 @@
                 <td width="7%"></td>
                 <td width="5%"></td>
             </tr>
-            <tr ng-if="info.fund!=''" ng-repeat="item in info.fund" ng-click="info.goPassiveFunds(item.dac_id)" style="height: 70px; cursor: pointer;">
+            <tr ng-if="info.fund!=''" ng-repeat="item in info.fund" ng-click="info.goPassiveFunds(item.dac_id, 'passive')" style="height: 70px; cursor: pointer;">
                 <td>{{item.dac_tls[g.currLang=='cn' ? 'zh-cn' : 'en-us'].name | trim}}</td>
                 <td>{{item.dac_price_on_usdt | coinNum:'usdt'}} USDT</td>
                 <td>{{item.possess_amount}}</td>
@@ -120,6 +121,31 @@
                 <td class="lan" ng-click="info.goPassiveFunds(item.dac_id, 0); $event.stopPropagation();">{{120049 | translate}}</td>
                 <td class="lan" ng-click="info.goPassiveFunds(item.dac_id, 1); $event.stopPropagation();">{{120050 | translate}}</td>
                 <td></td>
+            </tr>
+        </table>
+        <table cellspacing="0px" ng-show="info.activeClass=='active'">
+            <tr>
+                <td width="17%">{{120382 | translate}}</td>
+                <td width="16%">{{120064 | translate}}</td>
+                <td width="16%">{{120065 | translate}}</td>
+                <td width="16%">{{100129 | translate}}</td>
+                <td width="16%">{{120100 | translate}}</td>
+                <!--<td width="7%">{{100086 | translate}}</td>-->
+                <!--<td width="7%"></td>-->
+                <!--<td width="5%"></td>-->
+            </tr>
+            <tr ng-if="info.fund!=''" ng-repeat="item in info.fund" ng-click="info.goPassiveFunds(item.dac_id, 'active')" style="height: 70px; cursor: pointer;">
+                <td>{{item.dac_tls[g.currLang=='cn' ? 'zh-cn' : 'en-us'].name | trim}}</td>
+                <td>{{item.dac_price_on_usdt | coinNum:'usdt'}} USDT</td>
+                <td>{{item.possess_amount}}</td>
+                <td ng-if="g.currLang=='en'">{{item.possess_amount * item.dac_price_on_usdt | coinNum:'usdt'}} USDT</td>
+                <td ng-if="g.currLang=='cn'">{{item.possess_amount * item.dac_price_on_usdt * info.usdRatio['USDT'].cny_ratio | number:2}} CNY</td>
+                <td>{{item.lock_days}}</td>
+                <!--<td class="lan" ng-click="info.exchangePassiveFunds(0);$event.stopPropagation();">{{120049 | translate}}</td>-->
+                <!--<td class="lan" ng-click="info.exchangePassiveFunds(1);$event.stopPropagation();">{{120050 | translate}}</td>-->
+                <!--<td class="lan" ng-click="info.goPassiveFunds(item.dac_id, 0); $event.stopPropagation();">{{120049 | translate}}</td>-->
+                <!--<td class="lan" ng-click="info.goPassiveFunds(item.dac_id, 1); $event.stopPropagation();">{{120050 | translate}}</td>-->
+                <!--<td></td>-->
             </tr>
         </table>
         <div ng-if="info.fund==''">

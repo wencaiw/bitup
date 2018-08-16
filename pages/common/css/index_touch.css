@@ -351,7 +351,7 @@ header .nav-top-list ul li:hover a{
     color: #fff;
 }
 .banner_list{
-    width: 500%;
+    width: 300%;
     height: 100%;
     /*display: -webkit-box;*/
     transform: translate3d(0,0,0);
@@ -366,7 +366,7 @@ header .nav-top-list ul li:hover a{
     -o-transition: 0.3s ease -o-transform;
 }
 .banner_list .b_con{
-    width: 20%;
+    width: 33.33%;
     height: 100%;
     background: url("/common/images/index2/banner.jpg") center no-repeat;
     /*-webkit-box-flex: 1;*/

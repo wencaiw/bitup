@@ -222,7 +222,7 @@ $index = array(
         '1099' => '<p class="con2_cn_p2" style="font-size: 58px;"><span>BitUP豪送</span><br>88BTC基金收益</p>',
         '1100' => '查看详情',
 //        '1101' => 'BitUP发布BPP平台币基金，全球第一支布局平台币全赛道基金 ',
-        '1101' => 'BBUT代币经济机制重磅发布 ',
+        '1101' => 'BUT代币经济机制重磅发布 ',
         '1102' => '点击查看',
         '1103' => '指数基金上线',
         '1104' => '买卖灵活   收益天天算',
@@ -252,7 +252,7 @@ $title = '数字资产管理平台 | Digital Asset Investment Platform';
     <meta name="Keywords" content="BitUP，BUT，炒币，币圈，数字货币，加密货币，基金，量化，量化投资，对冲基金，固收基金，定投基金，主动基金，指数基金，被动基金，基金超市，比特币，BTC，区块链，以太坊，ETH，EOS，XRP，crypto，crypto fund，quant，Quant investment，hedge，ETF，Index fund，Block chain，Fund supermarket">
     <title><?php echo $title; ?></title>
     <link rel="shortcut icon" type="image/x-icon" href="https://www.bitup.com/common/images/favicon_g.ico?v=2" media="screen">
-    <link rel="stylesheet" href="/common/css/index_touch.css?v=18" />
+    <link rel="stylesheet" href="/common/css/index_touch.css?v=20" />
 </head>
 <body>
 <header>
@@ -302,13 +302,13 @@ $title = '数字资产管理平台 | Digital Asset Investment Platform';
 </header>
 <div class="banner c_center c_whiter">
     <div class="banner_list" id="move_obj">
-        <div class="b_con b_con8">
-            <p class="title_big"><?php echo $_Index['1107']; ?></p>
-            <p class="title_small"><?php echo $_Index['1108']; ?></p>
-            <div class="alpha_tip"><?php echo $_Index['1109']; ?></div>
-            <p class="info"><?php echo $_Index['1110']; ?></p>
-            <a href="/funds/active/14/detail"><?php echo $_Index['1100']; ?></a>
-        </div>
+<!--        <div class="b_con b_con8">-->
+<!--            <p class="title_big">--><?php //echo $_Index['1107']; ?><!--</p>-->
+<!--            <p class="title_small">--><?php //echo $_Index['1108']; ?><!--</p>-->
+<!--            <div class="alpha_tip">--><?php //echo $_Index['1109']; ?><!--</div>-->
+<!--            <p class="info">--><?php //echo $_Index['1110']; ?><!--</p>-->
+<!--            <a href="/funds/active/14/detail">--><?php //echo $_Index['1100']; ?><!--</a>-->
+<!--        </div>-->
         <div class="b_con b_con6">
             <p class="title_<?php echo $l; ?>"><?php echo $_Index['1105']; ?></p>
             <div class="bpp_border"></div>
@@ -328,10 +328,10 @@ $title = '数字资产管理平台 | Digital Asset Investment Platform';
 <!--            <img src="common/images/index2/banner_wc_--><?php //echo $l; ?><!--.png"><br/>-->
 <!--            <a href="/funds/#/detail/6">--><?php //echo $_Index['1100']; ?><!--</a>-->
 <!--        </div>-->
-        <div class="b_con b_con3">
-            <img src="common/images/index2/banner_bibibao_<?php echo $l; ?>.png?v=10"><br/>
-            <a href="/funds/list/bbb/flexible"><?php echo $_Index['1100']; ?></a>
-        </div>
+<!--        <div class="b_con b_con3">-->
+<!--            <img src="common/images/index2/banner_bibibao_--><?php //echo $l; ?><!--.png?v=10"><br/>-->
+<!--            <a href="/funds/list/bbb/flexible">--><?php //echo $_Index['1100']; ?><!--</a>-->
+<!--        </div>-->
 <!--        <div class="b_con b_con2">-->
 <!--            --><?php //echo $_Index['1098']; ?>
 <!--            --><?php //echo $_Index['1099']; ?>
@@ -368,7 +368,7 @@ $title = '数字资产管理平台 | Digital Asset Investment Platform';
             </div>
         </div>
     </div>
-    <div class="banner_index" id="banner_slide"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+    <div class="banner_index" id="banner_slide"><i class="on"></i><i></i><i></i></div>
 </div>
 <div class="news">
     <div class="content"><i class="notice"></i><?php echo $_Index['1101']; ?><a href="https://bitup.zendesk.com/hc/zh-cn/articles/360012953112-BUT%E4%BB%A3%E5%B8%81%E7%BB%8F%E6%B5%8E%E6%9C%BA%E5%88%B6%E9%87%8D%E7%A3%85%E5%8F%91%E5%B8%83" target="_blank"><?php echo $_Index['1102']; ?></a><i class="close"></i></div>
@@ -461,58 +461,7 @@ $title = '数字资产管理平台 | Digital Asset Investment Platform';
         <dd><?php echo $_Index['1065']; ?></dd>
     </dl>
 </div>
-<div class="advisors">
-    <div class="c_container c_center clearfix">
-        <div class="module_top_bg module_top_bg2 c_center" style="color: #BAE4FF;"><i></i><?php echo $_Index['1021']?></div>
-        <dl>
-            <dt><?php echo $_Index['1022']?></dt>
-            <dd><?php echo $_Index['1023']?></dd>
-            <dd><?php echo $_Index['1024']?></dd>
-            <dd><?php echo $_Index['1025']?></dd>
-        </dl>
-        <dl>
-            <dt><?php echo $_Index['1026']?></dt>
-            <dd><?php echo $_Index['1027']?></dd>
-            <dd><?php echo $_Index['1028']?></dd>
-            <dd><?php echo $_Index['1029']?></dd>
-        </dl>
-        <dl>
-            <dt><?php echo $_Index['1030']?></dt>
-            <dd><?php echo $_Index['1031']?></dd>
-        </dl>
-        <dl>
-            <dt><?php echo $_Index['1032']?></dt>
-            <dd><?php echo $_Index['1033']?></dd>
-            <dd><?php echo $_Index['1034']?></dd>
-        </dl>
-<!--        <dl>-->
-<!--            <dt>--><?php //echo $_Index['1035']?><!--</dt>-->
-<!--            <dd>--><?php //echo $_Index['1036']?><!--</dd>-->
-<!--            <dd>--><?php //echo $_Index['1037']?><!--</dd>-->
-<!--        </dl>-->
-        <dl>
-            <dt><?php echo $_Index['1038']?></dt>
-            <dd><?php echo $_Index['1039']?></dd>
-        </dl>
-        <dl>
-            <dt><?php echo $_Index['1040']?></dt>
-            <dd><?php echo $_Index['1041']?></dd>
-        </dl>
-    </div>
-</div>
-<div class="investor c_container c_center">
-    <div class="module_top_bg"><?php echo $_Index['1042']?></div>
-    <div class="clearfix">
-        <img src="/common/images/index2/img-huobi.png">
-        <img src="/common/images/index2/img-node.png">
-        <img src="/common/images/index2/img-frees.png">
-        <img src="/common/images/index2/img-geek.png">
-        <img src="/common/images/index2/img-genesis.png">
-        <img src="/common/images/index2/img-8DECIMAL.png">
-        <img src="/common/images/index2/img-TOP.png">
-        <img src="/common/images/index2/img-spark.jpg">
-    </div>
-</div>
+
 <div class="c_container c_center road_map">
     <div class="module_top_bg"><?php echo $_Index['1066']; ?></div> 
     <ul class="c_whiter">
@@ -550,35 +499,6 @@ $title = '数字资产管理平台 | Digital Asset Investment Platform';
         </li> 
         <div class="c_clear"></div> 
     </ul> 
-</div>
-<div class="faq">
-    <div class="c_container clearfix">
-        <div class="module_top_bg module_top_bg2 c_center" style="color: #BAE4FF;"><i></i>FAQ</div>
-        <dl>
-            <dt><?php echo $_Index['1075']; ?></dt>
-            <dd><?php echo $_Index['1076']; ?></dd>
-        </dl>
-        <dl>
-            <dt><?php echo $_Index['1077']; ?></dt>
-            <dd><?php echo $_Index['1078']; ?></dd>
-        </dl>
-        <dl>
-            <dt><?php echo $_Index['1079']; ?></dt>
-            <dd><?php echo $_Index['1080']; ?></dd>
-        </dl>
-        <dl>
-            <dt><?php echo $_Index['1081']; ?></dt>
-            <dd><?php echo $_Index['1082']; ?></dd>
-        </dl>
-        <dl>
-            <dt><?php echo $_Index['1083']; ?></dt>
-            <dd><?php echo $_Index['1084']; ?></dd>
-        </dl>
-        <dl>
-            <dt><?php echo $_Index['1085']; ?></dt>
-            <dd><?php echo $_Index['1086']; ?></dd>
-        </dl>
-    </div>
 </div>
 
 

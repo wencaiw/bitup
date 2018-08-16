@@ -9,99 +9,99 @@
 
 <div class="common-container">
     <!--币币宝标题-->
-    <div class="fundmarket_main">
-        <h3 class="title">
-            <b class="name">{{'130000'|translate}}</b><span class="tips">{{'130001'|translate}}</span>
-            <p class="fr" ng-click="info.pageLink('funds.list.bbb',{'type':'fixed'})">{{'120098' | translate}} <i></i></p>
-        </h3>
-    </div>
+    <!--<div class="fundmarket_main">-->
+        <!--<h3 class="title">-->
+            <!--<b class="name">{{'130000'|translate}}</b><span class="tips">{{'130001'|translate}}</span>-->
+            <!--<p class="fr" ng-click="info.pageLink('funds.list.bbb',{'type':'fixed'})">{{'120098' | translate}} <i></i></p>-->
+        <!--</h3>-->
+    <!--</div>-->
 
     <!--币币宝列表-->
-    <bt-loading h="50" ng-if="info.bbb_loading"></bt-loading>
-    <ul class="fixfund_list clearfix bor-box">
-        <li ng-repeat="(k,v) in info.dataList[1]" ng-if="k < 4">{{info.getinfo(k, v)}}
-            <p class="tit">{{v.dac_info_tl[g.currLang=='cn' ? 'zh-cn' : 'en-us'].name}}</p>
-            <funds-circle config="{per: v.dac_sold_amount/v.dac_trade_limit.capacity*100}"></funds-circle>
-            <div class="return">
-                <p class="p1">{{(v.fixed_rate * 100).toFixed(2)}}<span class="fz-14">%</span></p>
-                <p class="p2" ng-bind-html="120099 | translate | htmlTag"></p>
-            </div>
-            <p class="desc">{{'130009'|translate}}：<span>{{v.lock_days}}{{'100348' | translate}}</span></p>
-            <p class="desc">{{'130043' | translate}}：<span>{{ (v.dac_trade_limit.capacity - v.dac_sold_amount) | coinNum: v.base_currency}}  {{v.base_currency | uppercase}}</span></p>
+    <!--<bt-loading h="50" ng-if="info.bbb_loading"></bt-loading>-->
+    <!--<ul class="fixfund_list clearfix bor-box">-->
+        <!--<li ng-repeat="(k,v) in info.dataList[1]" ng-if="k < 4">{{info.getinfo(k, v)}}-->
+            <!--<p class="tit">{{v.dac_info_tl[g.currLang=='cn' ? 'zh-cn' : 'en-us'].name}}</p>-->
+            <!--<funds-circle config="{per: v.dac_sold_amount/v.dac_trade_limit.capacity*100}"></funds-circle>-->
+            <!--<div class="return">-->
+                <!--<p class="p1">{{(v.fixed_rate * 100).toFixed(2)}}<span class="fz-14">%</span></p>-->
+                <!--<p class="p2" ng-bind-html="120099 | translate | htmlTag"></p>-->
+            <!--</div>-->
+            <!--<p class="desc">{{'130009'|translate}}：<span>{{v.lock_days}}{{'100348' | translate}}</span></p>-->
+            <!--<p class="desc">{{'130043' | translate}}：<span>{{ (v.dac_trade_limit.capacity - v.dac_sold_amount) | coinNum: v.base_currency}}  {{v.base_currency | uppercase}}</span></p>-->
 
-            <div class="status {{info.time[k].class_}}" ng-class="{'nothing':!info.time[k].times}" ng-click="info.pageLink('funds.detail',{type:'fixed',dac_id: v.id})">
-                <p ng-if="info.time[k].class_=='being'">{{'130011'|translate}}</p>
-                <p ng-class="{'fz-12': info.time[k].times}">{{info.time[k].times ? ((info.time[k].times | d_hms) + ((info.time[k].class_=='being' ? '130021' : '130020') | translate)) : (info.time[k].inner | translate)}}</p>
-                <p ng-if="info.time[k].class_=='coming'" class='more'>{{'130013' | translate}}</p>
-            </div>
-        </li>
-    </ul>
+            <!--<div class="status {{info.time[k].class_}}" ng-class="{'nothing':!info.time[k].times}" ng-click="info.pageLink('funds.detail',{type:'fixed',dac_id: v.id})">-->
+                <!--<p ng-if="info.time[k].class_=='being'">{{'130011'|translate}}</p>-->
+                <!--<p ng-class="{'fz-12': info.time[k].times}">{{info.time[k].times ? ((info.time[k].times | d_hms) + ((info.time[k].class_=='being' ? '130021' : '130020') | translate)) : (info.time[k].inner | translate)}}</p>-->
+                <!--<p ng-if="info.time[k].class_=='coming'" class='more'>{{'130013' | translate}}</p>-->
+            <!--</div>-->
+        <!--</li>-->
+    <!--</ul>-->
 
     <!--币币宝活期-->
-    <div class="fix-current clearfix bor-box" ng-if="!info.bbb_loading">
-        <div class="fl desc">
-            <img src="/common/images/fixfunds-img.png">
-            <div class="cont-text">
-                <div class="p1">{{120123 | translate}}</div>
-                <p class="p2">{{120124 | translate}}</p>
-                <p class="p2">{{120125 | translate}}</p>
-            </div>
-        </div>
-        <div class="fr cont" ng-repeat="(k,v) in info.dataList[2]" ng-if="k == 0">
-            <div class="tit">{{v.dac_info_tl[g.currLang=='cn' ? 'zh-cn' : 'en-us'].name}}</div>
-            <div class="soc">
-                <table width="100%">
-                    <tbody>
-                    <tr>
-                        <td width="10%">
-                            <p class="val color-green2">{{(v.fixed_rate * 100).toFixed(2)}}<span class="fz-14">%</span></p><br>
-                            <p class="key" ng-bind-html="120099 | translate | htmlTag"></p>
-                        </td>
-                        <td width="10%">
-                            <p class="val">{{v.lock_days}}<span class="fz-14">{{100348 | translate}}</span></p><br>
-                            <p class="key" ng-bind-html="120100 | translate | htmlTag"></p>
-                        </td>
-                        <td width="16%">
-                            <p class="val" ng-if="v.dac_trade_limit.min_buy_amount">{{v.dac_trade_limit.min_buy_amount}}<span class="fz-14"> {{v.base_currency | uppercase}}</span></p>
-                            <p class="val" ng-if="!v.dac_trade_limit.min_buy_amount">{{'120115' | translate}}</p><br>
-                            <p class="key">{{120101 | translate}}</p>
-                        </td>
-                        <td width="14%" style="min-width: 150px;">
-                            <p class="val">{{(v.fixed_rate / 365 * 10000).toFixed(5)}}<span class="fz-14"> {{v.base_currency | uppercase}}</span></p><br>
-                            <p class="key" ng-bind-html="120113 | translate | htmlTag"></p>
-                        </td>
-                        <td width="12%">
-                            <p class="val">{{v.dac_trade_limit.buy_end_time ? (v.dac_trade_limit.buy_end_time | date:'yyyy.MM.dd')  : (120115 | translate)}}</p><br>
-                            <p class="key">{{120114 | translate}}</p>
-                        </td>
-                        <td width="10%">
-                            <div class="detail" ng-click="info.pageLink('funds.detail',{type:'flexible',dac_id: v.id})">{{130013 | translate}}</div>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="tag">
-                <img src="/common/images/img-mark.png" width="100%">
-                <p class="tag-text">{{120102 | translate}}</p>
-            </div>
-        </div>
-    </div>
+    <!--<div class="fix-current clearfix bor-box" ng-if="!info.bbb_loading">-->
+        <!--<div class="fl desc">-->
+            <!--<img src="/common/images/fixfunds-img.png">-->
+            <!--<div class="cont-text">-->
+                <!--<div class="p1">{{120123 | translate}}</div>-->
+                <!--<p class="p2">{{120124 | translate}}</p>-->
+                <!--<p class="p2">{{120125 | translate}}</p>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="fr cont" ng-repeat="(k,v) in info.dataList[2]" ng-if="k == 0">-->
+            <!--<div class="tit">{{v.dac_info_tl[g.currLang=='cn' ? 'zh-cn' : 'en-us'].name}}</div>-->
+            <!--<div class="soc">-->
+                <!--<table width="100%">-->
+                    <!--<tbody>-->
+                    <!--<tr>-->
+                        <!--<td width="10%">-->
+                            <!--<p class="val color-green2">{{(v.fixed_rate * 100).toFixed(2)}}<span class="fz-14">%</span></p><br>-->
+                            <!--<p class="key" ng-bind-html="120099 | translate | htmlTag"></p>-->
+                        <!--</td>-->
+                        <!--<td width="10%">-->
+                            <!--<p class="val">{{v.lock_days}}<span class="fz-14">{{100348 | translate}}</span></p><br>-->
+                            <!--<p class="key" ng-bind-html="120100 | translate | htmlTag"></p>-->
+                        <!--</td>-->
+                        <!--<td width="16%">-->
+                            <!--<p class="val" ng-if="v.dac_trade_limit.min_buy_amount">{{v.dac_trade_limit.min_buy_amount}}<span class="fz-14"> {{v.base_currency | uppercase}}</span></p>-->
+                            <!--<p class="val" ng-if="!v.dac_trade_limit.min_buy_amount">{{'120115' | translate}}</p><br>-->
+                            <!--<p class="key">{{120101 | translate}}</p>-->
+                        <!--</td>-->
+                        <!--<td width="14%" style="min-width: 150px;">-->
+                            <!--<p class="val">{{(v.fixed_rate / 365 * 10000).toFixed(5)}}<span class="fz-14"> {{v.base_currency | uppercase}}</span></p><br>-->
+                            <!--<p class="key" ng-bind-html="120113 | translate | htmlTag"></p>-->
+                        <!--</td>-->
+                        <!--<td width="12%">-->
+                            <!--<p class="val">{{v.dac_trade_limit.buy_end_time ? (v.dac_trade_limit.buy_end_time | date:'yyyy.MM.dd')  : (120115 | translate)}}</p><br>-->
+                            <!--<p class="key">{{120114 | translate}}</p>-->
+                        <!--</td>-->
+                        <!--<td width="10%">-->
+                            <!--<div class="detail" ng-click="info.pageLink('funds.detail',{type:'flexible',dac_id: v.id})">{{130013 | translate}}</div>-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--</tbody>-->
+                <!--</table>-->
+            <!--</div>-->
+            <!--<div class="tag">-->
+                <!--<img src="/common/images/img-mark.png" width="100%">-->
+                <!--<p class="tag-text">{{120102 | translate}}</p>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
 
     <!--福利基金标题-->
-    <div class="fundmarket_main">
-        <h3 class="title">
-            <b class="name">{{'130002'|translate}}</b>
-            <p ng-if="false" class="fr">{{'130074' | translate}} <i></i></p>
-        </h3>
-    </div>
+    <!--<div class="fundmarket_main">-->
+        <!--<h3 class="title">-->
+            <!--<b class="name">{{'130002'|translate}}</b>-->
+            <!--<p ng-if="false" class="fr">{{'130074' | translate}} <i></i></p>-->
+        <!--</h3>-->
+    <!--</div>-->
 
     <!--福利基金-->
-    <div class="welfare-fund">
-        <a go="/88btc/">
-            <p ng-bind-html="120103 | translate | htmlTag"></p>
-        </a>
-    </div>
+    <!--<div class="welfare-fund">-->
+        <!--<a go="/88btc/">-->
+            <!--<p ng-bind-html="120103 | translate | htmlTag"></p>-->
+        <!--</a>-->
+    <!--</div>-->
 
     <!--被动基金标题-->
     <div class="fundmarket_main">

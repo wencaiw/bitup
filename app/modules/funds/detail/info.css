@@ -4,8 +4,14 @@
 #fund-detail .w-25 {
   width: 25%;
 }
+#fund-detail .w-20 {
+  width: 20%;
+}
 #fund-detail .w-50 {
   width: 50%;
+}
+#fund-detail .w-30 {
+  width: 30%;
 }
 #fund-detail .w-75 {
   width: 75%;
@@ -240,6 +246,7 @@
   margin-top: 20px;
   background-color: #03BCC0;
   color: #fff;
+  border: 0px;
   box-shadow: none;
   cursor: pointer;
 }
@@ -414,6 +421,13 @@
 }
 #fund-detail .detail-single .tab-box .tab-cont .list li .status {
   color: #03BCC0;
+}
+#fund-detail .detail-single .tab-box .tab-cont .list li .status a {
+  color: #4F6475;
+  border: 1px solid #4F6475;
+  padding: 1px 5px;
+  border-radius: 2px;
+  margin-left: 5px;
 }
 #fund-detail .detail-single .tab-box .tab-cont .list li:after {
   content: '';

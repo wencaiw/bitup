@@ -5,7 +5,7 @@ module.exports = {
     url: '/index',
     views: {
         'funds': {
-            template: __inline('index.html'),
+            template: __inline('index.html?v=2'),
             controller: ['$scope', '$location', '$http', '$cookies', '$state', '$', '$stateParams', '$interval', 'simpleLine', function($scope, $location, $http, $cookies, $state, $, $stateParams, $interval, simpleLine){
 
                 $scope.g.currPage = 'funds';

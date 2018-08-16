@@ -5,7 +5,7 @@ module.exports = {
     url: '/list',
     views: {
         'funds': {
-            template: __inline('index.html'),
+            template: __inline('index.html?v=2'),
             controller: ['$scope', '$location', '$http', '$cookies', '$state', '$', '$stateParams', '$interval', function($scope, $location, $http, $cookies, $state, $, $stateParams, $interval){
 
                 $scope.g.currPage = 'funds';

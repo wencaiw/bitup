@@ -55,11 +55,11 @@ module.exports = {
                         }
 
                     },
-                    goPassiveFunds:function (id, type) {
-                        if(typeof(type) != 'undefined'){
-                            $state.go('funds.passive.trade', {dac_id: id, tradeType: type});
+                    goPassiveFunds:function (id, fundType, tradeType) {
+                        if(typeof(tradeType) != 'undefined'){
+                            $state.go('funds.info.trade', {dac_id: id, type: fundType, tradeType: tradeType});
                         }else{
-                            $state.go('funds.passive.detail', {dac_id: id});
+                            $state.go('funds.info.detail', {type: fundType, dac_id: id});
                         }
                     }
                 };
@@ -94,12 +94,18 @@ module.exports = {
                                 //用户基金资产
                                 $scope.info.fundTotal = 0;
                                 if($scope.info.fundData.etf && $scope.info.fundData.etf.length!==0){//etf
-                                    console.log('etf');
+                                    console.log('指数基金');
                                     for(var a in $scope.info.fundData.etf){
                                         $scope.info.fundTotal += $scope.info.fundData.etf[a].possess_amount * $scope.info.fundData.etf[a].dac_price_on_usdt;
                                     }
                                 }
-                                console.log('etf：'+$scope.info.fundTotal);
+                                if($scope.info.fundData.active && $scope.info.fundData.active.length!==0){//active
+                                    console.log('主动基金');
+                                    for(var d in $scope.info.fundData.active){
+                                        $scope.info.fundTotal += $scope.info.fundData.active[d].possess_amount * $scope.info.fundData.active[d].dac_price_on_usdt;
+                                    }
+                                }
+                                console.log('etf+active：'+$scope.info.fundTotal);
                                 if($scope.info.fundData.fixed1 && $scope.info.fundData.fixed1.length!==0){//币币宝定期
                                     console.log('币币宝定期');
                                     for(var b in $scope.info.fundData.fixed1){
@@ -124,15 +130,6 @@ module.exports = {
                                     }
                                 }
                                 console.log($scope.info.fundTotal);
-                                /*if($scope.info.fundData.quan && $scope.info.fundData.quan.length!==0){//
-                                    for(var c in $scope.info.fundData.quan){
-                                        if($scope.info.fundData.quan[c].trade_currency === 'but'){
-                                            $scope.info.fundTotal += $scope.info.fundData.quan[c].trade_amount * $scope.info.usdRatio['BTC'].fiat_ratio
-                                        }else if($scope.info.fundData.quan[c].trade_currency === 'btc'){
-                                            $scope.info.fundTotal += $scope.info.fundData.quan[c].trade_amount * $scope.info.usdRatio['BTC'].fiat_ratio
-                                        }
-                                    }
-                                }*/
                                 $scope.info.total = $scope.info.allCoin + $scope.info.fundTotal;
                             }else{
 

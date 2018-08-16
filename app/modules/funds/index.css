@@ -117,6 +117,9 @@
   margin-bottom: 8px;
   text-align: left;
 }
+.fixfund_list li .desc em {
+  font-style: normal;
+}
 .fixfund_list li .desc span {
   color: #FF733A;
 }
@@ -132,6 +135,9 @@
 }
 .fixfund_list li .status p {
   font-size: 14px;
+}
+.fixfund_list li .status p.flexible-star {
+  line-height: 40px;
 }
 .fixfund_list li .status.coming,
 .fixfund_list li .status.nothing {
@@ -257,7 +263,7 @@
   padding: 30px 0;
 }
 .fix-current .cont .soc table .val {
-  font-size: 28px;
+  font-size: 26px;
 }
 .fix-current .cont .soc table .key {
   font-size: 14px;
@@ -510,8 +516,8 @@
   float: left;
   font-size: 16px;
   color: #09263F;
-  height: 60px;
-  line-height: 60px;
+  line-height: 18px;
+  padding: 20px 0;
   border-bottom: 2px solid #fff;
   box-sizing: border-box;
   text-align: center;
@@ -760,7 +766,6 @@
   }
   .fund-type-list li {
     font-size: 14px;
-    width: 33.3%;
   }
   .screening-box {
     padding: 14px 0 0px;

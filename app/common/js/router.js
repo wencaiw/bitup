@@ -112,18 +112,18 @@ angular.module('BitUP').config(function($stateProvider, $urlRouterProvider, $loc
         .state('dashboard.user.privilege', dashboard.user.privilege)
         .state('dashboard.user.pwd', dashboard.user.pwd)
         .state('dashboard.user.hongbao', dashboard.user.hongbao)
-        .state('dashboard.88btc', dashboard.router('88btc'))
-        .state('dashboard.88btc.index', dashboard.btcFund.index)
-        .state('dashboard.88btc.list', dashboard.btcFund.list)
+        //.state('dashboard.88btc', dashboard.router('88btc'))
+        //.state('dashboard.88btc.index', dashboard.btcFund.index)
+        //.state('dashboard.88btc.list', dashboard.btcFund.list)
         //Index 指数
         .state('index', index.index)
         //Funds 基金
         .state('funds', funds.idx)
         .state('funds.index', funds.index)
         .state('funds.list', funds.list.index)
-        .state('funds.list.bbb', funds.list.bbb)
+        //.state('funds.list.bbb', funds.list.bbb)
         .state('funds.list.passive', funds.list.passive)
-        .state('funds.detail', funds.detail)
+        //.state('funds.detail', funds.detail)
 
         //.state('funds.passive', funds.passive.index)
         //.state('funds.passive.detail', funds.passive.detail)
