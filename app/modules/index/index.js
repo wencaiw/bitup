@@ -89,7 +89,7 @@ module.exports = {
                                             });
                                             $scope.info.maxPrice = y>$scope.info.maxPrice ? y : $scope.info.maxPrice;
                                             $scope.info.minPrice = y<$scope.info.minPrice ? y : $scope.info.minPrice;
-                                            $scope.info.fluctuation = ($scope.info.bpData[$scope.info.bpData.length-1].y - $scope.info.bpData[0].y)/$scope.info.bpData[0].y;
+                                            $scope.info.fluctuation = res.data.data.fluctuation;
                                             $scope.info.currPrice = res.data.data.trends[res.data.data.trends.length-1].index_value;
                                             $scope.info.currDate = res.data.data.trends[res.data.data.trends.length-1].ts;
                                             $scope.info.dataList = res.data.data.composition;
