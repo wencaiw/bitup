@@ -41,7 +41,7 @@
             <div class="form-box">
                 <div class="form-control">
                     <span class="color-red fz-16">* </span><label>{{100071 | translate}}</label>
-                    <span class="label-right">{{100218 | translate}}：<span class="color-light-blue">{{info.balance}}</span> <!--{{100240 | translate}}：<span class="color-light-blue">{{info.currentBi.free}}</span>--></span>
+                    <span class="label-right">{{100218 | translate}}：<span class="zhizhen color-light-blue" ng-click="info.autoEnterAll()">{{info.balance | coinNum:info.currentBi.coin}}</span> <!--{{100240 | translate}}：<span class="color-light-blue">{{info.currentBi.free}}</span>--></span>
                 </div>
                 <div class="form-control">
                     <input class="input-text" ng-model="info.currencyNum"

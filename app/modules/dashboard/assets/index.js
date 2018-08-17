@@ -55,7 +55,7 @@ module.exports = {
                         }
 
                     },
-                    goPassiveFunds:function (id, fundType, tradeType) {
+                    goFunds:function (id, fundType, tradeType) {
                         if(typeof(tradeType) != 'undefined'){
                             $state.go('funds.info.trade', {dac_id: id, type: fundType, tradeType: tradeType});
                         }else{

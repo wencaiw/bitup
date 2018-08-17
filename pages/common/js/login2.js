@@ -19,6 +19,11 @@ $(function(){
             loginSub(false);
         }
     });
+    $('#tfa_code').bind('input propertychange',function(){
+        if ($(this).val().length == 6 ) {
+            loginSub(true);
+        }
+    });
     function loginSub(tfa){
         var pwd = $('#pwd').val(),
         account = $('#account').val().toLowerCase();
@@ -83,7 +88,7 @@ $(function(){
             return false;
         }
         //tfaConfirm();
-        loginSub(true)
+        loginSub(true);
     });
     $('#tfa_code').keyup(function(event){
         if(event.keyCode ==13){

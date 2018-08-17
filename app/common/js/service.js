@@ -1110,16 +1110,17 @@ module.filter("htmlTag", ['$sce', function($sce) {
 /**
  * 币保留位数控制
  */
-module.filter('coinNum', function(){
+module.constant('coinDecimal', {
+    BTC: 8,
+    ETH: 8,
+    BUT: 4,
+    USDT: 4
+});
+module.filter('coinNum', function(coinDecimal){
     return function(value, coin){
         if((!value && value !=0) || !coin) return;
         var c = {
-            list: {
-                BTC: 8,
-                ETH: 8,
-                BUT: 4,
-                USDT: 4
-            },
+            list: coinDecimal,
             arr: parseFloat(value).toString().split('.'),
             init: function(){
                 var arr = this.arr,

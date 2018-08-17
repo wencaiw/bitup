@@ -7,7 +7,7 @@ module.exports = {
     views: {
         'finance': {
             template: __inline('index.html'),
-            controller: ['$scope', '$http', '$cookies', '$state' , '$', '$stateParams', 'userInfo' , '$interval' , function($scope, $http, $cookies, $state, $ , $stateParams , userInfo , $interval){
+            controller: ['$scope', '$http', '$cookies', '$state' , '$', '$stateParams', 'userInfo' , '$interval' , 'math', '$filter', 'coinDecimal', function($scope, $http, $cookies, $state, $ , $stateParams , userInfo , $interval, math, $filter, coinDecimal){
                 $scope.g.currPage = 'finance';
 
                 console.log($stateParams.coin);
@@ -51,19 +51,9 @@ module.exports = {
                     time2:60,//发送邮箱验证码时间
                     lock_time:false,//锁定验证码按钮
                     lock_time2:false,//锁定邮箱验证码按钮
-                    biList:{
-                        'BTC': {
-                            key: 'BTC',
-                            name: '比特币',
-                            num: 0.019156,
-                            price: 10000
-                        },
-                        'ETH': {
-                            key: 'ETH',
-                            name: '以太坊',
-                            num: 0.349624,
-                            price: 1000
-                        }
+                    autoEnterAll:function () {
+                        this.currencyNum = $filter('coinNum')($scope.info.balance, $scope.info.currentBi.coin);
+
                     },
                     previewOrder: function(){
                         this.showPopup = true;
@@ -140,6 +130,13 @@ module.exports = {
                                         });
                                         $state.go('dashboard.finance.index');
                                         return false;
+                                    },
+                                    error:function (res) {
+                                        $scope.g.tip("message", res.data.errMsg,function () {
+                                            $scope.info.v_code = '';
+                                            $scope.info.e_code = '';
+                                            $scope.info.code = '';
+                                        });
                                     }
                                 },$scope);
                             }
@@ -229,22 +226,22 @@ module.exports = {
                     if($stateParams.coin.toUpperCase() === 'BUT'){
                         $scope.info.cost = 50;
                         $scope.info.coin = 'BUT';
-                        $scope.info.minNum = '100';
+                        $scope.info.minNum = 100;
                     }
                     else if ($stateParams.coin.toUpperCase() === 'BTC'){
                         //默认  0.001
                         $scope.info.coin = 'BTC';
-                        $scope.info.minNum = '0.01';
+                        $scope.info.minNum = 0.01;
                     }
                     else if ($stateParams.coin.toUpperCase() === 'ETH'){
                         $scope.info.cost = 0.005;
                         $scope.info.coin = 'ETH';
-                        $scope.info.minNum = '0.015';
+                        $scope.info.minNum = 0.015;
                     }
                     else if ($stateParams.coin.toUpperCase() === 'USDT'){
                         $scope.info.cost = 5;
                         $scope.info.coin = 'USDT';
-                        $scope.info.minNum = '100';
+                        $scope.info.minNum = 100;
                     }
                     // userInfo.data.balances 或 $scope.g.info.balances
                     // 提现成功需要修改$scope.g.info.balances对应余额的值 无需刷页面
@@ -281,19 +278,39 @@ module.exports = {
                     }
                 });
                 $scope.$watch("info.currencyNum",function(){//数量
-                    if($scope.info.currencyNum && !($scope.info.currencyNum > 0)){
+                    if($scope.info.currencyNum && $scope.info.currencyNum!==''){//判断当前输入的小数位数是否大于当前币种所支持的小数位数
+                        var arr = $scope.info.currencyNum.toString().split('.');
+                        if(arr[1] && arr[1].length > coinDecimal[$scope.info.currentBi.coin]){
+                            $scope.info.numError = true;
+                            return false;
+                        }
+                    }
+
+                    if(!$scope.info.currencyNum && $scope.info.currencyNum!=0){
+                        return false;
+                    }
+                    else  if($scope.info.currencyNum && !($scope.info.currencyNum > 0)){
                         $scope.info.numError = true;
                         return false;
-                    }else if($scope.info.currencyNum < $scope.info.minNum){
+                    }
+                    else if($scope.info.currencyNum < $scope.info.minNum){
                         $scope.info.numError = true;
                         return false;
-                    }else if($scope.info.currentBi && $scope.info.currencyNum > $scope.info.balance){
+                    }
+                    else if($scope.info.currentBi && $scope.info.currencyNum > $scope.info.balance){
                         $scope.info.numError = true;
-                    }else {
+                    }
+                    else {
                         $scope.info.numError = false;
-                        $scope.info.userGetNumber = ($scope.info.currencyNum - $scope.info.cost) <= 0 ? 0 : $scope.info.coin == 'BUT' ? ($scope.info.currencyNum - $scope.info.cost).toFixed(4) : ($scope.info.currencyNum - $scope.info.cost).toFixed(8);
+                        $scope.info.userGetNumber = math.f($scope.info.currencyNum, $scope.info.cost, '-') <0 ? 0 : math.f($scope.info.currencyNum, $scope.info.cost, '-');
+
                     }
                 });
+                $scope.$watch("info.userGetNumber", function (newVal) {
+                    if($scope.info.userGetNumber){
+                        $scope.info.userGetNumber = $filter('coinNum')($scope.info.userGetNumber, $scope.info.currentBi.coin);
+                    }
+                })
             }]
         }
     }

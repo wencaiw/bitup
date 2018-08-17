@@ -103,6 +103,6 @@ $title = '数字资产管理平台 | Digital Asset Investment Platform | BitUP L
 
 <?php include_once '../common/tpl/footer.php'; ?>
 <script type="text/javascript" src="/common/js/md5.js"></script>
-<script type="text/javascript" src="/common/js/login2.js"></script>
+<script type="text/javascript" src="/common/js/login2.js?v=1"></script>
 </body>
 </html>
