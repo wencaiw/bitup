@@ -1136,11 +1136,11 @@ module.filter('coinNum', function(coinDecimal){
                         if(arr[1].length <= num){
                             return rtn;
                         }else{
-                            if(parseInt(arr[1].substr(num-1, 1)) >= 5){
+                            //if(parseInt(arr[1].substr(num-1, 1)) >= 5){
                                 return arr[0] + '.' + arr[1].substr(0, num);
-                            }else{
-                                return rtn;
-                            }
+                            //}else{
+                            //    return rtn;
+                            //}
                         }
                     }else{
                         return '';
